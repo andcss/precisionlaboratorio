@@ -528,3 +528,21 @@ exports.isAuthorized = (req, res, next) => {
     res.redirect(`/auth/${provider}`);
   }
 };
+
+/**
+ * Verifica se usuário é admin
+ */
+
+exports.isAdminUser = (req, res, next) => {
+    if (req.user){
+      var user = JSON.parse(JSON.stringify(req.user));
+      if (user.role == 'admin') {
+        next();
+      }
+      else {
+        res.redirect('/dashboard/home');
+      }
+    }
+    else
+      res.redirect('/dashboard/home');
+ };

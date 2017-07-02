@@ -1,0 +1,58 @@
+extends ../layout
+include ../partials/menu-top
+
+block content
+  +menuTop(class="black")
+
+  #laboratorio
+    .container.historia
+      .row
+        .col-sm-5
+          h1
+            span.p0 O
+            br
+            span.p1 LABO
+            br
+            span.p2 RA
+            br
+            span.p3 TÓRIO_
+          img.ilustra(src="images/ilustra-historia.jpg")
+        .col-sm-7
+          h3  História
+          span.number 01
+          p Ao longo dos mais de 25 anos de atuação o Ateliê Oral realizou 9.000 casos em parceria com o seu laboratório, em que com muita dedicação e superação foi possível desenvolver e padronizar os processos e protocolos, que conferem precisão e exatidão aos trabalhos, ficando somente a finalização personalizada a cargo de nossos talentosos técnicos.
+          p Durante este período sentimos a necessidade do mercado em identificar laboratórios que ofereçam excelência e um protocolo assertivo, capaz de proporcionar Previsibilidade, Exatidão, Qualidade e Agilidade dos resultados.
+          p Assim, seguindo o desenvolvimento tecnológico nasce o Laboratório Precision, com uma proposta totalmente digital, facilitando assim a comunicação entre o Cirurgião Dentista e os Técnicos de Prótese, possibilitando ao mercado da odontologia estética um trabalho de excelência, focado no resultado do cliente, no qual o paciente é o maior beneficiado.
+          p Desta forma o Laboratório Precision vem se desenvolvendo, alcançando objetivos e auxiliando os Cirurgiões Dentistas a realizarem os sonhos de seus clientes, oferecendo uma odontologia diferenciada.
+      .row
+        .col-sm-12.text-right.downScroll
+          include ../../public/svg/arrow-right.svg
+
+    .container.quemSomos
+      .row
+        .col-sm-5
+          h3 Quem somos
+          p A equipe do Laboratório Precision é composta por Equipe administrativa qualificada e Técnicos em Prótese Dentária capacitados, que fazem uso de uma formação mista, recebendo casos de todo Brasil, seguindo a orientação do Ceramista Chefe Wagner Nhoncance.
+          p Desta forma é possível avaliar e atender adequadamente as solicitações dos clientes, o que proporcionam resultados personalizados e orientação direta aos os dentistas.
+        .col-sm-7
+          span.number 02
+          img.ilustra(src="images/ilustra-quem-somos.jpg")
+
+    .container.proposito
+      .row
+        .col-sm-7
+          span.number 03
+          img.ilustra(src="images/ilustra-proposito.jpg")
+        .col-sm-5
+          h3 Propósito
+          p Gerar resultados odontológicos de excelência, capazes de transformar a carreira dos nossos clientes e de seus pacientes, por meio da tecnologia aplicada a odontologia estética.
+
+    .container.laboratorioDigital
+      .row
+        .col-sm-5.description
+          span.number 04
+          h3 Laboratório Digital
+          p O Laboratório Precision por meio de processos padronizados, aplicados a tecnologias que visam elevar a previsibilidade dos resultados e a agilidade na confecção dos elementos, além dos resultados diferenciados com relação aos projetos e proporcionar maior agilidade na entrega dos projetos.
+          p Para isso contamos com a tecnologia CADCAM para Escaneamento, Desenho dos elementos a serem produzidos e fresagem com maior previsibilidade de resultamos, com menor custo.
+        .col-sm-7
+          img.ilustra(src="images/ilustra-laboratorio-digital.jpg")

@@ -1,0 +1,20 @@
+mixin cardContent(conteudo)
+  .card
+    .header
+      h4.title Email Statistics
+      p.category Last Campaign Performance
+
+    .content= conteudo
+
+    .footer
+      .legend
+        .fa.fa-circle.text-info
+        | Open
+        .fa.fa-circle.text-danger
+        | Bounce
+        .fa.fa-circle.text-warning
+        | Unsubscribe
+      hr
+      .stats
+        .fa.fa-clock-o
+        | Campaign sent 2 days ago

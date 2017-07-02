@@ -1,8 +1,37 @@
-footer
-  .container.text-center
-    p.pull-left © 2017 Company, Inc. All Rights Reserved
-    ul.pull-right.list-inline
-      li
-        a(href='https://github.com/sahat/hackathon-starter') GitHub Project
-      li
-        a(href='https://github.com/sahat/hackathon-starter/issues') Issues
+footer#footerPaginas
+  .container
+    .row
+      .col-sm-12.col-md-2
+        .logo-footer
+          include ../../public/svg/logo-precision.svg
+      .col-sm-12.col-md-4
+        .menu-footer
+          span Mapa do site
+          nav
+            ul.col-md-6
+              li
+                a(href="./laboratorio") O laboratório
+              li
+                a(href="./laboratorio") Produtos e Serviços
+              li
+                a(href="./laboratorio") Agenda
+            ul.col-md-6
+              li
+                a(href="./laboratorio") Portifólio
+              li
+                a(href="./laboratorio") FAQ
+              li
+                a(href="./laboratorio") Contato
+
+      .col-sm-12.col-md-6
+        #instagramBlock
+          span
+            i.fa.fa-instagram
+            | segue a gente
+            a(href="/") @lab_presicion
+          .mural
+            ul
+              li
+                img(src="")
+      .col-sm-12
+        p © Copyright 2017 - Laboratório Precision. Todos os direitos reservados.

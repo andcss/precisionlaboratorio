@@ -1,0 +1,209 @@
+#menuTop {
+  display: flex;
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+  &.white {
+    .login {
+      color: #fff;
+    }
+    #logo_svg {
+      .colorLogo {
+        clip-path:url(#SVGID_2_);
+        fill: #fff;
+      }
+    }
+  }
+  &.black {
+    .login {
+      color: #000;
+    }
+    #logo_svg {
+      .colorLogo {
+        clip-path:url(#SVGID_2_);
+        fill: #000;
+      }
+    }
+  }
+  .login {
+    position: absolute;
+    right: 70px;
+    font-weight: 200;
+    top: 17px;
+    font-size: 12px;
+    @media (max-width: 670px) {
+      display: none;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    .fa {
+      margin-left: 5px;
+    }
+
+  }
+  .logo-top {
+    flex: 0.3;
+    position: absolute;
+    z-index: 9999;
+    left: 50%;
+    top: 20px;
+    margin-left: -50px;
+    width: 100px;
+    &.opened {
+      position: fixed;
+      #logo_svg {
+        .colorLogo {
+          transition: 1s;
+          fill: #fff;
+        }
+      }
+    }
+    svg {
+      width: 100%;
+    }
+  }
+  .menu-top {
+    flex: 1;
+    .open-menu {
+      position: absolute;
+      z-index: 9999;
+      right: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      background: #434343;
+      padding: 10px 15px;
+      &.absolute {
+
+      }
+      &.fixed {
+
+      }
+      .line {
+        width: 100%;
+        border-top: 2px solid #fff;
+        margin: 0 0 5px 0;
+      }
+      &.open {
+        position: fixed;
+        background: none;
+        .line{
+          &.line-1 {
+            transition: 0.5s;
+            transform: rotate(45deg) translate(9px, 10px);
+            width: 25px;
+          }
+          &.line-2 {
+            transition: 0.5s;
+            display: none;
+          }
+          &.line-3 {
+            transition: 0.5s;
+            transform: rotate(-50deg) translate(-5.5px, 3px);
+            width: 25px;
+          }
+        }
+      }
+      &.m-close {
+        .line {
+          &.line-1 {
+            transition: 0.5s;
+            margin-top: 7px;
+            transform: rotate(0) translate(0, 0)
+          }
+          &.line-2 {
+            transition: 0.5s;
+            width: 80%;
+            margin-left: 20%;
+          }
+          &.line-3 {
+            transition: 0.5s;
+            transform: rotate(0) translate(0, 0);
+          }
+        }
+      }
+
+    }
+    .menu-opened {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      left: 0;
+      background: rgba(45,45,45,0.9);
+      padding-top: 150px;
+      z-index: 999;
+      &.absolute {
+
+      }
+      &.fixed {
+
+      }
+      &.opened {
+        transform: translate(0, 0) scale(1);
+        transition: 0.5s;
+        position: fixed;
+      }
+      &.closed {
+        transition: 0.5s;
+        transform: translate(50%, -50%) scale(0.05);
+      }
+      ul {
+        width: 300px;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+        overflow: hidden;
+        li {
+          list-style: none;
+          display: block;
+          margin: 15px 0;
+
+          &.hideMenu {
+            transition: 1s;
+            transform: translateY(-500px);
+          }
+          &.show {
+            transition: 1s;
+            transform: translateY(0);
+          }
+          &.btnLogin {
+            margin-top: 50px;
+            border: 1px solid #fff;
+            width: 200px;
+            padding: 10px;
+            margin: 50px auto 0 auto;
+          }
+          a {
+            font-size: 15px;
+            color: #fff;
+            font-family: 'Muli';
+            font-weight: 100;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+
+            hr {
+              width: 0%;
+              margin: 0;
+              margin-left: 0;
+              border-top: 1px solid #fff;
+              position: absolute;
+              top: 50%
+            }
+            &:hover {
+              text-decoration: none;
+              hr {
+                transition: 0.5s;
+                width: 110%;
+                left: 60%;
+                margin-left: -67%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

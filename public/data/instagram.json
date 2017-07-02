@@ -1,0 +1,1498 @@
+{
+    "pagination": {
+        "next_max_id": "1538577019176462689_1463654275",
+        "next_url": "https://api.instagram.com/v1/users/1463654275/media/recent?access_token=1463654275.1677ed0.cacd3a406d914cd29988ad1bbfcf8238&max_id=1538577019176462689_1463654275"
+    },
+    "data": [
+        {
+            "id": "1546688860465338237_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/c0.89.1080.1080/19534629_284666958663254_6675973130541858816_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/c0.89.1080.1080/19534629_284666958663254_6675973130541858816_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.89.1080.1080/19534629_284666958663254_6675973130541858816_n.jpg"
+                }
+            },
+            "created_time": "1498599701",
+            "caption": {
+                "id": "17885662813037681",
+                "text": "#Repost da reabilitação oral adesiva para nossos clientes  @drbrenofigueiredo e @drfigueiredoramon. #lab_precision #laboratorioprecision #atelieoral #odontologia #lentesdecontatodental #laboratoriodigital #protesedentaria #proteticos #cadcam #emax #faceta #facetasdeporcelana",
+                "created_time": "1498599701",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": true,
+            "likes": {
+                "count": 299
+            },
+            "tags": [
+                "lab_precision",
+                "protesedentaria",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam",
+                "odontologia",
+                "laboratoriodigital",
+                "proteticos",
+                "faceta",
+                "emax",
+                "facetasdeporcelana",
+                "repost"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 3
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BV28VLqFxd9/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": [
+                {
+                    "user": {
+                        "id": "266529689",
+                        "full_name": "Dr|Ramon Figueiredo|",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/17125392_1348483268543182_4726470196234027008_a.jpg",
+                        "username": "drfigueiredoramon"
+                    },
+                    "position": {
+                        "x": 0.3279396,
+                        "y": 0.48055553
+                    }
+                },
+                {
+                    "user": {
+                        "id": "302217728",
+                        "full_name": "Dr. Breno Figueiredo",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/17266210_199478543871824_8691563843324739584_a.jpg",
+                        "username": "drbrenofigueiredo"
+                    },
+                    "position": {
+                        "x": 0.77454156,
+                        "y": 0.53981483
+                    }
+                }
+            ]
+        },
+        {
+            "id": "1544528637684277298_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/c181.0.718.718/19379229_193291264533974_4583075214044168192_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/c181.0.718.718/19379229_193291264533974_4583075214044168192_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c181.0.718.718/19379229_193291264533974_4583075214044168192_n.jpg"
+                }
+            },
+            "created_time": "1498342183",
+            "caption": {
+                "id": "17859826621185554",
+                "text": "O chefe ceramista do Laboratório Precision, @wnhoncance, palestra na mesa \"O outro lado da moeda\" com mais 7 nomes da Prótese no @atelieoralmeeting.  Foto: @panoptica.midia #LabPrecision #Odontologia #LabDigital #muitoalemdosdentes #osmelhorespadeiros #Cerec #Diagnóstico #Enceramento #Emax #faceta #laboratorioprecision #proteticos #lentesdecontatodental #atelieoralmeeting #atelieoralmeeting",
+                "created_time": "1498342183",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": true,
+            "likes": {
+                "count": 147
+            },
+            "tags": [
+                "atelieoralmeeting",
+                "cerec",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "odontologia",
+                "osmelhorespadeiros",
+                "labdigital",
+                "diagnóstico",
+                "proteticos",
+                "labprecision",
+                "faceta",
+                "emax",
+                "muitoalemdosdentes",
+                "enceramento"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 4
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BVvRJzaluAy/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1543852590412228554_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/c0.1.585.585/19424909_307282019724158_460292246407741440_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/c0.1.585.585/19424909_307282019724158_460292246407741440_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/c0.1.585.585/19424909_307282019724158_460292246407741440_n.jpg"
+                }
+            },
+            "created_time": "1498261592",
+            "caption": {
+                "id": "17871696217088599",
+                "text": "Finalizando o dia com a visita dos nossos queridos clientes Dr. Wagner Roque e Dr. Verner no espaço Precision, no Ateliê Oral Internetional Meeting. Um grande prazer receber o reconhecimento e fidelizar nossa parceria. \n#Lab_Preciso #Odontologia #parceria #AtelieMeeting",
+                "created_time": "1498261592",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": true,
+            "likes": {
+                "count": 66
+            },
+            "tags": [
+                "lab_preciso",
+                "ateliemeeting",
+                "odontologia",
+                "parceria"
+            ],
+            "filter": "Crema",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BVs3cBVFmfK/",
+            "location": {
+                "latitude": -23.5151901,
+                "longitude": -46.6407798,
+                "name": "Ateliê Oral International Meeting",
+                "id": 1308541025851681
+            },
+            "attribution": null,
+            "users_in_photo": [
+                {
+                    "user": {
+                        "id": "210278622",
+                        "full_name": "Paulo Copete",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/19228928_427190091013602_3497917465755648000_a.jpg",
+                        "username": "copetepaulo"
+                    },
+                    "position": {
+                        "x": 0.46555293,
+                        "y": 0.23749122
+                    }
+                }
+            ]
+        },
+        {
+            "id": "1543538130262713853_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19379215_121715221759267_5443632299037949952_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/19379215_121715221759267_5443632299037949952_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19379215_121715221759267_5443632299037949952_n.jpg"
+                }
+            },
+            "created_time": "1498224105",
+            "caption": {
+                "id": "17861488522146097",
+                "text": "Segundo dia de participação no Ateliê Oral International Meeting, levando a excelência Odontológica para dentistas de excelência. \n#LabPrecision #Odontologia #LabDigital #muitoalemdosdentes #osmelhorespadeiros #Cerec #Diagnóstico #Enceramento #Emax #faceta #laboratorioprecision #proteticos #lentesdecontatodental #atelieoralmeeting #atelieoral",
+                "created_time": "1498224105",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 103
+            },
+            "tags": [
+                "atelieoralmeeting",
+                "cerec",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "odontologia",
+                "osmelhorespadeiros",
+                "labdigital",
+                "diagnóstico",
+                "proteticos",
+                "labprecision",
+                "faceta",
+                "emax",
+                "muitoalemdosdentes",
+                "enceramento"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 2
+            },
+            "type": "carousel",
+            "link": "https://www.instagram.com/p/BVrv8BflGX9/",
+            "location": {
+                "latitude": -23.5151901,
+                "longitude": -46.6407798,
+                "name": "Ateliê Oral International Meeting",
+                "id": 1308541025851681
+            },
+            "attribution": null,
+            "users_in_photo": [
+                {
+                    "user": {
+                        "id": "35834325",
+                        "full_name": "Wagner Nhoncance",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/11246315_697629487048666_1572059055_a.jpg",
+                        "username": "wnhoncance"
+                    },
+                    "position": {
+                        "x": 0.46361744,
+                        "y": 0.36800873
+                    }
+                },
+                {
+                    "user": {
+                        "id": "210278622",
+                        "full_name": "Paulo Copete",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/19228928_427190091013602_3497917465755648000_a.jpg",
+                        "username": "copetepaulo"
+                    },
+                    "position": {
+                        "x": 0.6590812,
+                        "y": 0.30146286
+                    }
+                },
+                {
+                    "user": {
+                        "id": "464076667",
+                        "full_name": "Michele Campos",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/12383202_486247348221361_1047889775_a.jpg",
+                        "username": "mixcampos"
+                    },
+                    "position": {
+                        "x": 0.88357586,
+                        "y": 0.5968893
+                    }
+                },
+                {
+                    "user": {
+                        "id": "696647435",
+                        "full_name": "Rogério Kesselring",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/15099621_278819912514958_8984604325149933568_a.jpg",
+                        "username": "rogeriokesselring"
+                    },
+                    "position": {
+                        "x": 0.2037422,
+                        "y": 0.45123807
+                    }
+                }
+            ],
+            "carousel_media": [
+                {
+                    "images": {
+                        "thumbnail": {
+                            "width": 150,
+                            "height": 150,
+                            "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19379215_121715221759267_5443632299037949952_n.jpg"
+                        },
+                        "low_resolution": {
+                            "width": 320,
+                            "height": 320,
+                            "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/19379215_121715221759267_5443632299037949952_n.jpg"
+                        },
+                        "standard_resolution": {
+                            "width": 640,
+                            "height": 640,
+                            "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19379215_121715221759267_5443632299037949952_n.jpg"
+                        }
+                    },
+                    "users_in_photo": [],
+                    "type": "image"
+                },
+                {
+                    "images": {
+                        "thumbnail": {
+                            "width": 150,
+                            "height": 150,
+                            "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19424878_1934361073477605_3281855523862872064_n.jpg"
+                        },
+                        "low_resolution": {
+                            "width": 320,
+                            "height": 320,
+                            "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/19424878_1934361073477605_3281855523862872064_n.jpg"
+                        },
+                        "standard_resolution": {
+                            "width": 640,
+                            "height": 640,
+                            "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19424878_1934361073477605_3281855523862872064_n.jpg"
+                        }
+                    },
+                    "users_in_photo": [
+                        {
+                            "user": {
+                                "id": "35834325",
+                                "full_name": "Wagner Nhoncance",
+                                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/11246315_697629487048666_1572059055_a.jpg",
+                                "username": "wnhoncance"
+                            },
+                            "position": {
+                                "x": 0.46361744,
+                                "y": 0.36800873
+                            }
+                        },
+                        {
+                            "user": {
+                                "id": "210278622",
+                                "full_name": "Paulo Copete",
+                                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/19228928_427190091013602_3497917465755648000_a.jpg",
+                                "username": "copetepaulo"
+                            },
+                            "position": {
+                                "x": 0.6590812,
+                                "y": 0.30146286
+                            }
+                        },
+                        {
+                            "user": {
+                                "id": "464076667",
+                                "full_name": "Michele Campos",
+                                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/12383202_486247348221361_1047889775_a.jpg",
+                                "username": "mixcampos"
+                            },
+                            "position": {
+                                "x": 0.88357586,
+                                "y": 0.5968893
+                            }
+                        },
+                        {
+                            "user": {
+                                "id": "696647435",
+                                "full_name": "Rogério Kesselring",
+                                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/15099621_278819912514958_8984604325149933568_a.jpg",
+                                "username": "rogeriokesselring"
+                            },
+                            "position": {
+                                "x": 0.2037422,
+                                "y": 0.45123807
+                            }
+                        }
+                    ],
+                    "type": "image"
+                }
+            ]
+        },
+        {
+            "id": "1542885578298997824_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/c135.0.810.810/19424807_1953263151585402_8907618793010757632_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/c135.0.810.810/19424807_1953263151585402_8907618793010757632_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c135.0.810.810/19424807_1953263151585402_8907618793010757632_n.jpg"
+                }
+            },
+            "created_time": "1498146315",
+            "caption": {
+                "id": "17884637692040222",
+                "text": "O Laboratório Precision está expondo no @atelieoralmeeting. Venha conhecer nosso protocolo de atendimento e laboratório digital. #lab_precision #laboratorioprecision #atelieoral #atelieoralmeeting #lentesdecontatodental #laboratoriodigital #proteticos",
+                "created_time": "1498146315",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 72
+            },
+            "tags": [
+                "atelieoralmeeting",
+                "lab_precision",
+                "laboratoriodigital",
+                "atelieoral",
+                "proteticos",
+                "laboratorioprecision",
+                "lentesdecontatodental"
+            ],
+            "filter": "Juno",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BVpbkJHlbxA/",
+            "location": {
+                "latitude": -23.5151901,
+                "longitude": -46.6407798,
+                "name": "Ateliê Oral International Meeting",
+                "id": 1308541025851681
+            },
+            "attribution": null,
+            "users_in_photo": [
+                {
+                    "user": {
+                        "id": "210278622",
+                        "full_name": "Paulo Copete",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/19228928_427190091013602_3497917465755648000_a.jpg",
+                        "username": "copetepaulo"
+                    },
+                    "position": {
+                        "x": 0.55277777,
+                        "y": 0.4382716
+                    }
+                },
+                {
+                    "user": {
+                        "id": "464076667",
+                        "full_name": "Michele Campos",
+                        "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/s150x150/12383202_486247348221361_1047889775_a.jpg",
+                        "username": "mixcampos"
+                    },
+                    "position": {
+                        "x": 0.28425926,
+                        "y": 0.5407407
+                    }
+                }
+            ]
+        },
+        {
+            "id": "1542337155686581731_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19428732_1324062357662697_8022465645788528640_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/19428732_1324062357662697_8022465645788528640_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/19428732_1324062357662697_8022465645788528640_n.jpg"
+                }
+            },
+            "created_time": "1498080938",
+            "caption": {
+                "id": "17872900294118682",
+                "text": "Você poderá compartilhar todos os momentos do @atelieoralmeeting com o live streaming que faremos durante o evento. Não perca a transmissão da mesa \"O outro lado da moeda\", dia  24/6, com 8 feras da prótese dentária. #atelieoral #atelieoralmeeting #muitoalemdosdentes #aquinascemossorrisos #lentesdecontatodental #protesesentaria #odontologia #dentista #osmelhoresdentistas",
+                "created_time": "1498080938",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": true,
+            "likes": {
+                "count": 64
+            },
+            "tags": [
+                "osmelhoresdentistas",
+                "atelieoralmeeting",
+                "aquinascemossorrisos",
+                "atelieoral",
+                "dentista",
+                "lentesdecontatodental",
+                "odontologia",
+                "muitoalemdosdentes",
+                "protesesentaria"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BVne3iwlcXj/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1542162711236258259_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19424929_1656967584313362_2475384575480561664_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/19424929_1656967584313362_2475384575480561664_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/19424929_1656967584313362_2475384575480561664_n.jpg"
+                }
+            },
+            "created_time": "1498060142",
+            "caption": {
+                "id": "17884954687055741",
+                "text": "Amanhã começa o @atelieoralmeeting. De 22 a 24/6, os principais nomes da Odontologia falarão de gestão, tecnologia e interdisciplinaridade. Participe! Mais informações pelo telefone (11) 2168-3400, WhatsApp (11) 99297-8404, e-mail secretaria@atelieoralmeeting.com.br ou pelo site www.atelieoralmeeting.com.br. \n#atelieoralmeeting #atelieoral #odontologiaestetica #lentesdecontatodental #odontologia",
+                "created_time": "1498060142",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 31
+            },
+            "tags": [
+                "atelieoralmeeting",
+                "odontologia",
+                "odontologiaestetica",
+                "atelieoral",
+                "lentesdecontatodental"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BVm3NCtFynT/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1541643772022473477_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e15/19228617_1894609650761965_8172962347812388864_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e15/19228617_1894609650761965_8172962347812388864_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 612,
+                    "height": 612,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e15/19228617_1894609650761965_8172962347812388864_n.jpg"
+                }
+            },
+            "created_time": "1497998280",
+            "caption": {
+                "id": "17873688232129797",
+                "text": "#Repost @atelieoralmeeting (@get_repost)\n・・・\nFaltam 2 dias! Convite especial do Dr. @willianborro para quem ainda não se inscreveu! Mais informações pelo telefone (11) 2168-3400, WhatsApp (11) 99297-8404, e-mail secretaria@atelieoralmeeting.com.br ou pelo site www.atelieoralmeeting.com.br. \n#atelieoralmeeting #atelieoral #odontologiaestetica #lentesdecontatodental #odontologia",
+                "created_time": "1497998280",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 47
+            },
+            "tags": [
+                "atelieoralmeeting",
+                "odontologia",
+                "odontologiaestetica",
+                "atelieoral",
+                "lentesdecontatodental",
+                "repost"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "video",
+            "link": "https://www.instagram.com/p/BVlBNe5l8MF/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": [],
+            "videos": {
+                "standard_resolution": {
+                    "width": 480,
+                    "height": 480,
+                    "url": "https://scontent.cdninstagram.com/t50.2886-16/19423528_826463810825671_5371606169930432512_n.mp4"
+                },
+                "low_bandwidth": {
+                    "width": 480,
+                    "height": 480,
+                    "url": "https://scontent.cdninstagram.com/t50.2886-16/19423528_826463810825671_5371606169930432512_n.mp4"
+                },
+                "low_resolution": {
+                    "width": 480,
+                    "height": 480,
+                    "url": "https://scontent.cdninstagram.com/t50.2886-16/19423528_826463810825671_5371606169930432512_n.mp4"
+                }
+            }
+        },
+        {
+            "id": "1540886662401692682_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19227469_466371197047815_7940775359228674048_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19227469_466371197047815_7940775359228674048_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19227469_466371197047815_7940775359228674048_n.jpg"
+                }
+            },
+            "created_time": "1497908026",
+            "caption": {
+                "id": "17860940383145752",
+                "text": "#laboratorioprecision #lab_precision #atelieoral #lentesdecontatodental #laboratoriodigital #cadcam #odontologiaestetica",
+                "created_time": "1497908026",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 20
+            },
+            "tags": [
+                "lab_precision",
+                "laboratoriodigital",
+                "odontologiaestetica",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BViVEFnlxQK/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1540886556218631815_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19228894_1873813006217888_7703736389040340992_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19228894_1873813006217888_7703736389040340992_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19228894_1873813006217888_7703736389040340992_n.jpg"
+                }
+            },
+            "created_time": "1497908013",
+            "caption": {
+                "id": "17864583961134997",
+                "text": "#laboratorioprecision #lab_precision #atelieoral #lentesdecontatodental #laboratoriodigital #cadcam #odontologiaestetica #proteticos #protesedentaria",
+                "created_time": "1497908013",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 60
+            },
+            "tags": [
+                "protesedentaria",
+                "lab_precision",
+                "odontologiaestetica",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam",
+                "laboratoriodigital",
+                "proteticos"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BViVCiuliaH/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1540886395299954791_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19227244_130501327528721_657272619266998272_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19227244_130501327528721_657272619266998272_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19227244_130501327528721_657272619266998272_n.jpg"
+                }
+            },
+            "created_time": "1497907994",
+            "caption": {
+                "id": "17872832695105660",
+                "text": "#laboratorioprecision #lab_precision #atelieoral #lentesdecontatodental #laboratoriodigital #cadcam #odontologiaestetica #proteticos #protesedentaria",
+                "created_time": "1497907994",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 14
+            },
+            "tags": [
+                "protesedentaria",
+                "lab_precision",
+                "odontologiaestetica",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam",
+                "laboratoriodigital",
+                "proteticos"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BViVAM3FgBn/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1540886301616001968_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19228385_115005319106889_7920994071303159808_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19228385_115005319106889_7920994071303159808_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19228385_115005319106889_7920994071303159808_n.jpg"
+                }
+            },
+            "created_time": "1497907983",
+            "caption": {
+                "id": "17859182428168825",
+                "text": "#laboratorioprecision #lab_precision #atelieoral #lentesdecontatodental #laboratoriodigital #cadcam #odontologiaestetica #proteticos #protesedentaria",
+                "created_time": "1497907983",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 21
+            },
+            "tags": [
+                "protesedentaria",
+                "lab_precision",
+                "odontologiaestetica",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam",
+                "laboratoriodigital",
+                "proteticos"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BViU-1nFlOw/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1540886169050927967_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19228810_1793159434331486_1879309227227348992_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19228810_1793159434331486_1879309227227348992_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19228810_1793159434331486_1879309227227348992_n.jpg"
+                }
+            },
+            "created_time": "1497907967",
+            "caption": {
+                "id": "17859154999172481",
+                "text": "Detalhes ~ Trabalho Equipe Precision. #laboratorioprecision #lab_precision #atelieoral #lentesdecontatodental #laboratoriodigital #cadcam #odontologiaestetica",
+                "created_time": "1497907967",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 88
+            },
+            "tags": [
+                "lab_precision",
+                "laboratoriodigital",
+                "odontologiaestetica",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BViU86Jl9Nf/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1540886060116251406_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19227409_451818681844141_2330810779386773504_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19227409_451818681844141_2330810779386773504_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19227409_451818681844141_2330810779386773504_n.jpg"
+                }
+            },
+            "created_time": "1497907954",
+            "caption": {
+                "id": "17888812576057622",
+                "text": "#laboratorioprecision #lab_precision #atelieoral #lentesdecontatodental #laboratoriodigital #cadcam #odontologiaestetica #proteticos #protesedentaria",
+                "created_time": "1497907954",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 23
+            },
+            "tags": [
+                "protesedentaria",
+                "lab_precision",
+                "odontologiaestetica",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam",
+                "laboratoriodigital",
+                "proteticos"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BViU7UslJMO/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1540885928406886029_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19367571_1400994036616641_7688888717162840064_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19367571_1400994036616641_7688888717162840064_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19367571_1400994036616641_7688888717162840064_n.jpg"
+                }
+            },
+            "created_time": "1497907938",
+            "caption": {
+                "id": "17859333580185974",
+                "text": "#laboratorioprecision #lab_precision #atelieoral #lentesdecontatodental #laboratoriodigital #cadcam #odontologiaestetica #proteticos #protesedentaria",
+                "created_time": "1497907938",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 16
+            },
+            "tags": [
+                "protesedentaria",
+                "lab_precision",
+                "odontologiaestetica",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam",
+                "laboratoriodigital",
+                "proteticos"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BViU5aCFyaN/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1540885828540347355_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19228055_157118158164986_402415496214872064_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19228055_157118158164986_402415496214872064_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19228055_157118158164986_402415496214872064_n.jpg"
+                }
+            },
+            "created_time": "1497907926",
+            "caption": {
+                "id": "17873032624102496",
+                "text": "#laboratorioprecision #lab_precision #atelieoral #lentesdecontatodental #laboratoriodigital #cadcam #odontologiaestetica #proteticos #protesedentaria",
+                "created_time": "1497907926",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 25
+            },
+            "tags": [
+                "protesedentaria",
+                "lab_precision",
+                "odontologiaestetica",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam",
+                "laboratoriodigital",
+                "proteticos"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BViU39BlLPb/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1540885704061847628_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19122528_1409292869117281_3645834893889372160_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19122528_1409292869117281_3645834893889372160_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e35/19122528_1409292869117281_3645834893889372160_n.jpg"
+                }
+            },
+            "created_time": "1497907911",
+            "caption": {
+                "id": "17872659841117703",
+                "text": "#laboratorioprecision #lab_precision #atelieoral #lentesdecontatodental #laboratoriodigital #cadcam #odontologiaestetica #proteticos #protesedentaria",
+                "created_time": "1497907911",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 15
+            },
+            "tags": [
+                "protesedentaria",
+                "lab_precision",
+                "odontologiaestetica",
+                "atelieoral",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "cadcam",
+                "laboratoriodigital",
+                "proteticos"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BViU2JGFYhM/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1539471204733425635_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/19121623_280719655730083_3814258278305628160_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/19121623_280719655730083_3814258278305628160_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/19121623_280719655730083_3814258278305628160_n.jpg"
+                }
+            },
+            "created_time": "1497739290",
+            "caption": {
+                "id": "17870178751092166",
+                "text": "E você, já se inscreveu para o Ateliê Oral Meeting? Mais informações pelo telefone (11) 2168-3400, WhatsApp (11) 99297-8404, e-mail secretaria@atelieoralmeeting.com.br ou pelo site www.atelieoralmeeting.com.br. \n#atelieoralmeeting #atelieoral #odontologiaestetica #lentesdecontatodental #odontologia",
+                "created_time": "1497739290",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 50
+            },
+            "tags": [
+                "atelieoralmeeting",
+                "odontologia",
+                "odontologiaestetica",
+                "atelieoral",
+                "lentesdecontatodental"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BVdTOd8FBfj/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        },
+        {
+            "id": "1538728324884635020_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e15/19120710_1873369299591595_690289987081469952_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e15/19120710_1873369299591595_690289987081469952_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 612,
+                    "height": 612,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/e15/19120710_1873369299591595_690289987081469952_n.jpg"
+                }
+            },
+            "created_time": "1497650732",
+            "caption": {
+                "id": "17883203017026515",
+                "text": "#Repost @atelieoralmeeting (@get_repost)\n・・・\nAnote na agenda: dias 22, 23 e 24 de junho tem Ateliê Oral Meeting. Confira o convite do Dr. Marcelo Abla. Mais informações pelo telefone (11) 2168-3400, WhatsApp (11) 99297-8404, e-mail secretaria@atelieoralmeeting.com.br ou pelo site www.atelieoralmeeting.com.br. \n#atelieoralmeeting #atelieoral #odontologiaestetica #lentesdecontatodental #odontologia #sorisso #proteticos #dentista",
+                "created_time": "1497650732",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 25
+            },
+            "tags": [
+                "atelieoralmeeting",
+                "odontologiaestetica",
+                "atelieoral",
+                "dentista",
+                "lentesdecontatodental",
+                "odontologia",
+                "proteticos",
+                "sorisso",
+                "repost"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 0
+            },
+            "type": "video",
+            "link": "https://www.instagram.com/p/BVaqUJKlJ2M/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": [],
+            "videos": {
+                "standard_resolution": {
+                    "width": 480,
+                    "height": 480,
+                    "url": "https://scontent.cdninstagram.com/t50.2886-16/19332579_472420899758440_5654884715077828608_n.mp4"
+                },
+                "low_bandwidth": {
+                    "width": 480,
+                    "height": 480,
+                    "url": "https://scontent.cdninstagram.com/t50.2886-16/19332579_472420899758440_5654884715077828608_n.mp4"
+                },
+                "low_resolution": {
+                    "width": 480,
+                    "height": 480,
+                    "url": "https://scontent.cdninstagram.com/t50.2886-16/19332579_472420899758440_5654884715077828608_n.mp4"
+                }
+            }
+        },
+        {
+            "id": "1538577019176462689_1463654275",
+            "user": {
+                "id": "1463654275",
+                "full_name": "Precision - Lab. de Excelência",
+                "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                "username": "lab_precision"
+            },
+            "images": {
+                "thumbnail": {
+                    "width": 150,
+                    "height": 150,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s150x150/e35/c194.0.692.692/19120614_174092663127961_3255144688457351168_n.jpg"
+                },
+                "low_resolution": {
+                    "width": 320,
+                    "height": 320,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/c194.0.692.692/19120614_174092663127961_3255144688457351168_n.jpg"
+                },
+                "standard_resolution": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c194.0.692.692/19120614_174092663127961_3255144688457351168_n.jpg"
+                }
+            },
+            "created_time": "1497632695",
+            "caption": {
+                "id": "17859937414154139",
+                "text": "Planejamento para reabilitação estética para nosso cliente @sobralgiani. Devolvendo mais um sorriso! #sorriso #reabilitacaooral #esteticadental #muitoalemdosdentes #laminadosceramicos #lentesdecontatodental #lab_precision #laboratoriodigital #laboratorioprecision",
+                "created_time": "1497632695",
+                "from": {
+                    "id": "1463654275",
+                    "full_name": "Precision - Lab. de Excelência",
+                    "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/915703_1488192351419569_843805588_a.jpg",
+                    "username": "lab_precision"
+                }
+            },
+            "user_has_liked": false,
+            "likes": {
+                "count": 184
+            },
+            "tags": [
+                "esteticadental",
+                "lab_precision",
+                "reabilitacaooral",
+                "sorriso",
+                "laboratorioprecision",
+                "lentesdecontatodental",
+                "laminadosceramicos",
+                "laboratoriodigital",
+                "muitoalemdosdentes"
+            ],
+            "filter": "Normal",
+            "comments": {
+                "count": 3
+            },
+            "type": "image",
+            "link": "https://www.instagram.com/p/BVaH6Wvl6lh/",
+            "location": null,
+            "attribution": null,
+            "users_in_photo": []
+        }
+    ],
+    "meta": {
+        "code": 200
+    }
+}

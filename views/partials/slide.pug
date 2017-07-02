@@ -1,0 +1,28 @@
+#slideHome.carousel.slide(data-ride='carousel')
+  // Indicators
+  ol.carousel-indicators
+    li.active(data-target='#slideHome', data-slide-to='0')
+    li(data-target='#slideHome', data-slide-to='1')
+    li(data-target='#slideHome', data-slide-to='2')
+
+  .carousel-caption
+    h1 Laboratório
+      br
+      | de Excelência.
+    p “Perfeição depende dos conhecimentos adquiridos e da experiência
+      | aplicada entre os técnicos e cirurgiões dentistas comprometidos com
+      | o resultado.”
+    // Controls
+    .control-slide
+      a.left(href='#slideHome', role='button', data-slide='prev')
+        include ../../public/svg/arrow-left.svg
+        span.sr-only Anterior
+      a.right(href='#slideHome', role='button', data-slide='next')
+        include ../../public/svg/arrow-right.svg
+        span.sr-only Próximo
+
+  // Wrapper for slides
+  .carousel-inner(role='listbox')
+    .item.active(style='background: url(./images/bg-slide-2.jpg) no-repeat center center; background-size: cover;')
+    .item(style='background: url(./images/bg-slide-2.jpg) no-repeat center center; background-size: cover;')
+    .item(style='background: url(./images/bg-slide-2.jpg) no-repeat center center; background-size: cover;')

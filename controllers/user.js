@@ -374,3 +374,7 @@ exports.postForgot = (req, res, next) => {
     .then(() => res.redirect('/forgot'))
     .catch(next);
 };
+
+exports.adminConfig = (req, res, next) => {
+  res.send(200, { mensagem: 'Área restrita aceita' });
+}

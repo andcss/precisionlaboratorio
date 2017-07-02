@@ -1,0 +1,43 @@
+nav.navbar.navbar-default.navbar-fixed
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle(type="button", data-toggle="collapse", data-target="#navigation-example-2")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+
+      a.navbar-brand(href="../#") Dashboard
+
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-left
+        li
+          a.dropdown-toggle(href="../#", data-toggle="dropdown")
+            i.fa.fa-dashboard
+            p.hidden-lg.hidden-md Dashboard
+
+        li.dropdown
+          a.dropdown-toggle(href="../#", data-toggle="dropdown")
+            i.fa.fa-globe
+            b.caret.hidden-sm.hidden-xs
+            span.notification.hidden-sm.hidden-xs 5
+            p.hidden-lg.hidden-md
+              5 Notifications
+              b.caret
+          ul.dropdown-menu
+            li
+              a(href="/#") Notification 1
+
+      ul.nav.navbar-nav.navbar-right
+
+        li.dropdown
+          a.dropdown-toggle(href="../#", data-toggle="dropdown", aria-expanded="true")
+            p Usuário
+          ul.dropdown-menu
+            li
+              a(href="/#") Perfil
+            li.divider
+            li
+              a(href="/#") Configurações
+            li
+              a(href="/logout") Sair

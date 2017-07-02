@@ -1,0 +1,35 @@
+mixin menuTop()
+  #menuTop(class=attributes.class)
+    .logo-top
+      a(href='/')
+        include ../../public/svg/logo-precision.svg
+    nav.menu-top
+      a.login(href="./login") LOGIN
+        i.fa.fa-user
+      .open-menu.m-close
+        hr.line.line-1
+        hr.line.line-2
+        hr.line.line-3
+
+      .menu-opened.closed
+        ul
+          li.hideMenu
+            a(href="/laboratorio") O Laboratório
+              hr
+          li.hideMenu
+            a(href="/produtos") Produtos e Serviços
+              hr
+          li.hideMenu
+            a(href="/agenda") Agenda
+              hr
+          li.hideMenu
+            a(href="/portifolio") Portifólio
+              hr
+          li.hideMenu
+            a(href="/fac") FAC
+              hr
+          li.hideMenu
+            a(href="/contact") Contato
+              hr
+          li.btnLogin.hideMenu
+            a(href="/login") Acesso Login

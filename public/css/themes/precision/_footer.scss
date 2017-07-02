@@ -1,0 +1,75 @@
+#footerPaginas {
+  padding: 20px 0;
+  background: #333333;
+  color: #fff;
+  p {
+    text-align: center;
+    font-weight: 200;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  #logo_svg {
+    .colorLogo {
+      fill: #fff;
+    }
+  }
+  .logo-footer {
+    padding-top: 10px;
+  }
+  .menu-footer {
+    padding-top: 10px;
+    span {
+      display: block;
+      font-weight: 200;
+      margin-bottom: 15px;
+    }
+    ul {
+      margin: 0;
+      li {
+        color: #4b4b4b;
+        margin-bottom: 10px;
+        a {
+          color: #fff;
+          font-weight: 200;
+        }
+      }
+    }
+  }
+  #instagramBlock {
+    span {
+      color: rgba(255,255,255,0.5);
+      font-weight: 200;
+      margin-left: 25px;
+      margin-bottom: 15px;
+      display: block;
+      i {
+        font-size: 20px;
+        color: #fff;
+        margin-left: -25px;
+        position: absolute;
+      }
+      a {
+        margin-left: 5px;
+        color: #fff;
+      }
+    }
+    .mural {
+      ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        li {
+          flex: 1;
+          list-style: none;
+          display: inline-block;
+          a {
+            color: #fff;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
