@@ -26,9 +26,3 @@ exports.portifolio = (req, res) => {
     title: 'Portifólio'
   });
 };
-
-exports.sac = (req, res) => {
-  res.render('pages/fac', {
-    title: 'FAC'
-  });
-};

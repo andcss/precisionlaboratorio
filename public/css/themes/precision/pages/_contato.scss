@@ -1,0 +1,99 @@
+#contatoMaps {
+  padding-top: 80px;
+  .infos {
+    padding-left: 150px;
+    h2 {
+      margin-top: 0;
+      color: #c5c5c5;
+      font-weight: bold;
+      font-size: 60px;
+      margin-bottom: 0;
+      line-height: 55px;
+      hr {
+        width: 175px;
+        margin-top: 5px;
+        border-top: 8px solid;
+        margin-left: 90px;
+      }
+    }
+    ul {
+      margin-left: 10px;
+      padding-left: 25px;
+      li {
+        list-style: none;
+        padding: 10px 0;
+        font-weight: 200;
+      }
+    }
+    svg {
+      width: 23px;
+      margin-top: -2px;
+      margin-left: -30px;
+      position: absolute;
+    }
+    #arrow-right {
+      display: block;
+      right: 20px;
+    }
+    .endereco {
+      text-align: right;
+      display: block;
+      margin-top: 40px;
+    }
+  }
+  #map {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+#trabalheConosco {
+  position: relative;
+  padding: 50px 0;
+  h2 {
+    font-size: 90px;
+    color: #eaeaea;
+    font-weight: 800;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 20px;
+    left: 5%;
+  }
+  .ilustra {
+    width: 100%;
+    display: block;
+    float: right;
+    margin-right: 27px;
+    max-width: 450px;
+  }
+  h4 {
+    line-height: 40px;
+    font-size: 40px;
+    color: #c5c5c5;
+    font-weight: bold;
+  }
+  .chamado {
+    height: 280px;
+    position: relative;
+    padding-left: 30px;
+    span.bg-fundo {
+      width: 80px;
+      position: absolute;
+      height: 100%;
+      z-index: -1;
+      background: #f2f2f2;
+      left: 0;
+    }
+    p {
+      font-weight: 200;
+    }
+    button {
+      border: 1px solid;
+      background: none;
+      font-size: 15px;
+      font-weight: 200;
+      display: block;
+      padding: 5px 10px;
+    }
+  }
+}

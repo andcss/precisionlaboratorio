@@ -1,0 +1,56 @@
+#portifolio {
+  padding-top: 120px;
+  margin-bottom: 100px;
+  h1 {
+    font-size: 65px;
+    color: #c5c5c5;
+    top: 100px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 60px;
+    position: absolute;
+    span.f3 {
+      margin-left: 50px;
+    }
+    hr {
+      margin: 0;
+      border-top: 8px solid;
+      margin-left: 95px;
+      width: 65px;
+    }
+  }
+  .slideGaleria {
+    display: flex;
+    margin-left: 300px;
+    flex-direction: column;
+    .linha {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      .item {
+        flex: 1;
+        justify-content: flex-start;
+        overflow: hidden;
+        img {
+          width: 100%;
+          &:hover {
+            transition: .6s;
+            transform: scale(1.1);
+          }
+        }
+      }
+      .voltar {
+        margin-top: 20px;
+        margin-left: 20px;
+        width: 30px;
+        cursor: pointer;
+      }
+      .proximo {
+        margin-top: 20px;
+        margin-left: 20px;
+        width: 30px;
+        cursor: pointer;
+      }
+    }
+  }
+}

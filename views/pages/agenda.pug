@@ -3,4 +3,58 @@ include ../partials/menu-top
 
 block content
   +menuTop(class="black")
-  h1 Agenda
+
+  #agenda
+    .container
+      .row
+        .col-sm-12
+          h1 A
+            br
+            | GEN
+            br
+            span.f3 DA
+            hr
+          .conteudo
+            .destaque(style="background: url(./images/destaqueAgenda.jpg) center center; background-size: cover;")
+              h4 DESTAQUE
+                hr
+              p Estande Ateliê Oral
+                br
+                | Exposição de projetos do
+                br
+                | Laboratório Precision
+              span.dataDestaque 22 a 24
+                br
+                | de junho
+
+            .eventos
+              .linha
+                .proximo
+                  span.titulo PRÓXIMOS
+                    br
+                    | EVENTOS
+                  include ../../public/svg/arrow-right.svg
+                #calendar
+                  .selecionaMes
+                    .arrow-left
+                      i.fa.fa-chevron-left
+                    .meses
+                      span(data-idMes='0') Janeiro
+                      span(data-idMes='1') Fevereiro
+                      span(data-idMes='2') Março
+                      span(data-idMes='3') Abril
+                      span(data-idMes='4') Maio
+                      span(data-idMes='5') Junho
+                      span(data-idMes='6') Julho
+                      span(data-idMes='7') Agosto
+                      span(data-idMes='8') Setembro
+                      span(data-idMes='9') Outubro
+                      span(data-idMes='10') Novembro
+                      span(data-idMes='11') Dezembro
+                    .arrow-right
+                      i.fa.fa-chevron-right
+              .linha
+                .eventoData
+                  h2 29
+                    small OUTUBRO
+                #dates.descricao

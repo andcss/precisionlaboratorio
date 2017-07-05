@@ -3,4 +3,35 @@ include ../partials/menu-top
 
 block content
   +menuTop(class="black")
-  h1 Portifólio
+
+  #portifolio
+    .container
+      .row
+        .col-sm-12
+          h1 POR
+            br
+            span.f3 TIFO
+            br
+            span.f3 LIO
+            hr
+
+          .slideGaleria
+            .linha
+              .item
+                img(src="images/portifolio/img1.jpg")
+              .item
+                img(src="images/portifolio/img2.jpg")
+              .item
+                img(src="images/portifolio/img3.jpg")
+            .linha
+              .item
+                img(src="images/portifolio/img4.jpg")
+              .item
+                img(src="images/portifolio/img5.jpg")
+              .item
+                img(src="images/portifolio/img6.jpg")
+            .linha
+              .voltar
+                include ../../public/svg/arrow-left.svg
+              .proximo
+                include ../../public/svg/arrow-right.svg

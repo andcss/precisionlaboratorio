@@ -44,7 +44,6 @@ $(document).ready(function() {
     var maxImage = 5;
     var html = '<ul>';
     for (var i = 0; i < maxImage; i++) {
-      console.log(data[i].images.low_resolution);
       html += `<li>
                   <a href="${data[i].link}" target="_black">
                     <img src="${data[i].images.low_resolution.url}"/>

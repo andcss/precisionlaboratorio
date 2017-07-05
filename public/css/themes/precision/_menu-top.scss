@@ -130,7 +130,7 @@
       width: 100%;
       height: 100vh;
       left: 0;
-      background: rgba(45,45,45,0.9);
+      background: rgba(40,40,40,0.95);
       padding-top: 150px;
       z-index: 999;
       &.absolute {
@@ -146,7 +146,7 @@
       }
       &.closed {
         transition: 0.5s;
-        transform: translate(50%, -50%) scale(0.05);
+        transform: translate(49%, -50%) scale(0.01);
       }
       ul {
         width: 300px;

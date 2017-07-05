@@ -1,0 +1,120 @@
+#agenda {
+  margin-top: 110px;
+  margin-bottom: 100px;
+  h1 {
+    font-size: 65px;
+    color: #c5c5c5;
+    top: 100px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 60px;
+    position: absolute;
+    margin-left: 100px;
+    span.f3 {
+      margin-left: 50px;
+    }
+    hr {
+      margin: 0;
+      border-top: 8px solid;
+      margin-left: 95px;
+      width: 50px;
+    }
+  }
+  .conteudo {
+    display: flex;
+    .destaque {
+      width: 300px;
+      margin-left: 200px;
+      margin-right: 20px;
+      padding: 20px;
+      color: #fff;
+      h4 {
+        display: block;
+        text-align: right;
+        font-weight: 800;
+        margin: 0;
+        hr {
+          margin: 0 0 10px auto;
+          width: 100px;
+        }
+      }
+      p {
+        text-align: right;
+      }
+      .dataDestaque {
+        display: block;
+        text-align: right;
+      }
+    }
+    .eventos {
+      flex: 1;
+
+      .linha {
+        flex: 1;
+        height: 250px;
+        display: flex;
+        .proximo {
+          flex: 1;
+          background: #8b8b8b;
+          position: relative;
+          span.titulo {
+            display: block;
+            padding: 40px 0 0 40px;
+            color: #c5c5c5;
+            font-size: 25px;
+            font-weight: 800;
+          }
+          #arrow-right {
+            width: 30px;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+          }
+        }
+        #calendar {
+          flex: 1.2;
+          background: #555;
+        }
+        .eventoData {
+          background: #656565;
+          flex: 1;
+          display: flex;
+          align-items: center;
+          h2 {
+            display: block;
+            margin: 0 auto;
+            color: #c5c5c5;
+            font-size: 120px;
+            align-items: center;
+            small {
+              color: #c5c5c5;
+              font-weight: 800;
+              display: block;
+              font-size: 26px;
+              margin-left: 5px;
+            }
+          }
+        }
+        .descricao {
+          flex: 1.2;
+          background: #ebebeb;
+          color: #2c2c2c;
+          h3 {
+            margin: 30px 0 5px 30px;
+            font-weight: 800;
+            color: #2c2c2c;
+            font-size: 20px;
+          }
+          p {
+            margin: 0 10px 5px 30px;
+          }
+          a {
+            display: block;
+            color: #2c2c2c;
+            margin: 20px 0 5px 30px;
+          }
+        }
+      }
+    }
+  }
+}

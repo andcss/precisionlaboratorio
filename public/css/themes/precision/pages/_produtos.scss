@@ -1,0 +1,110 @@
+#produtos {
+  padding-top: 120px;
+  margin-bottom: 100px;
+  h1 {
+    font-size: 65px;
+    color: #c5c5c5;
+    top: 200px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 60px;
+    position: absolute;
+    left: 100px;
+    span.f1 {
+      margin-left: 80px;
+    }
+    hr {
+      margin: 20px 0;
+      border-top: 8px solid;
+      margin-left: 175px;
+      width: 305px;
+    }
+  }
+
+  .linha {
+    display: flex;
+    width: 100%;
+
+    .flex {
+      flex: 1;
+      display: flex;
+      &.column {
+        flex-direction: column;
+      }
+      &.flex-40 {
+        flex: 0.4;
+      }
+      &.flex-60 {
+        flex: 0.6;
+      }
+      .box {
+        flex: 1;
+        margin: 5px;
+        padding: 4px 15px;
+        display: flex;
+        h5 {
+          font-size: 17px;
+          flex: 1;
+          &.to-right {
+            text-align: right;
+          }
+          &.to-bold {
+            font-weight: 800;
+            color: #6a6a6a;
+          }
+        }
+        &.bottom-position {
+          h5 {
+            align-self: flex-end;
+          }
+        }
+        &.c-cinza {
+          background: #f3f2f2;
+          h5 {
+            color: #6a6a6a;
+          }
+        }
+        &.c-cinza-escuro {
+          background: #868686;
+          h5 {
+            color: #efefef;
+          }
+        }
+        &.boxL {
+          flex: 0.675;
+        }
+        &.boxP {
+          flex: 0.325;
+        }
+        &.height-maximo {
+          height: 300px;
+        }
+        &.height-minimo {
+          height: 150px;
+        }
+        &.portifolio {
+          position: relative;
+          .bg-fundo {
+            z-index: -1;
+            position: absolute;
+            width: 80%;
+            height: 100%;
+            right: 0;
+            background-color: #ebebeb;
+          }
+          h2 {
+            padding-top: 10px;
+            padding-left: 30px;
+            font-weight: 800;
+            text-decoration: underline;
+            color: #acacac;
+            margin: 0;
+          }
+        }
+      }
+
+    }
+  }
+
+
+}

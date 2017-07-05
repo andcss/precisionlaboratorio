@@ -3,11 +3,27 @@
 .sidebar(data-color="black")
   .sidebar-wrapper
     .logo
-      a(href="/dashboard/home")
+      a(href="./home")
         include ../../../public/svg/logo-precision.svg
 
     ul.nav
       li.active
-        a
+        a(href="./home")
           i.pe-7s-graph
           | Dashboard
+      li
+        a(href="./users")
+          i.pe-7s-users
+          | Usuários
+      li
+        a(href="./galleries")
+          i.pe-7s-photo
+          | Galeria
+      li
+        a(href="./pages")
+          i.pe-7s-browser
+          | Páginas Institucionais
+      li
+        a(href="./events")
+          i.pe-7s-date
+          | Eventos

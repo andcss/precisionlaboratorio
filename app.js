@@ -140,7 +140,6 @@ app.get('/laboratorio', pagesController.laboratorio);
 app.get('/produtos', pagesController.produtos);
 app.get('/agenda', pagesController.agenda);
 app.get('/portifolio', pagesController.portifolio);
-app.get('/fac', pagesController.sac);
 
 
 app.get('/login', userController.getLogin);
@@ -159,6 +158,9 @@ app.post('/contact', contactController.postContact);
  * Área restrita para Administradores
  */
 app.get('/admin/configurations', passportConfig.isAdminUser, userController.adminConfig);
+app.get('/dashboard/users', passportConfig.isAdminUser, dashboardController.getUsers);
+app.get('/dashboard/pages', passportConfig.isAdminUser, dashboardController.getPages);
+app.get('/dashboard/events', passportConfig.isAdminUser, dashboardController.getEvents);
 
 /**
  * Routes isAuthenticated / All Users
@@ -173,6 +175,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
  * Routes Dashboard
  */
 app.get('/dashboard/home', passportConfig.isAuthenticated, dashboardController.getHome);
+app.get('/dashboard/galleries', passportConfig.isAuthenticated, dashboardController.getGalleries);
 
 /**
  * API examples routes.
