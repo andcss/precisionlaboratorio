@@ -6,3 +6,22 @@
     }
   }
 }
+
+.mensagem {
+  padding: 80px 40px;
+  background: url(/images/bg-slide-1.jpg) no-repeat center;
+  background-size: cover;
+  h1 {
+    font-weight: 800;
+    color: #fff;
+    .f1 {
+      margin-left: 70px;
+    }
+    hr {
+      width: 230px;
+      border-top: 8px solid;
+      //margin-left: auto;
+      margin-left: 150px;
+    }
+  }
+}

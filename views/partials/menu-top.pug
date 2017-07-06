@@ -4,8 +4,10 @@ mixin menuTop()
       a(href='/')
         include ../../public/svg/logo-precision.svg
     nav.menu-top
-      a.login(href="./login") LOGIN
+      a(href="/login").login LOGIN
         i.fa.fa-user
+      .bg-branco
+
       .open-menu.m-close
         hr.line.line-1
         hr.line.line-2

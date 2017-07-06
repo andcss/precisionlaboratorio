@@ -69,10 +69,19 @@ $(document).ready(function() {
    * Fixed Menu com scroll
    * ---------------------------------------
    */
-  //  .menu-opened
-   //
-  //  .open-menu
-  // .logo-top
+
+  $(window).on('scroll', function() {
+    if ($('#menuTop').hasClass('black')) {
+      if (window.pageYOffset > 50) {
+        console.log('add');
+        $('#menuTop').removeClass('absolute').addClass('fixed');
+      }
+      if (window.pageYOffset <= 50 && $('#menuTop').hasClass('fixed')) {
+        $('#menuTop').addClass('absolute').removeClass('fixed');
+      }
+    }
+  });
+
 
 
 

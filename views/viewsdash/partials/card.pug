@@ -1,10 +1,10 @@
-mixin cardContent(conteudo)
+mixin cardContent(title, subTitle, content)
   .card
     .header
-      h4.title Email Statistics
-      p.category Last Campaign Performance
+      h4.title=title
+      p.category=subTitle
 
-    .content= conteudo
+    .content= content
 
     .footer
       .legend

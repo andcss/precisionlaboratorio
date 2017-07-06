@@ -15,23 +15,40 @@ block content
             span.f3 LIO
             hr
 
-          .slideGaleria
+          #carouselGaleria.slideGaleria.carousel.slide(data-ride='carousel')
+            .carousel-inner(role='listbox')
+              .item.active
+                .linha
+                  .item
+                    img(src="images/portifolio/img1.jpg")
+                  .item
+                    img(src="images/portifolio/img2.jpg")
+                  .item
+                    img(src="images/portifolio/img3.jpg")
+                .linha
+                  .item
+                    img(src="images/portifolio/img4.jpg")
+                  .item
+                    img(src="images/portifolio/img5.jpg")
+                  .item
+                    img(src="images/portifolio/img6.jpg")
+              .item
+                .linha
+                  .item
+                    img(src="images/portifolio/img1.jpg")
+                  .item
+                    img(src="images/portifolio/img2.jpg")
+                  .item
+                    img(src="images/portifolio/img3.jpg")
+                .linha
+                  .item
+                    img(src="images/portifolio/img4.jpg")
+                  .item
+                    img(src="images/portifolio/img5.jpg")
+                  .item
+                    img(src="images/portifolio/img6.jpg")
             .linha
-              .item
-                img(src="images/portifolio/img1.jpg")
-              .item
-                img(src="images/portifolio/img2.jpg")
-              .item
-                img(src="images/portifolio/img3.jpg")
-            .linha
-              .item
-                img(src="images/portifolio/img4.jpg")
-              .item
-                img(src="images/portifolio/img5.jpg")
-              .item
-                img(src="images/portifolio/img6.jpg")
-            .linha
-              .voltar
+              a.voltar(href="#carouselGaleria", role="button", data-slide="prev")
                 include ../../public/svg/arrow-left.svg
-              .proximo
+              a.proximo(href="#carouselGaleria", role="button", data-slide="next")
                 include ../../public/svg/arrow-right.svg

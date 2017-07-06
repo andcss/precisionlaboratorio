@@ -87,7 +87,10 @@
 }
 
 .tempust .inactive {
-    color: transparent;
+    color: rgba(255,255,255,0);
+    &:before {
+      opacity: 0;
+    }
 }
 
 .tempust .month {

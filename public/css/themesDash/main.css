@@ -2883,3 +2883,17 @@ body > .navbar-collapse {
   padding: 40px !important; }
   .logo #logo_svg .colorLogo {
     fill: #fff; }
+
+.mensagem {
+  padding: 80px 40px;
+  background: url(/images/bg-slide-1.jpg) no-repeat center;
+  background-size: cover; }
+  .mensagem h1 {
+    font-weight: 800;
+    color: #fff; }
+    .mensagem h1 .f1 {
+      margin-left: 70px; }
+    .mensagem h1 hr {
+      width: 230px;
+      border-top: 8px solid;
+      margin-left: 150px; }

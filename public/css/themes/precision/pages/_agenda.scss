@@ -1,5 +1,5 @@
 #agenda {
-  margin-top: 110px;
+  padding-top: 110px;
   margin-bottom: 100px;
   h1 {
     font-size: 65px;
@@ -86,12 +86,15 @@
             color: #c5c5c5;
             font-size: 120px;
             align-items: center;
+            text-align: center;
             small {
               color: #c5c5c5;
               font-weight: 800;
               display: block;
               font-size: 26px;
               margin-left: 5px;
+              text-transform: uppercase;
+              text-align: center;
             }
           }
         }

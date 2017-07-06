@@ -3,8 +3,8 @@
 var tempust = {
     dpm: [31,28,31,30,31,30,31,31,30,31,30,31],
     npm: [
-        "January","February","March","April","May","June","July","August",
-        "September","October","November","December"
+        "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto",
+        "Setembro","Outubro","Novembro","Dezembro"
     ],
     npd: [
         "D","S","T","Q","Q","S","S"
@@ -101,6 +101,9 @@ var tempust = {
                         var element = $(
                             "[data-event-date='"+$(this).attr("data-date")+"']"
                         ).show();
+                        var nomeMes = $('.meses .active').html();
+                        var dia = new Date($(this).attr("data-date")).getDate();
+                        $('.eventoData').html(`<h2>${dia}<small>${nomeMes}</small></h2>`);
                     });
                     events.push({
                         date: tempust.sds(dates[day].date),
@@ -113,12 +116,16 @@ var tempust = {
                 if(weekDay > 7) {
                     weekDay = 1;
                     events.forEach(function (event) {
+                        $('.event').hide();
                         $('#dates').append(
                             $("<div>")
                             .append(event.details)
                             .addClass("event")
                             .attr("data-event-date", event.date)
                         );
+                        var nomeMes = tempust.npm[new Date(event.date).getMonth()];
+                        var dia = new Date(event.date).getDate();
+                        $('.eventoData').html(`<h2>${dia}<small>${nomeMes}</small></h2>`);
                         $("[data-idmes='"+date.getMonth()+"']").addClass('active');
                     });
                     events = [];
@@ -202,7 +209,9 @@ var tempust = {
             $('.meses span').removeClass('active');
             $('[data-idmes=11]').addClass('active');
             // Muda ano do calendario
-            self.data().date.setFullYear(parseInt($('.year').val()) - 1);
+            var ano = parseInt($('.year').val()) - 1;
+            $('.year').val(ano);
+            self.data().date.setFullYear(ano);
             self.trigger({
                 type: "changeDate",
                 date: self.data().date
@@ -234,7 +243,10 @@ var tempust = {
             $('.meses span').removeClass('active');
             $('[data-idmes=0]').addClass('active');
             // Muda ano do calendario
-            self.data().date.setFullYear(parseInt($('.year').val()) + 1);
+            var ano = parseInt($('.year').val()) + 1;
+            $('.year').val(ano);
+            self.data().date.setFullYear(ano);
+            console.log($('.year').val());
             self.trigger({
                 type: "changeDate",
                 date: self.data().date

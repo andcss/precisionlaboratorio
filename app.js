@@ -159,6 +159,7 @@ app.post('/contact', contactController.postContact);
  */
 app.get('/admin/configurations', passportConfig.isAdminUser, userController.adminConfig);
 app.get('/dashboard/users', passportConfig.isAdminUser, dashboardController.getUsers);
+app.get('/dashboard/user/:id', passportConfig.isAdminUser, dashboardController.getUser);
 app.get('/dashboard/pages', passportConfig.isAdminUser, dashboardController.getPages);
 app.get('/dashboard/events', passportConfig.isAdminUser, dashboardController.getEvents);
 
