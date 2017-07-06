@@ -10,24 +10,61 @@
     line-height: 60px;
     position: absolute;
     left: 100px;
+    @media (min-width: 1200px) {
+      left: 20%;
+    }
+    @media (max-width: 768px) {
+      position: static;
+      width: 100%;
+      text-align: center;
+
+    }
+    @media (max-width: 480px) {
+      font-size: 45px;
+
+    }
     span.f1 {
       margin-left: 80px;
+      @media (max-width: 480px) {
+        margin-left: 20px;
+      }
     }
     hr {
       margin: 20px 0;
       border-top: 8px solid;
       margin-left: 175px;
       width: 305px;
+      @media (max-width: 768px) {
+        margin-left: 0;
+        float: right;
+        margin-right: 10%;
+      }
+      @media (max-width: 480px) {
+        width: 230px;
+        margin-top: 5px;
+        float: right;
+        margin-right: 10%;
+      }
     }
   }
 
   .linha {
     display: flex;
     width: 100%;
-
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+    &.linhaP {
+      @media (max-width: 480px) {
+        flex-direction: row;
+      }
+    }
     .flex {
       flex: 1;
       display: flex;
+      @media (max-width: 480px) {
+        flex-direction: column;
+      }
       &.column {
         flex-direction: column;
       }
@@ -42,6 +79,7 @@
         margin: 5px;
         padding: 4px 15px;
         display: flex;
+        min-height: 150px;
         h5 {
           font-size: 17px;
           flex: 1;
@@ -75,6 +113,7 @@
         }
         &.boxP {
           flex: 0.325;
+
         }
         &.height-maximo {
           height: 300px;
@@ -99,6 +138,9 @@
             text-decoration: underline;
             color: #acacac;
             margin: 0;
+            @media (max-width: 480px) {
+              padding-left: 10px;
+            }
           }
         }
       }

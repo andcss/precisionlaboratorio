@@ -1,3 +1,5 @@
+const User = require('../models/User');
+
 /**
  * GET /
  * Home contact page.
@@ -9,9 +11,18 @@ exports.getHome = (req, res) => {
 };
 
 exports.getUsers = (req, res) => {
-  res.render('viewsdash/pages/users', {
-    title: 'Home'
+  User.find({}, (err, users) => {
+    if (err) {
+      redirect('/')
+    } else {
+      console.log(users);
+      res.render('viewsdash/pages/users', {
+        title: 'Home',
+        users,
+      });
+    }
   });
+
 };
 
 exports.getUser = (req, res) => {

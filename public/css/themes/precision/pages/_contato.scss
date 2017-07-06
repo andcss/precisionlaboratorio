@@ -1,7 +1,17 @@
 #contatoMaps {
-  padding-top: 80px;
+  padding-top: 160px;
+  @media (min-width: 768px) and (max-width: 1200px) {
+    .container {
+      width: 100%;
+      margin: 0;
+      padding: 0 70px;
+    }
+  }
   .infos {
-    padding-left: 150px;
+    padding-left: 50px;
+    @media (max-width: 1200) {
+      padding-left: 150px;
+    }
     h2 {
       margin-top: 0;
       color: #c5c5c5;
@@ -34,11 +44,18 @@
     #arrow-right {
       display: block;
       right: 20px;
+      @media (max-width: 768px) {
+        transform: rotate(90deg);
+        margin-top: 75px;
+      }
     }
     .endereco {
       text-align: right;
       display: block;
       margin-top: 40px;
+      @media (max-width: 768px) {
+        padding: 10px 40px;
+      }
     }
   }
   #map {
@@ -49,7 +66,10 @@
 
 #trabalheConosco {
   position: relative;
-  padding: 50px 0;
+  padding: 170px 0 50px 0;
+  @media (max-width: 768px) {
+    padding: 120px 0 50px 0;
+  }
   h2 {
     font-size: 90px;
     color: #eaeaea;
@@ -57,7 +77,10 @@
     transform: rotate(-90deg);
     position: absolute;
     top: 20px;
-    left: 5%;
+    left: 40px;
+    @media (max-width: 992px) {
+      left: -90px;
+    }
   }
   .ilustra {
     width: 100%;
@@ -65,6 +88,10 @@
     float: right;
     margin-right: 27px;
     max-width: 450px;
+    @media (max-width: 768px) {
+      float: none;
+      margin: 0 auto;
+    }
   }
   h4 {
     line-height: 40px;
@@ -76,6 +103,14 @@
     height: 280px;
     position: relative;
     padding-left: 30px;
+    @media (max-width: 768px) {
+      padding: 30px;
+      margin: 0 30px;
+    }
+    @media (max-width: 480px) {
+      margin: 50px 20px 50px 20px;
+      padding: 10px;
+    }
     span.bg-fundo {
       width: 80px;
       position: absolute;

@@ -1,6 +1,12 @@
 #agenda {
   padding-top: 110px;
   margin-bottom: 100px;
+  @media (min-width: 768px) and (max-width: 1200px) {
+    .container {
+      margin: 0;
+      width: 100%;
+    }
+  }
   h1 {
     font-size: 65px;
     color: #c5c5c5;
@@ -10,6 +16,12 @@
     line-height: 60px;
     position: absolute;
     margin-left: 100px;
+    @media (min-width: 768px) and (max-width: 1200px) {
+      margin-left: 50px;
+    }
+    @media (max-width: 600px) {
+      margin-left: 20px;
+    }
     span.f3 {
       margin-left: 50px;
     }
@@ -22,12 +34,28 @@
   }
   .conteudo {
     display: flex;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
     .destaque {
       width: 300px;
       margin-left: 200px;
       margin-right: 20px;
       padding: 20px;
       color: #fff;
+      @media (min-width: 768px) and (max-width: 1200px) {
+        margin-left: 100px;
+      }
+      @media (max-width: 768px) {
+        flex: 1;
+        display: block;
+        min-height: 330px;
+        margin-bottom: 20px;
+      }
+      @media (max-width: 600px) {
+        margin: 0;
+        width: 100%;
+      }
       h4 {
         display: block;
         text-align: right;
@@ -53,10 +81,20 @@
         flex: 1;
         height: 250px;
         display: flex;
+        @media (min-width: 768px) and (max-width: 1024px) {
+          flex-direction: column;
+          height: auto;
+        }
+        @media (max-width: 600px) {
+          flex-direction: column;
+          height: auto;
+        }
+
         .proximo {
           flex: 1;
           background: #8b8b8b;
           position: relative;
+
           span.titulo {
             display: block;
             padding: 40px 0 0 40px;
@@ -69,6 +107,24 @@
             position: absolute;
             bottom: 20px;
             right: 20px;
+          }
+          @media (min-width: 768px) and (max-width: 1024px) {
+            padding: 20px;
+            span.titulo {
+              padding: 10px 0 0 10px;
+            }
+            #arrow-right {
+              transform: rotate(90deg);
+            }
+          }
+          @media (max-width: 600px) {
+            padding: 40px;
+            span.titulo {
+              padding: 10px 0 0 10px;
+            }
+            #arrow-right {
+              transform: rotate(90deg);
+            }
           }
         }
         #calendar {
@@ -95,6 +151,13 @@
               margin-left: 5px;
               text-transform: uppercase;
               text-align: center;
+
+              @media (min-width: 768px) and (max-width: 1200px) {
+                margin-bottom: 20px;
+              }
+              @media (max-width: 600px) {
+                margin-bottom: 20px;
+              }
             }
           }
         }
@@ -102,6 +165,7 @@
           flex: 1.2;
           background: #ebebeb;
           color: #2c2c2c;
+          min-height: 200px;
           h3 {
             margin: 30px 0 5px 30px;
             font-weight: 800;

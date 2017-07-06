@@ -3,53 +3,53 @@ include ../partials/menu-top
 
 block content
   +menuTop(class="black")
-  .page-header
-    #contatoMaps
-      .container-fluid.no-padding
-        .row
-          .col-sm-5.infos
-            h2 ENTRE
-              br
-              | EM
-              br
-              | CONTATO
-              hr
-            ul
-              li
-                include ../../public/svg/icones/telefone.svg
-                | +55 (11) 3040-8880
-              li
-                include ../../public/svg/icones/whatsapp.svg
-                | +55 (11) 94576-6403
-              li
-                include ../../public/svg/icones/email.svg
-                | laboratorio@laboratorioprecision.com.br
-            include ../../public/svg/arrow-right.svg
-            span.endereco Rua João Lourenço, 564
-              br
-              | Vila Nova Conceição
-              br
-              | São Paulo - SP
-          .col-sm-7
-            #map
-    #trabalheConosco
-      .container
-        .row
-          .col-sm-7
-            h2 WORK.
-            img.ilustra(src='./images/ilustra-trabalheconosco.jpg')
-          .col-sm-5.chamado
-            span.bg-fundo
-            h4 QUER
-              br
-              | TRABALHAR
-              br
-              | CONOSCO?
-            p Envie um e-mail com seu
-              br
-              | currículo para:
 
-            button.btn-curriculo laboratorio@laboratorioprecision.com.br.
+  #contatoMaps
+    .container.no-padding
+      .row
+        .col-sm-5.infos
+          h2 ENTRE
+            br
+            | EM
+            br
+            | CONTATO
+            hr
+          ul
+            li
+              include ../../public/svg/icones/telefone.svg
+              | +55 (11) 3040-8880
+            li
+              include ../../public/svg/icones/whatsapp.svg
+              | +55 (11) 94576-6403
+            li
+              include ../../public/svg/icones/email.svg
+              | laboratorio@laboratorioprecision.com.br
+          include ../../public/svg/arrow-right.svg
+          span.endereco Rua João Lourenço, 564
+            br
+            | Vila Nova Conceição
+            br
+            | São Paulo - SP
+        .col-sm-7
+          #map
+  #trabalheConosco
+    .container
+      .row
+        .col-sm-7
+          h2 WORK.
+          img.ilustra(src='./images/ilustra-trabalheconosco.jpg')
+        .col-sm-5.chamado
+          span.bg-fundo
+          h4 QUER
+            br
+            | TRABALHAR
+            br
+            | CONOSCO?
+          p Envie um e-mail com seu
+            br
+            | currículo para:
+
+          button.btn-curriculo laboratorio@laboratorioprecision.com.br.
 
 
 

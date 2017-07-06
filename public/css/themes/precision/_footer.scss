@@ -9,6 +9,11 @@
     font-size: 12px;
   }
   #logo_svg {
+    max-width: 200px;
+    display: block;
+    @media (max-width: 768px) {
+      margin: 0 auto 20px auto;
+    }
     .colorLogo {
       fill: #fff;
     }
@@ -36,6 +41,10 @@
     }
   }
   #instagramBlock {
+    @media (max-width: 768px) {
+      padding: 20px;
+      margin: 0 auto 20px auto;
+    }
     span {
       color: rgba(255,255,255,0.5);
       font-weight: 200;
@@ -54,10 +63,18 @@
       }
     }
     .mural {
+
       ul {
         margin: 0;
         padding: 0;
         display: flex;
+        @media (max-width: 458px) {
+          display: block;
+          margin: 0 auto;
+          li {
+            width: 50%;
+          }
+        }
         li {
           flex: 1;
           list-style: none;

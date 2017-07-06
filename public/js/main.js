@@ -41,7 +41,7 @@ $(document).ready(function() {
    * ---------------------------------------
    */
   function mostraInstagram(data) {
-    var maxImage = 5;
+    var maxImage = 4;
     var html = '<ul>';
     for (var i = 0; i < maxImage; i++) {
       html += `<li>

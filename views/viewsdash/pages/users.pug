@@ -14,38 +14,33 @@ block content
                   thead
                     th ID
                     th Nome
+                    th Tipo
                     th Email
                     th CPF/CNPJ
                     th Status
                     th.text-center Editar
                   tbody
-                    tr
-                      td 1
-                      td Túlio Navarro
-                      td tulio.navarro@5era.com
-                      td 086.860.406-24
-                      td
-                        .legend
-                          .fa.fa-circle.text-info
-                          | Ativo
-                          //- .fa.fa-circle.text-danger
-                          //- | Desativado
-                          //- .fa.fa-circle.text-warning
-                          //- | Pendente
-                      td.text-center
-                        a(href="/dashboard/user/1").btn.btn-info.btn-fill Editar Usuário
-                    tr
-                      td 1
-                      td Túlio Navarro
-                      td tulio.navarro@5era.com
-                      td 086.860.406-24
-                      td
-                        .legend
-                          //- .fa.fa-circle.text-info
-                          //- | Ativo
-                          //- .fa.fa-circle.text-danger
-                          //- | Desativado
-                          .fa.fa-circle.text-warning
-                          | Pendente
-                      td.text-center
-                        a(href="/dashboard/user/1").btn.btn-info.btn-fill Editar Usuário
+                    each user, index in users
+                      tr
+                        td=index
+                        td=user.profile.name
+                        td=user.role
+                        td=user.email
+                        if user.cpf != ''
+                          td=user.cpf
+                        else
+                          td=user.cnpj
+                        td=user.profile.cpf
+                        td
+                          if user.status == "ativo"
+                            .legend
+                              .fa.fa-circle.text-info
+                              | Ativo
+                          else if user.status == "desativado"
+                            .fa.fa-circle.text-danger
+                            | Desativado
+                          else
+                            .fa.fa-circle.text-warning
+                            | Pendente
+                        td.text-center
+                          a(href=`/dashboard/user/${user._id}`).btn.btn-info.btn-fill Editar Usuário
