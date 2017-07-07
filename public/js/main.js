@@ -55,11 +55,13 @@ $(document).ready(function() {
   }
 
   if (window.location.host.indexOf('localhost') === -1) {
-    var apiHost = "https://api.instagram.com/v1/users/self/media/recent/?access_token=1463654275.1677ed0.cacd3a406d914cd29988ad1bbfcf8238";
-    console.log(apiHost);
+    $.getJSON("https://api.instagram.com/v1/users/self/media/recent/?access_token=1463654275.1677ed0.cacd3a406d914cd29988ad1bbfcf8238")
+      .then((infosInsta) => {
+        mostraInstagram(infosInsta.data)
+      });
   }
   else {
-    var jsonHost = $.getJSON(`http://${window.location.host}/data/instagram.json`)
+    $.getJSON(`http://${window.location.host}/data/instagram.json`)
       .then((infosInsta) => {
         mostraInstagram(infosInsta.data)
       });
