@@ -12,7 +12,7 @@ exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect('/dashboard/home');
   }
-  res.render('account/login', {
+  res.render('pages/login', {
     title: 'Login'
   });
 };

@@ -82,6 +82,16 @@ $(document).ready(function() {
     }
   });
 
+  /**
+   * Tela de cadastro
+   * ---------------------------------------
+   */
+
+  $(document).on('click', '.cadastro', function() {
+    $('#divider').addClass('active');
+    $('#signup').addClass('active');
+  })
+
 
 
 

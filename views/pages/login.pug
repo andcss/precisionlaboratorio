@@ -1,0 +1,62 @@
+extends ../layout
+include ../partials/menu-top
+
+block content
+  +menuTop(class="black")
+
+  #formsRegister
+    .container
+      #login
+        form(method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .linha
+            .flex
+              label EMAIL
+              input(type='email', name='email', id='email', autofocus, required)
+          .linha
+            .flex
+              label SENHA
+              input(type='password', name='password', id='password', required)
+          .linha
+            .flex
+              a Esqueceu a senha?
+          .linha
+            button.entrar(type='submit') ENTRAR
+          .linha
+            .flex
+              a.cadastro CADASTRAR
+      #divider
+        hr
+      #signup
+        form(method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .linha
+            .flex.flex-7
+              label NOME COMPLETO
+              input
+            .flex.flex-3
+              label TELEFONE
+              input
+          .linha
+            .flex.flex-7
+              label * EMAIL
+              input(type='email', name='email', id='email',  autofocus, required)
+            .flex.flex-3
+              label * Nº CRO
+              input
+          .linha
+            .flex.flex-5
+              label SENHA
+              input(type='password', name='password', id='password', required)
+            .flex.flex-5
+              label CONFIRME SUA SENHA
+              input(type='password', name='confirmPassword', id='confirmPassword', required)
+          .linha
+            .flex
+              label COMO CONHECEU O LABORATÓRIO
+              input
+          .linha
+            .flex.flex-5
+              span * Campos obrigatórios
+            .flex.flex-5
+              button.cadastrar(type='submit') ENVIAR CADASTRO

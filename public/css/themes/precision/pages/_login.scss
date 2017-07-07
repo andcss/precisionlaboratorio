@@ -1,0 +1,125 @@
+#formsRegister {
+  padding-top: 200px;
+  padding-bottom: 150px;
+  display: flex;
+  justify-content: center;
+  .container {
+    display: flex;
+  }
+  form {
+    label {
+      color: #909090;
+      display: block;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #b5b5b5;
+      border-radius: 0;
+      box-shadow: none;
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      color: #5b5b5b;
+      padding-bottom: 10px;
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+    a {
+      color: #5b5b5b;
+      text-align: right;
+      display: block;
+      text-decoration: underline;
+      margin: 10px 0;
+    }
+  }
+  .linha {
+    display: flex;
+    .flex {
+      margin:5px;
+      flex: 1;
+    }
+    .flex-70 {
+      flex: 0.7;
+    }
+
+    .flex-30 {
+      flex: 0.3;
+    }
+  }
+
+  #login {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    .entrar {
+      flex: 1;
+      background: #474747;
+      color: #fff;
+      border: none;
+      padding: 10px;
+    }
+    .cadastro {
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    form {
+      flex: 1;
+      max-width: 340px;
+    }
+  }
+
+  #divider {
+    flex: 0;
+    position: relative;
+    &.active {
+      flex: 0.1;
+      hr {
+        transition: 1s;
+        transition-delay: 0.5s;
+        height: 100%;
+      }
+    }
+    hr {
+      bottom: 0;
+      position: absolute;
+      height: 0%;
+      border-left: 1px solid  #474747;
+      margin-right: 50px;
+      margin-top: 0;
+    }
+  }
+
+  #signup {
+    flex: 0;
+    transition: 1s;
+    overflow: hidden;
+    &.active {
+      display: block;
+      transition: 1s;
+      flex: 1.4;
+      form {
+        transition: 2s;
+        transition-delay: 1s;
+        transform: translateX(0);
+      }
+    }
+    form {
+      transform: translateX(-1000px);
+    }
+    .cadastrar {
+      width: 100%;
+      background: #474747;
+      color: #fff;
+      border: none;
+      padding: 10px;
+    }
+  }
+}
