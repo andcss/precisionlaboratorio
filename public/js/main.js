@@ -69,7 +69,6 @@ $(document).ready(function() {
    * Fixed Menu com scroll
    * ---------------------------------------
    */
-
   $(window).on('scroll', function() {
     if ($('#menuTop').hasClass('black')) {
       if (window.pageYOffset > 50) {
@@ -86,7 +85,6 @@ $(document).ready(function() {
    * Tela de cadastro
    * ---------------------------------------
    */
-
   $(document).on('click', '.cadastro', function() {
     $('#divider').addClass('active');
     $('#signup').addClass('active');
