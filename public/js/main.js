@@ -53,19 +53,17 @@ $(document).ready(function() {
     html += '</ul>';
     $('#instagramBlock .mural').html(html);
   }
+  $.ajax({
+    url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token=1463654275.1677ed0.cacd3a406d914cd29988ad1bbfcf8238',
+    type: 'GET',
+    crossDomain: true,
+    dataType: 'jsonp',
+    success: function(infosInsta) {
+      mostraInstagram(infosInsta.data);
+    },
+    error: function() { console.log('Instagram Fail!'); },
+  });
 
-  if (window.location.host.indexOf('localhost') === -1) {
-    $.getJSON("https://api.instagram.com/v1/users/self/media/recent/?access_token=1463654275.1677ed0.cacd3a406d914cd29988ad1bbfcf8238")
-      .then((infosInsta) => {
-        mostraInstagram(infosInsta.data)
-      });
-  }
-  else {
-    $.getJSON(`http://${window.location.host}/data/instagram.json`)
-      .then((infosInsta) => {
-        mostraInstagram(infosInsta.data)
-      });
-  }
 
   /**
    * Fixed Menu com scroll
