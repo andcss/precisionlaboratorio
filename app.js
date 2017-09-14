@@ -67,11 +67,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(expressStatusMonitor());
 app.use(compression());
-// app.use(sass({
-//   src: path.join(__dirname, 'publicdash'),
-//   dest: path.join(__dirname, 'publicdash'),
-//   debug: true,
-// }));
+
 app.use(sass({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
@@ -128,7 +124,6 @@ app.use((req, res, next) => {
   return next();
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
-app.use(express.static(path.join(__dirname, 'publicDash'), { maxAge: 31557600000 }));
 
 // app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 // app.use(express.static(path.join(__dirname, 'publicDash'), { maxAge: 31557600000 }));
@@ -260,9 +255,15 @@ app.get('/dashboard/galleries', passportConfig.isAuthenticated, dashboardControl
 // });
 
 /**
+ * Return Page not found
+ */
+app.get('*', pagesController.error404);
+
+/**
  * Error Handler.
  */
 app.use(errorHandler());
+
 
 /**
  * Start Express server.

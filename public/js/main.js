@@ -10,7 +10,7 @@ $(document).ready(function() {
     $(this).addClass('open');
 
     $('.logo-top').addClass('opened');
-
+    
     $('.menu-opened').removeClass('closed');
     $('.menu-opened').addClass('opened');
 
@@ -53,8 +53,9 @@ $(document).ready(function() {
     html += '</ul>';
     $('#instagramBlock .mural').html(html);
   }
+  var token = "";
   $.ajax({
-    url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token=1463654275.1677ed0.cacd3a406d914cd29988ad1bbfcf8238',
+    url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token='+token,
     type: 'GET',
     crossDomain: true,
     dataType: 'jsonp',

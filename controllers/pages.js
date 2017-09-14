@@ -26,3 +26,9 @@ exports.portifolio = (req, res) => {
     title: 'Portifólio'
   });
 };
+
+exports.error404 = (req, res) => {
+  res.render('pages/404', {
+    title: 'Precision - Página não encontrada'
+  });
+}

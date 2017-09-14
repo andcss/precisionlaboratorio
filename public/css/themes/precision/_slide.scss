@@ -42,9 +42,22 @@
   .carousel-inner {
     height: 100%;
     width: 100%;
+    .alpha-black {
+      background: rgba(0,0,0,0.6);
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 2;
+    }
     .item {
       width: 100%;
       height: 100%;
+      video {
+        @media (max-width: 480px) {
+          height: 100%;
+          margin-left: -100%;
+        }
+      }
     }
   }
 }

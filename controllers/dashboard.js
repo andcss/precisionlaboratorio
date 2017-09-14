@@ -6,7 +6,7 @@ const User = require('../models/User');
  */
 exports.getHome = (req, res) => {
   res.render('viewsdash/pages/home', {
-    title: 'Home'
+    title: 'Precision - Laboratório de execelência'
   });
 };
 

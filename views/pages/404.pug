@@ -1,0 +1,18 @@
+extends ../layout
+include ../partials/menu-top
+
+block content
+  +menuTop(class="black")
+
+  #page404
+    .container
+      .row
+        .col-sm-12
+          .mensage404
+            h1 404
+            p Infelizmente não encontramos a página :(
+              br
+              | Volte para a página inicial
+              a(href="/")  clicando aqui
+              | !
+            hr

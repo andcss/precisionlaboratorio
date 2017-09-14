@@ -23,6 +23,9 @@
 
   // Wrapper for slides
   .carousel-inner(role='listbox')
-    .item.active(style='background: url(./images/bg-slide-2.jpg) no-repeat center center; background-size: cover;')
-    .item(style='background: url(./images/bg-slide-2.jpg) no-repeat center center; background-size: cover;')
+    .alpha-black
+    .item.active
+      video(poster='./images/bg-slide-1.jpg' playsinline autoplay muted loop)
+        source(src='./images/videos/BG_Home.mp4' type='video/mp4')
+    .item(style='background: url(./images/bg-slide-1.jpg) no-repeat center center; background-size: cover;')
     .item(style='background: url(./images/bg-slide-2.jpg) no-repeat center center; background-size: cover;')
