@@ -10,7 +10,7 @@ $(document).ready(function() {
     $(this).addClass('open');
 
     $('.logo-top').addClass('opened');
-    
+
     $('.menu-opened').removeClass('closed');
     $('.menu-opened').addClass('opened');
 
@@ -53,14 +53,18 @@ $(document).ready(function() {
     html += '</ul>';
     $('#instagramBlock .mural').html(html);
   }
-  var token = "";
+
+  var token = "1463654275.1677ed0.cacd3a406d914cd29988ad1bbfcf8238";
+  var userid = 301363077;
   $.ajax({
-    url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token='+token,
+    url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent',
     type: 'GET',
     crossDomain: true,
     dataType: 'jsonp',
+    data: {access_token: token, count: 6},
     success: function(infosInsta) {
-      mostraInstagram(infosInsta.data);
+      console.log(infosInsta);
+      //mostraInstagram(infosInsta.data);
     },
     error: function() { console.log('Instagram Fail!'); },
   });

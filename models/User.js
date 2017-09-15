@@ -1,27 +1,18 @@
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   email: { type: String, unique: true },
   password: String,
   passwordResetToken: String,
   passwordResetExpires: Date,
   status: String,
-  role: String,
-
-  // facebook: String,
-  // twitter: String,
-  // google: String,
-  // github: String,
-  // instagram: String,
-  // linkedin: String,
-  // steam: String,
-  // tokens: Array,
-  cnpj: { type: String },
-  cpf: { type: String },
+  roleAccess: { type: Schema.Types.ObjectId, ref: 'Role' },
   profile: {
-    name: String,
+    firstName: String,
+    lastName: String,
     gender: String,
     location: String,
     website: String,
