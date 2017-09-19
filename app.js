@@ -121,10 +121,20 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   return next();
 });
+
+// middleware busca configurações do sistema
+const Config = require('./models/Config');
+app.use((req, res, next) => {
+  Config.findOne({}).populate('_roles.role').exec((err, config) => {
+    if (config) {
+      req.config = config;
+    }
+    next();
+  });
+});
+
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
-// app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
-// app.use(express.static(path.join(__dirname, 'publicDash'), { maxAge: 31557600000 }));
 /**
  * Primary app routes.
  */
@@ -155,6 +165,7 @@ app.get('/dashboard/users', passportConfig.isAdminUser, dashboardController.getU
 app.get('/dashboard/user/:id', passportConfig.isAdminUser, dashboardController.getUser);
 app.get('/dashboard/pages', passportConfig.isAdminUser, dashboardController.getPages);
 app.get('/dashboard/events', passportConfig.isAdminUser, dashboardController.getEvents);
+app.get('/dashboard/config', passportConfig.isAdminUser, dashboardController.getConfig);
 
 /**
  * Routes isAuthenticated / All Users

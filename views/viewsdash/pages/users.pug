@@ -16,21 +16,17 @@ block content
                     th Nome
                     th Tipo
                     th Email
-                    th CPF/CNPJ
+                    th CRO
                     th Status
                     th.text-center Editar
                   tbody
                     each user, index in users
                       tr
                         td=index
-                        td=user.profile.name
-                        td=user.role
+                        td=user.profile.firstName + ' ' + user.profile.lastName
+                        td=user.roleAccess
+                        td=user.ufCro + user.cro
                         td=user.email
-                        if user.cpf != ''
-                          td=user.cpf
-                        else
-                          td=user.cnpj
-                        td=user.profile.cpf
                         td
                           if user.status == "ativo"
                             .legend

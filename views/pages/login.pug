@@ -9,6 +9,8 @@ block content
       #login
         form(method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
+          if !signup
+            include ../partials/flash
           .linha
             .flex
               label EMAIL
@@ -25,25 +27,38 @@ block content
           .linha
             .flex
               a.cadastro CADASTRAR
-      #divider
+      #divider(class=signup ? 'active': '')
         hr
-      #signup
-        form(method='POST')
+      #signup(class=signup ? 'active': '')
+        form(method='POST', action='/signup')
+          include ../partials/flash
           input(type='hidden', name='_csrf', value=_csrf)
           .linha
-            .flex.flex-7
-              label NOME COMPLETO
-              input
-            .flex.flex-3
+            .flex
+              label * NOME
+              input(name="firstName", required, autofocus, value=(messages.user ? messages.user[0].profile.firstName : ''))
+            .flex
+              label * SOBRENOME
+              input(name="lastName", required, value=(messages.user ? messages.user[0].profile.lastName : ''))
+            .flex
               label TELEFONE
-              input
+              input#telefone(name="phone", value=(messages.user ? messages.user[0].profile.phone : ''))
           .linha
             .flex.flex-7
               label * EMAIL
-              input(type='email', name='email', id='email',  autofocus, required)
+              input(type='email', name='email', id='email', required, value=(messages.user ? messages.user[0].email : ''))
+            .flex.flex-2
+              label * UF CRO
+              select(name='ufCro', id='ufCro', required)
+                - var states = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];
+                each state, index in states
+                  if (messages.user && messages.user[0].ufCro == state)
+                    option(value=state, selected)=state
+                  else
+                    option(value=state)=state
             .flex.flex-3
               label * Nº CRO
-              input
+              input(type='text', name='cro', id='cro', required, value=(messages.user ? messages.user[0].cro : ''))
           .linha
             .flex.flex-5
               label SENHA
@@ -54,7 +69,7 @@ block content
           .linha
             .flex
               label COMO CONHECEU O LABORATÓRIO
-              input
+              input(type='text', name='howMeet', id='howMeet', value=(messages.user ? messages.user[0].howMeet : ''))
           .linha
             .flex.flex-5
               span * Campos obrigatórios

@@ -2,6 +2,7 @@ const bluebird = require('bluebird');
 const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
 const passport = require('passport');
+const mongoose = require('mongoose');
 const User = require('../models/User');
 
 /**
@@ -12,8 +13,11 @@ exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect('/dashboard/home');
   }
+
+  let signup = req.query.signup ? true : false;
   res.render('pages/login', {
-    title: 'Login'
+    title: 'Login',
+    signup,
   });
 };
 
@@ -22,8 +26,8 @@ exports.getLogin = (req, res) => {
  * Sign in using email and password.
  */
 exports.postLogin = (req, res, next) => {
-  req.assert('email', 'Email is not valid').isEmail();
-  req.assert('password', 'Password cannot be blank').notEmpty();
+  req.assert('email', 'Email informado não é válido').isEmail();
+  req.assert('password', 'Preencha a Senha').notEmpty();
   req.sanitize('email').normalizeEmail({ gmail_remove_dots: false });
 
   const errors = req.validationErrors();
@@ -81,15 +85,26 @@ exports.postSignup = (req, res, next) => {
 
   const errors = req.validationErrors();
 
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/signup');
+  const infosUser = {
+    email: req.body.email || '',
+    password: req.body.password || '',
+    telefone: req.body.telefone || '',
+    cro: req.body.cro || '',
+    ufCro: req.body.ufCro || '',
+    howMeet: req.body.howMeet || '',
+    profile: {
+      firstName: req.body.firstName || '',
+      lastName: req.body.lastName || '',
+    }
   }
 
-  const user = new User({
-    email: req.body.email,
-    password: req.body.password
-  });
+  if (errors) {
+    req.flash('errors', errors);
+    req.flash('user', infosUser);
+    return res.redirect('/login?signup=true');
+  }
+
+  const user = new User(infosUser);
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
     if (err) { return next(err); }
@@ -103,7 +118,7 @@ exports.postSignup = (req, res, next) => {
         if (err) {
           return next(err);
         }
-        res.redirect('/');
+        res.redirect('/dashboard/home');
       });
     });
   });
@@ -114,8 +129,11 @@ exports.postSignup = (req, res, next) => {
  * Profile page.
  */
 exports.getAccount = (req, res) => {
+
   res.render('viewsdash/pages/profile', {
-    title: 'Account Management'
+    title: 'Informações do perfil',
+    config: req.config,
+    user: req.user,
   });
 };
 
@@ -135,12 +153,24 @@ exports.postUpdateProfile = (req, res, next) => {
   }
 
   User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
+    if (err) {
+      return next(err);
+    }
     user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
+    user.status = req.body.status || '';
+    user.ufCro = req.body.ufCro || '';
+    user.cro = req.body.cro || '';
+    if (req.body._role)
+      user._role = mongoose.Types.ObjectId(req.body._role);
+
+    user.profile.firstName = req.body.firstName || '';
+    user.profile.lastName = req.body.lastName || '';
     user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
+    user.profile.office = req.body.office || '';
+    user.profile.phone = req.body.phone || '';
+    user.profile.profession = req.body.profession || '';
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
@@ -334,7 +364,7 @@ exports.postForgot = (req, res, next) => {
       .findOne({ email: req.body.email })
       .then((user) => {
         if (!user) {
-          req.flash('errors', { msg: 'Account with that email address does not exist.' });
+          req.flash('errors', { msg: 'Email não cadastrado' });
         } else {
           user.passwordResetToken = token;
           user.passwordResetExpires = Date.now() + 3600000; // 1 hour

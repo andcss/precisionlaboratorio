@@ -93,9 +93,12 @@ $(document).ready(function() {
   $(document).on('click', '.cadastro', function() {
     $('#divider').addClass('active');
     $('#signup').addClass('active');
-  })
+  });
 
-
-
+  /**
+   * Mascaras para inputs
+   * ---------------------------------------
+   */
+  $('#telefone').mask('(00) 00000-0000');
 
 });
