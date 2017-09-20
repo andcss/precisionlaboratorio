@@ -10,22 +10,29 @@
         a(href="/dashboard/home")
           i.pe-7s-graph
           | Dashboard
-      li(class=(pageName == 'users') ? 'active' : '')
-        a(href="/dashboard/users")
-          i.pe-7s-users
-          | Usuários
+      if(user._role.value > 9)
+        li(class=(pageName == 'users') ? 'active' : '')
+          a(href="/dashboard/users")
+            i.pe-7s-users
+            | Usuários
       li(class=(pageName == 'galery') ? 'active' : '')
         a(href="/dashboard/galleries")
           i.pe-7s-photo
           | Galeria
-      li(class=(pageName == 'pages') ? 'active' : '')
-        a(href="/dashboard/pages")
-          i.pe-7s-browser
-          | Páginas Institucionais
-      li(class=(pageName == 'events') ? 'active' : '')
-        a(href="/dashboard/events")
-          i.pe-7s-date
-          | Eventos
+      li(class=(pageName == 'pedidos') ? 'active' : '')
+        a(href="/dashboard/pedidos")
+          i.pe-7s-note2
+          | Pedidos
+      if(user._role.value > 9)
+        li(class=(pageName == 'pages') ? 'active' : '')
+          a(href="/dashboard/pages")
+            i.pe-7s-browser
+            | Páginas Institucionais
+      if(user._role.value > 9)
+        li(class=(pageName == 'events') ? 'active' : '')
+          a(href="/dashboard/events")
+            i.pe-7s-date
+            | Eventos
       li
         a(href="/", target="_black")
           i.pe-7s-home

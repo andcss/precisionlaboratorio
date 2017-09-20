@@ -129,11 +129,11 @@ exports.postSignup = (req, res, next) => {
  * Profile page.
  */
 exports.getAccount = (req, res) => {
-
   res.render('viewsdash/pages/profile', {
     title: 'Informações do perfil',
     config: req.config,
-    user: req.user,
+    findUser: req.user,
+    newUser: false
   });
 };
 
@@ -152,9 +152,10 @@ exports.postUpdateProfile = (req, res, next) => {
     return res.redirect('/account');
   }
 
-  User.findById(req.user.id, (err, user) => {
+  User.findById(req.params.id, (err, user) => {
     if (err) {
-      return next(err);
+      req.flash('errors', errors);
+      return res.redirect('/dashboard/users');
     }
     user.email = req.body.email || '';
     user.status = req.body.status || '';
@@ -171,16 +172,17 @@ exports.postUpdateProfile = (req, res, next) => {
     user.profile.office = req.body.office || '';
     user.profile.phone = req.body.phone || '';
     user.profile.profession = req.body.profession || '';
+
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
           req.flash('errors', { msg: 'Email informado já pertence a outra conta.' });
-          return res.redirect('/account');
+          return res.redirect('back');
         }
         return next(err);
       }
       req.flash('success', { msg: 'Informações do perfil atualizadas com sucesso!' });
-      res.redirect('/account');
+      res.redirect('back');
     });
   });
 };

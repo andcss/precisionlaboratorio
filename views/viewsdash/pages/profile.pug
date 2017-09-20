@@ -9,33 +9,36 @@ block content
             .header
               h4.title Informações do usuário
             .content
-              if !signup
-                include ../../partials/flash
-              form(action='/account/profile', method='POST')
+              - var action = newUser ? '/dashboard/user' : '/account/profile/'+findUser._id;
+              form(action=action, method='POST')
+                .row
+                  .col-sm-12
+                    if !signup
+                      include ../../partials/flash
                 input(type='hidden', name='_csrf', value=_csrf)
                 .row
                   .col-sm-6
                     .form-group
                       label.control-label(for='firstName') Nome
-                      input.form-control(type='text', name='firstName', id='firstName', value=user.profile.firstName)
+                      input.form-control(type='text', name='firstName', id='firstName', value=findUser.profile.firstName)
                   .col-sm-6
                     .form-group
                       label.control-label(for='lastName') Sobrenome
-                      input.form-control(type='text', name='lastName', id='lastName', value=user.profile.lastName)
+                      input.form-control(type='text', name='lastName', id='lastName', value=findUser.profile.lastName)
                 .row
                   .col-sm-6
                     label.control-label(for='gender') Gênero
                     select.form-control(name="gender")
                       - var genders = ['Selecione', 'Masculino', 'Feminino', 'Outro']
                       each gender, index in genders
-                        if (user.profile.gender == gender)
+                        if (findUser.profile.gender == gender)
                           option(value=gender, selected)=gender
                         else
                           option(value=gender)=gender
                   .col-sm-6
                     .form-group
                       label.control-label(for='profession') Profissão
-                      input.form-control(type='text', name='profession', id='profession', value=user.profile.profession)
+                      input.form-control(type='text', name='profession', id='profession', value=findUser.profile.profession)
                 .row
                   .col-sm-2
                     .form-group
@@ -49,42 +52,53 @@ block content
                             else
                               option(value=state)=state
                       else
-                        input.form-control(type='text', name='ufCro', id='ufCro', value=user.ufCro, disabled)
+                        input.form-control(type='text', name='ufCro', id='ufCro', value=findUser.ufCro, disabled)
                   .col-sm-5
                     .form-group
                       label.control-label(for='cro') Nº CRO
                       if (user._role.value > 9)
-                        input.form-control(type='text', name='cro', id='cro', value=user.cro)
+                        input.form-control(type='text', name='cro', id='cro', value=findUser.cro)
                       else
-                        input.form-control(value=user.cro, name='cro', disabled)
+                        input.form-control(value=findUser.cro, name='cro', disabled)
                   .col-sm-5
                     .form-group
                       label.control-label(for='office') Empresa
-                      input.form-control(type='text', name='office', id='office', value=user.profile.office)
+                      input.form-control(type='text', name='office', id='office', value=findUser.profile.office)
 
                 .row
                   .col-sm-7
                     .form-group
                       label.control-label(for='email') Email
-                      input.form-control(type='email', name='email', id='email', value=user.email)
+                      input.form-control(type='email', name='email', id='email', value=findUser.email)
                   .col-sm-5
                     .form-group
                       label.control-label(for='phone') Telefone
-                      input.form-control(type='phone', name='phone', id='phone', value=user.profile.phone)
+                      input.form-control(type='phone', name='phone', id='phone', value=findUser.profile.phone)
                 .row
-                  .col-sm-12
+                  .col-sm-6
                     .form-group
                       label.control-label(for='status') Status
                       if (user._role.value > 9)
                         - var statusList = ['Pendente', 'Ativo', 'Desativado'];
                         select.form-control(name='status')
                           each status in statusList
-                            if (status == user.status)
+                            if (status == findUser.status)
                               option(value=status, selected)=status
                             else
                               option(value=status)=status
                       else
-                        input.form-control(value=user.status, disabled)
+                        input.form-control(value=findUser.status, disabled)
+                  if (user._role.value > 9)
+                    .col-sm-6
+                      .form-group
+                        label.control-label(for='role') Permissão
+                        select.form-control(name='status')
+                          each info, index in config._roles
+                            if (info.role.name == findUser._role.name)
+                              option(value=info.role._id, selected)=info.role.name
+                            else
+                              option(value=info.role._id)=info.role.name
+
                 .row
                   .col-sm-12
                     .form-group
@@ -99,28 +113,28 @@ block content
               .author
                 img.avatar.border-gray(src='/images/faces/face-0.jpg', alt='...')
                 h4.title
-                  | #{user.profile.firstName} #{user.profile.lastName}
+                  | #{findUser.profile.firstName} #{findUser.profile.lastName}
                   br
-                  small #{user.profile.profession} | #{user.profile.office}
-      .row
-        .col-md-8
-          .card
-            .header
-              h4.title Alterar senha
-            .content
-              form(action='/account/password', method='POST')
-                input(type='hidden', name='_csrf', value=_csrf)
-                .row
-                  .col-sm-6
-                    .form-group
-                      label.control-label(for='password') Nova senha
-                      input.form-control(type='password', name='password', id='password', required)
-                  .col-sm-6
-                    .form-group
-                      label.control-label(for='confirmPassword') Confirmação de senha
-                      input.form-control(type='password', name='confirmPassword', id='confirmPassword', required)
-                  .col-sm-12.pull-right
-                    .form-group
-                        button.btn.btn-info.btn-fill.pull-right(type='submit')
-                          i.fa.fa-pencil
-                          | Alterar senha
+                  small #{findUser.profile.profession} | #{findUser.profile.office}
+        if (findUser.email)
+          .col-md-8
+            .card
+              .header
+                h4.title Alterar senha
+              .content
+                form(action='/account/password', method='POST')
+                  input(type='hidden', name='_csrf', value=_csrf)
+                  .row
+                    .col-sm-6
+                      .form-group
+                        label.control-label(for='password') Nova senha
+                        input.form-control(type='password', name='password', id='password', required)
+                    .col-sm-6
+                      .form-group
+                        label.control-label(for='confirmPassword') Confirmação de senha
+                        input.form-control(type='password', name='confirmPassword', id='confirmPassword', required)
+                    .col-sm-12.pull-right
+                      .form-group
+                          button.btn.btn-info.btn-fill.pull-right(type='submit')
+                            i.fa.fa-pencil
+                            | Alterar senha

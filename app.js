@@ -163,6 +163,8 @@ app.post('/contact', contactController.postContact);
 app.get('/admin/configurations', passportConfig.isAdminUser, userController.adminConfig);
 app.get('/dashboard/users', passportConfig.isAdminUser, dashboardController.getUsers);
 app.get('/dashboard/user/:id', passportConfig.isAdminUser, dashboardController.getUser);
+app.get('/dashboard/user', passportConfig.isAdminUser, dashboardController.getNewUser);
+app.post('/dashboard/user', passportConfig.isAdminUser, dashboardController.postNewUser);
 app.get('/dashboard/pages', passportConfig.isAdminUser, dashboardController.getPages);
 app.get('/dashboard/events', passportConfig.isAdminUser, dashboardController.getEvents);
 app.get('/dashboard/config', passportConfig.isAdminUser, dashboardController.getConfig);
@@ -171,7 +173,7 @@ app.get('/dashboard/config', passportConfig.isAdminUser, dashboardController.get
  * Routes isAuthenticated / All Users
  */
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
-app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
+app.post('/account/profile/:id', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
@@ -181,7 +183,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
  */
 app.get('/dashboard/home', passportConfig.isAuthenticated, dashboardController.getHome);
 app.get('/dashboard/galleries', passportConfig.isAuthenticated, dashboardController.getGalleries);
-
+app.get('/dashboard/pedidos', passportConfig.isAuthenticated, dashboardController.getPedidos);
 /**
  * Return Page 404 not found
  */

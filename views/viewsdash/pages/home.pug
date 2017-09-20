@@ -4,6 +4,10 @@ block content
   .content
     .content-fluid
       .row
+        .col-sm-6.co-sm-offset-3
+          if !signup
+            include ../../partials/flash
+      .row
         .col-md-12
           .card.card-user
             .mensagem

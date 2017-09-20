@@ -9,30 +9,36 @@ block content
               .header
                 h4.title Usuários
                 p.category Listagem de usuários cadastrados
+                if(user._role.value > 9)
+                  a.btn.btn-default.pull-right Adicionar Usuário
               .content.table-responsive.table-full-width
+                .col-sm-12
+                  if !signup
+                    include ../../partials/flash
                 table.table.table-hover.table-striped
                   thead
-                    th ID
+                    th #
                     th Nome
-                    th Tipo
                     th Email
                     th CRO
                     th Status
+                    th Tipo
                     th.text-center Editar
                   tbody
                     each user, index in users
                       tr
-                        td=index
+                        td=index+1
                         td=user.profile.firstName + ' ' + user.profile.lastName
-                        td=user.roleAccess
-                        td=user.ufCro + user.cro
                         td=user.email
+                        td=user.ufCro + '-' + user.cro
+                        td=user.status
+                        td=user._role ? user._role.name : 'Sem premissão'
                         td
-                          if user.status == "ativo"
+                          if user.status == "Ativo"
                             .legend
                               .fa.fa-circle.text-info
                               | Ativo
-                          else if user.status == "desativado"
+                          else if user.status == "Desativado"
                             .fa.fa-circle.text-danger
                             | Desativado
                           else
