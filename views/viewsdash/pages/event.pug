@@ -1,0 +1,56 @@
+extends ../layout
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          .card
+            .header
+              h4.title Informações do evento
+            .content
+              - var action = newEvent ? '/event' : '/event/'+event._id;
+              form(action=action, method='POST')
+                .row
+                  .col-sm-12
+                    if !signup
+                      include ../../partials/flash
+                input(type='hidden', name='_csrf', value=_csrf)
+                .row
+                  .col-sm-6
+                    .form-group
+                      label.control-label(for='name') Nome
+                      input.form-control(type='text', name='name', id='name', value=(event ? event.name : ''))
+
+                  .col-sm-6
+                    .form-group
+                      label.control-label Data Início
+                      .input-group.date
+                          input.form-control.datepicker(type='text', value=(event ? event.startDate : ''))
+                          span.input-group-addon
+                            span.pe-7s-clock
+                              
+                  .col-sm-6
+                    .form-group
+                      label.control-label Data Fim
+                      .input-group.date
+                          input.form-control.datepicker(type='text', value=(event ? event.startDate : ''))
+                          span.input-group-addon
+                            span.pe-7s-clock
+
+                .row
+                  .col-sm-6
+                    .form-group
+                      label Descrição
+                      textArea.form-control(name='description')=(event ? event.description : '')
+                  .col-sm-6
+                    .form-group
+                      label Selecione uma Imagem
+                      input.form-control(type='file', name='fileUpdate', id='fileUpdate', placeholder='Selecione o arquivo')
+
+                .row
+                  .col-sm-12
+                    .form-group
+                        button.btn.btn-info.btn-fill.pull-right(type='submit')
+                          i.fa.fa-pencil
+                          | Salvar

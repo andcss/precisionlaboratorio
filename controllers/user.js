@@ -5,6 +5,8 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const User = require('../models/User');
 
+const preTitle = 'Precision - ';
+
 /**
  * GET /login
  * Login page.
@@ -161,8 +163,8 @@ exports.postUpdateProfile = (req, res, next) => {
     user.status = req.body.status || '';
     user.ufCro = req.body.ufCro || '';
     user.cro = req.body.cro || '';
-    if (req.body._role)
-      user._role = mongoose.Types.ObjectId(req.body._role);
+    if (req.body.role)
+      user._role = mongoose.Types.ObjectId(req.body.role);
 
     user.profile.firstName = req.body.firstName || '';
     user.profile.lastName = req.body.lastName || '';
@@ -410,3 +412,61 @@ exports.postForgot = (req, res, next) => {
 exports.adminConfig = (req, res, next) => {
   res.send(200, { mensagem: 'Área restrita aceita' });
 }
+
+
+exports.getUser = (req, res) => {
+  User.findById(req.params.id).populate('_role').exec((err, user) => {
+    if (err) {
+      req.flash('errors', { msg: `Ocorreru um erro na busca do usuário.` });
+      return res.redirect('/dashboard/users');
+    }
+    if (!user) {
+      req.flash('errors', { msg: `Usuário não encontrado!` });
+      return res.redirect('/dashboard/users');
+    }
+    res.render('viewsdash/pages/profile', {
+      title: preTitle+ 'Informações de usuário',
+      pageName: 'users',
+      config: req.config,
+      findUser: user,
+      newUser: false
+    });
+  })
+};
+
+exports.getNewUser = (req, res) => {
+  res.render('viewsdash/pages/profile', {
+    title: preTitle+ 'Novo usuário',
+    pageName: 'users',
+    config: req.config,
+    findUser: new User(),
+    newUser: true,
+  });
+};
+
+exports.postNewUser = (req, res) => {
+  let user = new User();
+  user.email = req.body.email || '';
+  user.status = req.body.status || '';
+  user.ufCro = req.body.ufCro || '';
+  user.cro = req.body.cro || '';
+  if (req.body._role)
+    user._role = mongoose.Types.ObjectId(req.body._role);
+
+  user.profile.firstName = req.body.firstName || '';
+  user.profile.lastName = req.body.lastName || '';
+  user.profile.gender = req.body.gender || '';
+  user.profile.location = req.body.location || '';
+  user.profile.website = req.body.website || '';
+  user.profile.office = req.body.office || '';
+  user.profile.phone = req.body.phone || '';
+  user.profile.profession = req.body.profession || '';
+
+  user.save((err, newUser) => {
+    if(err) {
+      req.flash('errors', { msg: `Erro ao salvar dados` });
+      return res.redirect('/dashboard/users');
+    }
+    return res.redirect('/user/' + newUser._id);
+  });
+};

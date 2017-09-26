@@ -9,7 +9,7 @@ block content
             .header
               h4.title Informações do usuário
             .content
-              - var action = newUser ? '/dashboard/user' : '/account/profile/'+findUser._id;
+              - var action = newUser ? '/user' : '/account/profile/'+findUser._id;
               form(action=action, method='POST')
                 .row
                   .col-sm-12
@@ -92,9 +92,9 @@ block content
                     .col-sm-6
                       .form-group
                         label.control-label(for='role') Permissão
-                        select.form-control(name='status')
+                        select.form-control(name='role')
                           each info, index in config._roles
-                            if (info.role.name == findUser._role.name)
+                            if (findUser._role && info.role.name == findUser._role.name)
                               option(value=info.role._id, selected)=info.role.name
                             else
                               option(value=info.role._id)=info.role.name

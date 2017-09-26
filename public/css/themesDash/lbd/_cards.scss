@@ -1,9 +1,9 @@
+
 .card{
     border-radius: $border-radius-base;
     box-shadow: 0 1px 2px rgba(0,0,0,.05),0 0 0 1px rgba(63,63,68,.1);
     background-color: #FFFFFF;
     margin-bottom: 30px;
-
     .image{
         width: 100%;
         overflow: hidden;
@@ -15,8 +15,37 @@
         transform-style: preserve-3d;
 
         img {
-            width: 100%;
+          width: 100%;
         }
+
+        video {
+          width: 100%;
+        }
+
+        strong {
+          margin: 10px auto;
+          width: 100px;
+          height: 100px;
+          border: 1px solid #c4c4c4;
+          display: block;
+          text-align: center;
+          border-radius: 100%;
+          i {
+            font-size: 60px;
+            line-height: 100px;
+            color: #c4c4c4;
+          }
+        }
+        span {
+          text-align: center;
+          display: block;
+        }
+
+        .btn {
+          margin: 10px auto;
+          display: block;
+        }
+
     }
     .filter{
         position: absolute;

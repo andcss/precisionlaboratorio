@@ -20,6 +20,9 @@ const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
 
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart();
+
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 /**
@@ -35,6 +38,10 @@ const userController = require('./controllers/user');
 const contactController = require('./controllers/contact');
 const pagesController = require('./controllers/pages');
 const dashboardController = require('./controllers/dashboard');
+const configController = require('./controllers/config');
+const galleryController = require('./controllers/gallery');
+const eventController = require('./controllers/event');
+const orderController = require('./controllers/order')
 
 /**
  * API keys and Passport configuration.
@@ -90,7 +97,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
-  if (req.path === '/api/upload') {
+  if (req.path === '/midia') {
     next();
   } else {
     lusca.csrf()(req, res, next);
@@ -161,14 +168,38 @@ app.post('/contact', contactController.postContact);
  * Área restrita para Administradores
  */
 app.get('/admin/configurations', passportConfig.isAdminUser, userController.adminConfig);
+
+
 app.get('/dashboard/users', passportConfig.isAdminUser, dashboardController.getUsers);
-app.get('/dashboard/user/:id', passportConfig.isAdminUser, dashboardController.getUser);
-app.get('/dashboard/user', passportConfig.isAdminUser, dashboardController.getNewUser);
-app.post('/dashboard/user', passportConfig.isAdminUser, dashboardController.postNewUser);
 app.get('/dashboard/pages', passportConfig.isAdminUser, dashboardController.getPages);
-app.get('/dashboard/events', passportConfig.isAdminUser, dashboardController.getEvents);
 app.get('/dashboard/config', passportConfig.isAdminUser, dashboardController.getConfig);
 
+app.get('/events', passportConfig.isAdminUser, eventController.getEvents);
+app.get('/event', passportConfig.isAdminUser, eventController.getNewEvent);
+app.get('/event/:id', passportConfig.isAdminUser, eventController.getEvent);
+app.post('/event', passportConfig.isAdminUser, eventController.postNewEvent);
+app.post('/event/:id', passportConfig.isAdminUser, eventController.postEvent);
+
+app.get('/user', passportConfig.isAdminUser, userController.getNewUser);
+app.post('/user', passportConfig.isAdminUser, userController.postNewUser);
+app.get('/user/:id', passportConfig.isAdminUser, userController.getUser);
+
+app.get('/role', passportConfig.isAdminUser, configController.getNewRole);
+app.get('/role/:id', passportConfig.isAdminUser, configController.getRole);
+app.post('/role', passportConfig.isAdminUser, configController.postNewRole);
+app.post('/role/:id', passportConfig.isAdminUser, configController.postRole);
+
+app.get('/orders', passportConfig.isAuthenticated, orderController.getOrders);
+app.get('/order', passportConfig.isAdminUser, orderController.getNewOrder);
+app.get('/order/:id', passportConfig.isAdminUser, orderController.getOrder);
+app.post('/order', passportConfig.isAdminUser, orderController.postNewOrder);
+app.post('/order/:id', passportConfig.isAdminUser, orderController.postOrder);
+
+app.get('/galleries', passportConfig.isAuthenticated, galleryController.getGalleries);
+app.get('/midia', [passportConfig.isAdminUser, multipartMiddleware], galleryController.getNewMidia);
+app.get('/midia/:id', [passportConfig.isAdminUser, multipartMiddleware], galleryController.getMidia);
+app.post('/midia', [passportConfig.isAdminUser, multipartMiddleware], galleryController.postNewMidia);
+app.post('/midia/:id', [passportConfig.isAdminUser, multipartMiddleware], galleryController.postMidia);
 /**
  * Routes isAuthenticated / All Users
  */
@@ -182,8 +213,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
  * Routes Dashboard
  */
 app.get('/dashboard/home', passportConfig.isAuthenticated, dashboardController.getHome);
-app.get('/dashboard/galleries', passportConfig.isAuthenticated, dashboardController.getGalleries);
-app.get('/dashboard/pedidos', passportConfig.isAuthenticated, dashboardController.getPedidos);
+
 /**
  * Return Page 404 not found
  */

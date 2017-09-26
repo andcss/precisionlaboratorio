@@ -4,8 +4,12 @@ mixin menuTop()
       a(href='/')
         include ../../public/svg/logo-precision.svg
     nav.menu-top
-      a(href="/login").login LOGIN
-        i.fa.fa-user
+      if (user)
+        a(href="/dashboard/home").login Bem vindo, #{user.profile.firstName}
+          i.fa.fa-user
+      else
+        a(href="/login").login LOGIN
+          i.fa.fa-user
       .bg-branco
 
       .open-menu.m-close
@@ -30,5 +34,10 @@ mixin menuTop()
           li.hideMenu
             a(href="/contact") Contato
               hr
-          li.btnLogin.hideMenu
-            a(href="/login") Acesso Login
+
+          if (user)
+            li.btnLogin.hideMenu
+              a(href="/dashboard/home") Acessar o Painel
+          else
+            li.btnLogin.hideMenu
+              a(href="/login") Acesso Login

@@ -1,6 +1,9 @@
 .logo {
   padding: 40px !important;
   #logo_svg {
+    max-width: 150px;
+    margin: 0 auto;
+    display: block;
     .colorLogo {
       fill: #fff;
     }

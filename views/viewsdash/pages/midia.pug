@@ -1,0 +1,47 @@
+extends ../layout
+
+block content
+  .content
+      .container-fluid
+        .row
+          .col-md-12
+            .card
+              .header
+                h4.title Informações de Midias
+              .content
+                - var action = newMidia ? '/midia' : '/midia/'+role._id;
+                form(action=action, method='POST', enctype="multipart/form-data")
+                  input(type='hidden', name='_csrf', value=_csrf)
+                  .row
+                    .col-sm-12
+                      if !signup
+                        include ../../partials/flash
+                  .row
+                    .col-sm-4
+                      .form-group
+                        label.control-label(for='name') Título
+                        input.form-control(type='text', name='name', id='name', value=(newMidia ? '' : midia.name))
+                    .col-sm-4
+                      .form-group
+                        label.control-label(for='type') Descrição Curta
+                        input.form-control(type='text', name='description' value=value=(newMidia ? '' : midia.description))
+
+                    .col-sm-4
+                      .form-group
+                        label.control-label(for='role') Permissão
+                        select.form-control(name='role')
+                          each info, index in config._roles
+                            if (!newMidia && info.role.type == type)
+                              option(value=info.role._id, selected)=type
+                            else
+                              option(value=info.role._id)=info.role.name
+
+                  .row
+                    .col-sm-6
+                      .form-group
+                        input.form-control(type='file', name='fileUpdate', id='fileUpdate', placeholder='Selecione o arquivo')
+                    .col-sm-6
+                      .form-group
+                          button.btn.btn-info.btn-fill.pull-right(type='submit')
+                            i.fa.fa-pencil
+                            | Salvar

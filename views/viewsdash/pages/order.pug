@@ -1,0 +1,158 @@
+extends ../layout
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          .card
+            .header
+              h4.title Informações do pedido
+            .content
+              - var action = newOrder ? '/order' : '/order/'+event._id;
+              form(action=action, method='POST')
+                input(type='hidden', name='_csrf', value=_csrf)
+                .row
+                  .col-sm-4
+                    if !signup
+                      include ../../partials/flash
+                .row
+                  .col-sm-12
+                    h5 Informações do Paciente
+                    hr
+                .row
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='patient') Nome
+                      input.form-control(type='text', name='patient', id='patient', value=(newOrder ? '' : order.patient.name ))
+
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='age') Idade
+                      input.form-control(type='text', name='age', id='age', value=(newOrder ? '' : order.patient.age ))
+
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='gender') Sexo
+                      select.form-control(name='gender', id='gender')
+                        - var genders = ['Masculino', 'Feminino'];
+                        each gender in genders
+                          if (!newOrder && order.patient.gender == gender)
+                            option(value=gender, selected)=gender
+                          else
+                            option(value=gender)=gender
+
+                .row
+                  .col-sm-12
+                    h5 Cores
+                    hr
+                .row
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='domainColor') Cor dominante
+                      input.form-control(type='text', name='domainColor', id='domainColor', value=(newOrder ? '' : order.domainColor ))
+
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='remainingColor') Cor remanescente
+                      input.form-control(type='text', name='remainingColor', id='remainingColor', value=(newOrder ? '' : order.remainingColor ))
+
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='usedScale') Escala utilizada
+                      input.form-control(type='text', name='usedScale', id='usedScale', value=(newOrder ? '' : order.usedScale ))
+
+                .row
+                  .col-sm-8
+                    .form-group
+                      h5 Informações do Pedido
+                      hr
+                    .form-group
+                      label.control-label(for='note') Observações
+                      textarea.form-control(name='note', id='note', rows='10')=newOrder ? '' : order.note
+                    .form-group
+                      label.control-label(for='implat') Implate
+                      input.form-control(type='text', name='implat', id='implat', value=(newOrder ? '' : order.implat ))
+                    .form-group
+                      label.control-label(for='model') Modelo
+                      input.form-control(type='text', name='model', id='model', value=(newOrder ? '' : order.model ))
+                    .form-group
+                      label.control-label(for='diameter') Diâmetro
+                      input.form-control(type='text', name='diameter', id='diameter', value=(newOrder ? '' : order.diameter ))
+                    .form-group
+                      label.control-label(for='previewDate') Data Prevista
+                      input.form-control(type='text', name='previewDate', id='previewDate', value=(newOrder ? '' : order.previewDate ))
+                    .form-group
+                      .clearfix
+                      h5 Relação de Materiais
+                      hr
+                    .row
+                      -
+                        var materials = ['Modelo de estudo', 'Mordida', 'Transferente',
+                            'Moldagem', 'Tróqueis', 'Articulador número',
+                            'Modelo Test Drive', 'Escala de cores', 'Arco Facial',
+                            'Antagônico', 'Coping', 'Pino Guia',
+                            'Moldeiras', 'Abutment', 'CD / PenDrive',
+                            'Modelo de trabalho', 'Fotos de rosto', 'Caixa',
+                            'Réplica / Análogo', 'Fotos Test-Drive', 'Bolacha / Articulador',
+                            'Fotos tomada de cor', 'Gengica Artificial', 'Fotos Remanescentes'
+                        ];
+                      each material, index in materials
+                        - var paddingFirst = index%3 == 0 ? 'padding-left:15px' : '';
+                        .col-sm-4(style=paddingFirst)
+                          label.checkbox
+                            span.icons
+                              span.first-icon.fa.fa-square-o
+                              span.second-icon.fa.fa-check-square-o
+                            input(type='checkbox', name=material, value=material, data-toggle='checkbox')
+                            | #{material}
+
+                  .col-sm-4
+                    include ../../../public/svg/model-teeth.svg
+                    .table-full-width
+                      table.table
+                        thead
+                          tr
+                            th(width='20')
+                            th Descrição
+                            th(width='50') Quantidade
+                        tbody
+                          tr
+                            td.text-center
+                              label.checkbox
+                                span.icons
+                                  span.first-icon.fa.fa-square-o
+                                  span.second-icon.fa.fa-check-square-o
+                                input(type='checkbox', name='lamina', value='', data-toggle='checkbox')
+                            td Lâmina / Faceta
+                            td
+                              input.form-control(type='number', name='qtdLamina')
+                          tr
+                            td
+                              label.checkbox
+                                span.icons
+                                  span.first-icon.fa.fa-square-o
+                                  span.second-icon.fa.fa-check-square-o
+                                input(type='checkbox', name='lamina', value='', data-toggle='checkbox')
+                            td Coroa
+                            td
+                              input.form-control(type='number', name='qtdLamina')
+                          tr
+                            td
+                              label.checkbox
+                                span.icons
+                                  span.first-icon.fa.fa-square-o
+                                  span.second-icon.fa.fa-check-square-o
+                                input(type='checkbox', name='lamina', value='', data-toggle='checkbox')
+                            td Inlay / Onlay
+                            td
+                              input.form-control(type='number', name='qtdLamina')
+
+
+
+                .row
+                  .col-sm-12
+                    .form-group
+                        button.btn.btn-info.btn-fill.pull-right(type='submit')
+                          i.fa.fa-pencil
+                          | Salvar

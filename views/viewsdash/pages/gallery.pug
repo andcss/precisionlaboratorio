@@ -9,4 +9,28 @@ block content
               .header
                 h4.title Galeria de mídias
                 p.category Conteúdo exclusivo do laboratório Precision
+                if(user._role.value > 9)
+                  a(href='/midia').btn.btn-default.pull-right Adicionar Arquivo
               .content
+                .row
+                  each file, index in gallery.files
+                    if(file._role.value <= user._role.value)
+                      .col-sm-4
+                        .card
+                          .header
+                            h4.title=file.name
+                            p.category=file.description
+                          .content
+                            .image
+                              if(file.type == 'image')
+                                a(href=file.url, target='_black')
+                                  img(src=file.url, alt=file.name)
+                              if(file.type == 'video')
+                                video(controls='true')
+                                  source(src=file.url, type='video/mp4')
+                                  | Seu navegador não suporta o formato do video.
+                              if(file.type == 'raw')
+                                strong
+                                  i.pe-7s-paperclip
+                                span Arquivo para download
+                                a.btn(href=file.url, target='_black') Fazer Download

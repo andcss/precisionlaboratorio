@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+  .content
+    .container-fluid
+      .row
+        .col-md-12
+          .card
+            .header
+              h4.title Informações de Permissão
+            .content
+              - var action = newRole ? '/role' : '/role/'+role._id;
+              form(action=action, method='POST')
+                .row
+                  .col-sm-12
+                    if !signup
+                      include ../../partials/flash
+                input(type='hidden', name='_csrf', value=_csrf)
+                .row
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='name') Nome
+                      input.form-control(type='text', name='name', id='name', value=role.name)
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='type') Tipo
+                      - var types = ['Usuário', 'Editor', 'Moderador', 'Administrador'];
+                      select.form-control(name='type')
+                        each type in types
+                          if(type == role.type)
+                            option(value=type, selected)=type
+                          else
+                            option(value=type)=type
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='value') Valor
+                      input.form-control(name='value', type='number', min='1', max='10', value=role.value)
+
+                .row
+                  .col-sm-12
+                    .form-group
+                        button.btn.btn-info.btn-fill.pull-right(type='submit')
+                          i.fa.fa-pencil
+                          | Salvar

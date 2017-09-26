@@ -1648,6 +1648,26 @@ body > .navbar-collapse {
     transform-style: preserve-3d; }
     .card .image img {
       width: 100%; }
+    .card .image video {
+      width: 100%; }
+    .card .image strong {
+      margin: 10px auto;
+      width: 100px;
+      height: 100px;
+      border: 1px solid #c4c4c4;
+      display: block;
+      text-align: center;
+      border-radius: 100%; }
+      .card .image strong i {
+        font-size: 60px;
+        line-height: 100px;
+        color: #c4c4c4; }
+    .card .image span {
+      text-align: center;
+      display: block; }
+    .card .image .btn {
+      margin: 10px auto;
+      display: block; }
   .card .filter {
     position: absolute;
     z-index: 2;
@@ -1677,7 +1697,15 @@ body > .navbar-collapse {
   .card .content {
     padding: 15px 15px 10px 15px; }
   .card .header {
-    padding: 15px 15px 0; }
+    padding: 15px 15px 0;
+    position: relative; }
+    .card .header .btn {
+      margin: 20px; }
+      @media (min-width: 700px) {
+        .card .header .btn {
+          position: absolute;
+          right: 0;
+          top: 0; } }
   .card .category,
   .card label {
     font-size: 14px;
@@ -2881,8 +2909,12 @@ body > .navbar-collapse {
 
 .logo {
   padding: 40px !important; }
-  .logo #logo_svg .colorLogo {
-    fill: #fff; }
+  .logo #logo_svg {
+    max-width: 150px;
+    margin: 0 auto;
+    display: block; }
+    .logo #logo_svg .colorLogo {
+      fill: #fff; }
 
 .mensagem {
   padding: 80px 40px;
