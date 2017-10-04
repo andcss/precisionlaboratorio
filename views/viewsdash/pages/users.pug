@@ -30,7 +30,7 @@ block content
                         td=index+1
                         td=user.profile.firstName + ' ' + user.profile.lastName
                         td=user.email
-                        td=user.ufCro + '-' + user.cro
+                        td=user.ufCro + '-' + user.typeCro + '-' + user.cro + ' | ' + (user.validationCRO ? 'Válido' : 'Não Validado')
                         td
                           if user.status == "Ativo"
                             .legend

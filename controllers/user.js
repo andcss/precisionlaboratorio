@@ -3,6 +3,8 @@ const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const requestify = require('requestify');
+
 const User = require('../models/User');
 
 const preTitle = 'Precision - ';
@@ -47,7 +49,7 @@ exports.postLogin = (req, res, next) => {
     }
     req.logIn(user, (err) => {
       if (err) { return next(err); }
-      req.flash('success', { msg: 'Success! You are logged in.' });
+      req.flash('success', { msg: 'Seu acesso foi efetuado com sucesso!' });
       res.redirect('/dashboard/home');
     });
   })(req, res, next);
@@ -75,6 +77,53 @@ exports.getSignup = (req, res) => {
   });
 };
 
+// Validate CRO
+function validationCRO(cro, type, uf) {
+  const apiKey = '7849682889';
+  let baseApiUrl = `http://www.consultacrm.com.br/api/index.php?tipo=cro&q=${cro}&uf=${uf}&chave=${apiKey}&destino=json`
+
+  return new Promise ((resolve, reject) => {
+    requestify.get(baseApiUrl).then((res) => {
+      let body = res.getBody();
+      let parseBody = JSON.parse(body);
+
+      let findCro = parseBody.item.filter((apiCro) => {
+        return apiCro.numero == `${uf}-${type}-${cro}`;
+      });
+      resolve(findCro);
+    }).fail(function(response) {
+      reject();
+  	});
+  });
+}
+
+function createUser(req, res, infosUser) {
+
+  const user = new User(infosUser);
+
+  User.findOne({ email: req.body.email }, (err, existingUser) => {
+    if (err) {
+      req.flash('user', infosUser);
+      return res.redirect('/login?signup=true');
+    }
+
+    if (existingUser) {
+      req.flash('errors', { msg: 'Email já cadastrado!' });
+      req.flash('user', infosUser);
+      return res.redirect('/login?signup=true');
+    }
+    user.save((err) => {
+      if (err) { return next(err); }
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/dashboard/home');
+      });
+    });
+  });
+}
+
 /**
  * POST /signup
  * Create a new local account.
@@ -93,6 +142,7 @@ exports.postSignup = (req, res, next) => {
     telefone: req.body.telefone || '',
     cro: req.body.cro || '',
     ufCro: req.body.ufCro || '',
+    typeCro: req.body.typeCro || '',
     howMeet: req.body.howMeet || '',
     profile: {
       firstName: req.body.firstName || '',
@@ -106,24 +156,14 @@ exports.postSignup = (req, res, next) => {
     return res.redirect('/login?signup=true');
   }
 
-  const user = new User(infosUser);
-
-  User.findOne({ email: req.body.email }, (err, existingUser) => {
-    if (err) { return next(err); }
-    if (existingUser) {
-      req.flash('errors', { msg: 'Email já cadastrado!' });
-      return res.redirect('/signup');
-    }
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.logIn(user, (err) => {
-        if (err) {
-          return next(err);
-        }
-        res.redirect('/dashboard/home');
-      });
-    });
+  validationCRO(req.body.cro, req.body.typeCro, req.body.ufCro).then((resApiCro) => {
+    infosUser.validationCRO = true;
+    createUser(req, res, infosUser);
+  }).catch(() => {
+    infosUser.validationCRO = false;
+    createUser(req, res, infosUser);
   });
+
 };
 
 /**
@@ -160,11 +200,16 @@ exports.postUpdateProfile = (req, res, next) => {
       return res.redirect('/dashboard/users');
     }
     user.email = req.body.email || '';
-    user.status = req.body.status || '';
-    user.ufCro = req.body.ufCro || '';
-    user.cro = req.body.cro || '';
-    if (req.body.role)
-      user._role = mongoose.Types.ObjectId(req.body.role);
+
+    if (req.user._role && req.user._role.value > 9) {
+      user.ufCro = req.body.ufCro || '';
+      user.status = req.body.status || '';
+      user.cro = req.body.cro || '';
+      user.validationCRO = req.body.validationCRO || false;
+      user.typeCro = req.body.typeCro || '';
+      if (req.body.role)
+        user._role = mongoose.Types.ObjectId(req.body.role);
+    }
 
     user.profile.firstName = req.body.firstName || '';
     user.profile.lastName = req.body.lastName || '';
@@ -450,8 +495,10 @@ exports.postNewUser = (req, res) => {
   user.status = req.body.status || '';
   user.ufCro = req.body.ufCro || '';
   user.cro = req.body.cro || '';
-  if (req.body._role)
-    user._role = mongoose.Types.ObjectId(req.body._role);
+  user.validationCRO = req.body.validationCRO || false;
+  user.typeCro = req.body.typeCro || '';
+  if (req.body.role)
+    user._role = mongoose.Types.ObjectId(req.body.role);
 
   user.profile.firstName = req.body.firstName || '';
   user.profile.lastName = req.body.lastName || '';

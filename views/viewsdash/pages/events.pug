@@ -19,13 +19,15 @@ block content
                   thead
                     th #
                     th Nome
-                    th Data
+                    th Data Início
+                    th Data Fim
                     th.text-center Editar
                   tbody
                     each event, index in events
                       tr
                         td=index+1
                         td=event.name
-                        td=event.date
+                        td=formatDate(event.startDate)
+                        td=formatDate(event.endDate)
                         td.text-center
                           a(href=`/event/${event._id}`).btn.btn-info.btn-fill Editar Evento

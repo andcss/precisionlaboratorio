@@ -71,9 +71,12 @@ exports.isAdminUser = (req, res, next) => {
         next();
       }
       else {
+        req.flash('error', { msg: 'Usuário não possuí permissão para acesso!' });
         res.redirect('/dashboard/home');
       }
     }
-    else
+    else {
+      req.flash('error', { msg: 'Usuário não possuí permissão para acesso!' });
       res.redirect('/dashboard/home');
+    }
  };

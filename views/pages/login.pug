@@ -56,6 +56,16 @@ block content
                     option(value=state, selected)=state
                   else
                     option(value=state)=state
+            .flex.flex-2
+              label * Categoria
+              select(name='typeCro', id='typeCro', required)
+                - var types = { CD: 'Cirurgião-Dentista', TPD: 'Técnico em Prótese Dentária', TSB: 'Técnico em Saúde Bucal', ASB: 'Auxiliar de Saúde Bucal', APD: 'Auxiliar de Prótese Dentária' };
+                each type, index in types
+                  if (messages.user && messages.user[0].typeCro == index)
+                    option(value=index, selected)=type
+                  else
+                    option(value=index)=type
+
             .flex.flex-3
               label * Nº CRO
               input(type='text', name='cro', id='cro', required, value=(messages.user ? messages.user[0].cro : ''))

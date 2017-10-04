@@ -12,7 +12,9 @@ const userSchema = new Schema({
   _role: { type: Schema.Types.ObjectId, ref: 'Role' },
   cro: { type: String, default: '' },
   ufCro: { type: String, default: '' },
+  typeCro: { type: String, default: '' },
   howMeet: { type: String, default: '' },
+  validationCRO: { type: Boolean, default: false },
   profile: {
     firstName: { type: String, default: '' },
     lastName: { type: String, default: '' },

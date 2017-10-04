@@ -97,7 +97,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
-  if (req.path === '/midia') {
+  if (req.path === '/midia' || req.path === '/event') {
     next();
   } else {
     lusca.csrf()(req, res, next);
@@ -159,7 +159,7 @@ app.get('/forgot', userController.getForgot);
 app.post('/forgot', userController.postForgot);
 app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
-app.get('/signup', userController.getSignup);
+//app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
@@ -175,10 +175,10 @@ app.get('/dashboard/pages', passportConfig.isAdminUser, dashboardController.getP
 app.get('/dashboard/config', passportConfig.isAdminUser, dashboardController.getConfig);
 
 app.get('/events', passportConfig.isAdminUser, eventController.getEvents);
-app.get('/event', passportConfig.isAdminUser, eventController.getNewEvent);
-app.get('/event/:id', passportConfig.isAdminUser, eventController.getEvent);
-app.post('/event', passportConfig.isAdminUser, eventController.postNewEvent);
-app.post('/event/:id', passportConfig.isAdminUser, eventController.postEvent);
+app.get('/event', [passportConfig.isAdminUser, multipartMiddleware], eventController.getNewEvent);
+app.get('/event/:id', [passportConfig.isAdminUser, multipartMiddleware], eventController.getEvent);
+app.post('/event', [passportConfig.isAdminUser, multipartMiddleware], eventController.postNewEvent);
+app.post('/event/:id', [passportConfig.isAdminUser, multipartMiddleware], eventController.postEvent);
 
 app.get('/user', passportConfig.isAdminUser, userController.getNewUser);
 app.post('/user', passportConfig.isAdminUser, userController.postNewUser);

@@ -37,13 +37,13 @@ block content
                           option(value=gender)=gender
                   .col-sm-6
                     .form-group
-                      label.control-label(for='profession') Profissão
-                      input.form-control(type='text', name='profession', id='profession', value=findUser.profile.profession)
+                      label.control-label(for='office') Empresa
+                      input.form-control(type='text', name='office', id='office', value=findUser.profile.office)
                 .row
-                  .col-sm-2
+                  .col-sm-4
                     .form-group
                       label.control-label(for='ufCro') UF CRO
-                      if (user._role.value > 9)
+                      if (user._role && user._role.value > 9)
                         select.form-control(name='ufCro', id='ufCro', required)
                           - var states = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];
                           each state in states
@@ -53,17 +53,41 @@ block content
                               option(value=state)=state
                       else
                         input.form-control(type='text', name='ufCro', id='ufCro', value=findUser.ufCro, disabled)
-                  .col-sm-5
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='typeCro') Categoria
+                      if (user._role && user._role.value > 9)
+                        select.form-control(name='typeCro', id='typeCro', required)
+                          - var categories = { CD: 'Cirurgião-Dentista', TPD: 'Técnico em Prótese Dentária', TSB: 'Técnico em Saúde Bucal', ASB: 'Auxiliar de Saúde Bucal', APD: 'Auxiliar de Prótese Dentária' };
+                          each type, index in categories
+                            if (findUser.typeCro == index)
+                              option(value=index, selected)=type
+                            else
+                              option(value=index)=type
+                      else
+                        input.form-control(type='text' value=findUser.typeCro, disabled)
+                  .col-sm-4
                     .form-group
                       label.control-label(for='cro') Nº CRO
-                      if (user._role.value > 9)
+                      if (user._role && user._role.value > 9)
                         input.form-control(type='text', name='cro', id='cro', value=findUser.cro)
                       else
                         input.form-control(value=findUser.cro, name='cro', disabled)
-                  .col-sm-5
+                .row
+                  .col-sm-4
                     .form-group
-                      label.control-label(for='office') Empresa
-                      input.form-control(type='text', name='office', id='office', value=findUser.profile.office)
+                      label.control-label(for='validationCRO') CRO Válido
+                      if (user._role && user._role.value > 9)
+                        select.form-control(name='validationCRO', id='validationCRO', required)
+                          if (findUser.validationCRO)
+                            option(value='true', selected) Válido
+                            option(value='false') Inválido
+
+                          else
+                            option(value='false', selected) Inválido
+                            option(value='true') Válido
+                      else
+                        input.form-control(value=(findUser.validationCRO ? 'Válido' : 'Não Validado'), disabled)
 
                 .row
                   .col-sm-7
@@ -78,8 +102,8 @@ block content
                   .col-sm-6
                     .form-group
                       label.control-label(for='status') Status
-                      if (user._role.value > 9)
-                        - var statusList = ['Pendente', 'Ativo', 'Desativado'];
+                      if (user._role && user._role.value > 9)
+                        - var statusList = ['Pendente', 'Ativo', 'Bloqueado'];
                         select.form-control(name='status')
                           each status in statusList
                             if (status == findUser.status)
@@ -88,7 +112,7 @@ block content
                               option(value=status)=status
                       else
                         input.form-control(value=findUser.status, disabled)
-                  if (user._role.value > 9)
+                  if (user._role && user._role.value > 9)
                     .col-sm-6
                       .form-group
                         label.control-label(for='role') Permissão
@@ -115,7 +139,12 @@ block content
                 h4.title
                   | #{findUser.profile.firstName} #{findUser.profile.lastName}
                   br
-                  small #{findUser.profile.profession} | #{findUser.profile.office}
+                  if (findUser.profile.office)
+                    small #{findUser.profile.office}
+                    br
+                  small
+                    strong CRO:
+                    | #{findUser.ufCro}-#{findUser.typeCro}-#{findUser.cro}
         if (findUser.email)
           .col-md-8
             .card

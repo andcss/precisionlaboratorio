@@ -38,10 +38,64 @@ exports.getNewEvent = (req, res) => {
 }
 
 exports.getEvent = (req, res) => {
+  Event.findById(req.params.id, (err, findEvent) => {
+    if (err) {
+      req.flash('errors', { msg: 'Não foi possivel carregar o evento.' });
+      return res.redirect('/events');
+    }
 
+    res.render('viewsdash/pages/event', {
+      title: preTitle+ 'Eventos',
+      pageName: 'events',
+      user: req.user,
+      event: findEvent,
+      newEvent: false,
+    });
+
+  })
 }
 
 exports.postNewEvent = (req, res) => {
+
+  var newEvent = new Event({
+    name: req.body.name,
+    startDate: Date(req.body.startDate),
+    endDate: Date(req.body.endDate),
+    description: req.body.description
+  });
+
+  newEvent.save((err, saveEvent) => {
+    if (err) {
+      req.flash('errors', { msg: 'Um erro aconteceu no cadastro do evento.' });
+      return res.redirect('/events');
+    }
+    if (req.files) {
+      cloudinary.v2.uploader.upload(req.files.fileUpdate.path,
+        {
+          resource_type: "auto"
+        },
+        function(err, returnFileUpdate) {
+          if (err) {
+            req.flash('errors', { msg: 'Um erro aconteceu no upload de arquivo.' });
+            return res.redirect('/events');
+          }
+
+          saveEvent.url_image = returnFileUpdate.secure_url;
+
+          saveEvent.save((err, saveEvent) => {
+            if(err) {
+              return;
+            }
+            req.flash('success', { msg: 'Novo evento criado' });
+            return res.redirect('/events');
+          })
+        }
+      );
+    }
+    req.flash('success', { msg: 'Evento cadastrado com sucesso!' });
+    return res.redirect('/events');
+  });
+
 
 }
 

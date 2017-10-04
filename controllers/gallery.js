@@ -46,7 +46,6 @@ exports.getMidia = (req, res) => {
 }
 
 exports.postNewMidia = (req, res) => {
-  console.log(req.files.fileUpdate.path);
 
   cloudinary.v2.uploader.upload(req.files.fileUpdate.path,
     {
@@ -66,7 +65,7 @@ exports.postNewMidia = (req, res) => {
           req.flash('errors', { msg: 'Não encontramos a galeria.' })
           return res.redirect('/midia');
         }
-        console.log(returnFileUpdate);
+        
         gallery.files.push({
           url: returnFileUpdate.secure_url,
           type: returnFileUpdate.resource_type,

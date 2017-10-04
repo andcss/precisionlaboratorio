@@ -10,43 +10,44 @@ block content
               h4.title Informações do evento
             .content
               - var action = newEvent ? '/event' : '/event/'+event._id;
-              form(action=action, method='POST')
+              form(action=action, method='POST', enctype="multipart/form-data")
+                input(type='hidden', name='_csrf', value=_csrf)
                 .row
                   .col-sm-12
                     if !signup
                       include ../../partials/flash
-                input(type='hidden', name='_csrf', value=_csrf)
                 .row
                   .col-sm-6
                     .form-group
                       label.control-label(for='name') Nome
-                      input.form-control(type='text', name='name', id='name', value=(event ? event.name : ''))
-
-                  .col-sm-6
-                    .form-group
-                      label.control-label Data Início
-                      .input-group.date
-                          input.form-control.datepicker(type='text', value=(event ? event.startDate : ''))
-                          span.input-group-addon
-                            span.pe-7s-clock
-                              
-                  .col-sm-6
-                    .form-group
-                      label.control-label Data Fim
-                      .input-group.date
-                          input.form-control.datepicker(type='text', value=(event ? event.startDate : ''))
-                          span.input-group-addon
-                            span.pe-7s-clock
-
-                .row
-                  .col-sm-6
-                    .form-group
-                      label Descrição
-                      textArea.form-control(name='description')=(event ? event.description : '')
+                      input.form-control(type='text', name='name', id='name', value=(event ? event.name : ''), required)
                   .col-sm-6
                     .form-group
                       label Selecione uma Imagem
                       input.form-control(type='file', name='fileUpdate', id='fileUpdate', placeholder='Selecione o arquivo')
+
+                .row
+                  .col-sm-6
+                    .form-group
+                      label.control-label Data Início
+                      .input-group.date
+                          input.form-control.datepicker(type='text', name='startDate' value=(event ? formatDate(event.startDate) : ''), required)
+                          span.input-group-addon
+                            span.pe-7s-clock
+
+                  .col-sm-6
+                    .form-group
+                      label.control-label Data Fim
+                      .input-group.date
+                          input.form-control.datepicker(type='text', name='endDate' value=(event ? formatDate(event.endDate) : ''), required)
+                          span.input-group-addon
+                            span.pe-7s-clock
+
+                .row
+                  .col-sm-12
+                    .form-group
+                      label Descrição Curta
+                      textArea.form-control(name='description')=(event ? event.description : '')
 
                 .row
                   .col-sm-12
