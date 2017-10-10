@@ -32,7 +32,7 @@ block content
                       .form-group
                         label.control-label(for='status') Status
                         select.form-control(name='status', id='status')
-                          - var status = ['pendente', 'Em produção', 'Finalizado'];
+                          - var status = ['pendente', 'Em produção', 'Finalizado', 'Cancelado'];
                           each std in status
                             if (!newOrder && order.status == std)
                               option(value=std, selected)=std

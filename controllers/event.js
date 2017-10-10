@@ -25,8 +25,7 @@ exports.getEvents = (req, res) => {
       events
     });
   });
-
-};
+}
 
 exports.getNewEvent = (req, res) => {
   res.render('viewsdash/pages/event', {
@@ -52,8 +51,7 @@ exports.getEvent = (req, res) => {
       event: findEvent,
       newEvent: false,
     });
-
-  })
+  });
 }
 
 exports.postNewEvent = (req, res) => {
@@ -98,10 +96,26 @@ exports.postNewEvent = (req, res) => {
       return res.redirect('/events');
     }
   });
-
-
 }
 
 exports.postEvent = (req, res) => {
-  res.json(req.body);
+  Event.findById(req.params.id).exec((err, findEvent) => {
+    if (err) {
+      req.flash('error', { msg: 'Não foi possivel salvar o evento' });
+      return res.redirect('/event');
+    }
+
+    findEvent.name = req.body.name;
+    findEvent.startDate = new Date(moment(req.body.startDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm"));
+    findEvent.endDate = new Date(moment(req.body.endDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm"));
+    findEvent.description = req.body.description;
+
+    findEvent.save((err, saveEvent) => {
+      if (err) {
+        req.flash('error', { msg: 'Não foi possivel salvar o evento' });
+        return res.redirect('back');
+      }
+      return res.redirect('/events');
+    });
+  });
 }
