@@ -20,11 +20,11 @@ block content
                     .col-sm-4
                       .form-group
                         label.control-label(for='name') Título
-                        input.form-control(type='text', name='name', id='name', value=(newMidia ? '' : midia.name))
+                        input.form-control(type='text', name='name', id='name', value=(newMidia ? '' : midia.name), required)
                     .col-sm-4
                       .form-group
                         label.control-label(for='type') Descrição Curta
-                        input.form-control(type='text', name='description' value=value=(newMidia ? '' : midia.description))
+                        input.form-control(type='text', name='description' value=value=(newMidia ? '' : midia.description), required)
 
                     .col-sm-4
                       .form-group
@@ -39,7 +39,7 @@ block content
                   .row
                     .col-sm-6
                       .form-group
-                        input.form-control(type='file', name='fileUpdate', id='fileUpdate', placeholder='Selecione o arquivo')
+                        input.form-control(type='file', name='fileUpdate', id='fileUpdate', placeholder='Selecione o arquivo', required)
                     .col-sm-6
                       .form-group
                           button.btn.btn-info.btn-fill.pull-right(type='submit')

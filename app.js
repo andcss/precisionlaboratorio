@@ -96,13 +96,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use((req, res, next) => {
-  if (req.path === '/midia' || req.path === '/event') {
-    next();
-  } else {
-    lusca.csrf()(req, res, next);
-  }
-});
+// app.use((req, res, next) => {
+//   if (req.path === '/midia' || req.path === '/event') {
+//     next();
+//   } else {
+//     lusca.csrf()(req, res, next);
+//   }
+// });
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 app.use((req, res, next) => {
@@ -151,6 +151,8 @@ app.get('/produtos', pagesController.produtos);
 app.get('/agenda', pagesController.agenda);
 app.get('/portifolio', pagesController.portifolio);
 
+app.get('/importMaterials', configController.populateMaterials);
+
 
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
@@ -190,10 +192,10 @@ app.post('/role', passportConfig.isAdminUser, configController.postNewRole);
 app.post('/role/:id', passportConfig.isAdminUser, configController.postRole);
 
 app.get('/orders', passportConfig.isAuthenticated, orderController.getOrders);
-app.get('/order', passportConfig.isAdminUser, orderController.getNewOrder);
-app.get('/order/:id', passportConfig.isAdminUser, orderController.getOrder);
-app.post('/order', passportConfig.isAdminUser, orderController.postNewOrder);
-app.post('/order/:id', passportConfig.isAdminUser, orderController.postOrder);
+app.get('/order', passportConfig.isAuthenticated, orderController.getNewOrder);
+app.get('/order/:id', passportConfig.isAuthenticated, orderController.getOrder);
+app.post('/order', passportConfig.isAuthenticated, orderController.postNewOrder);
+app.post('/order/:id', passportConfig.isAuthenticated, orderController.postOrder);
 
 app.get('/galleries', passportConfig.isAuthenticated, galleryController.getGalleries);
 app.get('/midia', [passportConfig.isAdminUser, multipartMiddleware], galleryController.getNewMidia);

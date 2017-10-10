@@ -6,16 +6,38 @@ block content
       .row
         .col-md-12
           .card
+
             .header
               h4.title Informações do pedido
             .content
-              - var action = newOrder ? '/order' : '/order/'+event._id;
+              - var action = newOrder ? '/order' : '/order/' + order._id;
               form(action=action, method='POST')
                 input(type='hidden', name='_csrf', value=_csrf)
                 .row
                   .col-sm-4
                     if !signup
                       include ../../partials/flash
+                if(!newOrder && user._role.value > 9)
+                  .row
+                    .col-sm-12
+                      h5 Informações do Pedido
+                      hr
+                  .row
+                    .col-sm-6
+                      .form-group
+                        label.control-label Profissional
+                        a(href=('/user/'+order.user._id), target="_blank").form-control=(order.user.profile.firstName + ' ' + order.user.profile.lastName + ' CRO: '+ order.user.ufCro + '-' + order.user.typeCro + '-' + order.user.cro)
+
+                    .col-sm-6
+                      .form-group
+                        label.control-label(for='status') Status
+                        select.form-control(name='status', id='status')
+                          - var status = ['pendente', 'Em produção', 'Finalizado'];
+                          each std in status
+                            if (!newOrder && order.status == std)
+                              option(value=std, selected)=std
+                            else
+                              option(value=std)=std
                 .row
                   .col-sm-12
                     h5 Informações do Paciente
@@ -23,13 +45,13 @@ block content
                 .row
                   .col-sm-4
                     .form-group
-                      label.control-label(for='patient') Nome
-                      input.form-control(type='text', name='patient', id='patient', value=(newOrder ? '' : order.patient.name ))
+                      label.control-label(for='name') Nome
+                      input.form-control(type='text', name='name', id='name', value=(newOrder ? '' : order.patient.name ))
 
                   .col-sm-4
                     .form-group
                       label.control-label(for='age') Idade
-                      input.form-control(type='text', name='age', id='age', value=(newOrder ? '' : order.patient.age ))
+                      input.form-control(type='number', name='age', id='age', value=(newOrder ? '' : order.patient.age ))
 
                   .col-sm-4
                     .form-group
@@ -67,36 +89,29 @@ block content
                     .form-group
                       h5 Informações do Pedido
                       hr
-                    .form-group
+                    .form-group.col-sm-12
                       label.control-label(for='note') Observações
-                      textarea.form-control(name='note', id='note', rows='10')=newOrder ? '' : order.note
-                    .form-group
+                      textarea.form-control(name='note', id='note', rows='10')=newOrder ? '' : order.orderInfos.note
+                    .form-group.col-sm-6
                       label.control-label(for='implat') Implate
-                      input.form-control(type='text', name='implat', id='implat', value=(newOrder ? '' : order.implat ))
-                    .form-group
+                      input.form-control(type='text', name='implat', id='implat', value=(newOrder ? '' : order.orderInfos.implat ))
+                    .form-group.col-sm-6
                       label.control-label(for='model') Modelo
-                      input.form-control(type='text', name='model', id='model', value=(newOrder ? '' : order.model ))
-                    .form-group
+                      input.form-control(type='text', name='model', id='model', value=(newOrder ? '' : order.orderInfos.model ))
+                    .form-group.col-sm-6
                       label.control-label(for='diameter') Diâmetro
-                      input.form-control(type='text', name='diameter', id='diameter', value=(newOrder ? '' : order.diameter ))
-                    .form-group
+                      input.form-control(type='text', name='diameter', id='diameter', value=(newOrder ? '' : order.orderInfos.diameter ))
+                    .form-group.col-sm-6
                       label.control-label(for='previewDate') Data Prevista
-                      input.form-control(type='text', name='previewDate', id='previewDate', value=(newOrder ? '' : order.previewDate ))
+                      .input-group.date
+                          input.form-control.datepicker(type='text', name='previewDate' value=formatDate(order.orderInfos.previewDate), required)
+                          span.input-group-addon
+                            span.pe-7s-clock
                     .form-group
                       .clearfix
                       h5 Relação de Materiais
                       hr
                     .row
-                      -
-                        var materials = ['Modelo de estudo', 'Mordida', 'Transferente',
-                            'Moldagem', 'Tróqueis', 'Articulador número',
-                            'Modelo Test Drive', 'Escala de cores', 'Arco Facial',
-                            'Antagônico', 'Coping', 'Pino Guia',
-                            'Moldeiras', 'Abutment', 'CD / PenDrive',
-                            'Modelo de trabalho', 'Fotos de rosto', 'Caixa',
-                            'Réplica / Análogo', 'Fotos Test-Drive', 'Bolacha / Articulador',
-                            'Fotos tomada de cor', 'Gengica Artificial', 'Fotos Remanescentes'
-                        ];
                       each material, index in materials
                         - var paddingFirst = index%3 == 0 ? 'padding-left:15px' : '';
                         .col-sm-4(style=paddingFirst)
@@ -104,11 +119,16 @@ block content
                             span.icons
                               span.first-icon.fa.fa-square-o
                               span.second-icon.fa.fa-check-square-o
-                            input(type='checkbox', name=material, value=material, data-toggle='checkbox')
-                            | #{material}
+                            input(type='checkbox', name='materials', value=material._id, data-toggle='checkbox', checked=(order.materials.indexOf(material._id) > -1 ? 'checked' : undefined))
+                            | #{material.name}
 
                   .col-sm-4
                     include ../../../public/svg/model-teeth.svg
+                    - var teethNumber = 0
+                    #selectedTeeth.hide
+                      while teethNumber < 32
+                        - teethNumber++
+                        input(type='checkbox', name='selectedTeeth', value=('t'+teethNumber), id=('checkbox-t'+teethNumber), checked=(order.selectedTeeth['t'+teethNumber] ? 'checked' : undefined))
                     .table-full-width
                       table.table
                         thead
@@ -123,32 +143,30 @@ block content
                                 span.icons
                                   span.first-icon.fa.fa-square-o
                                   span.second-icon.fa.fa-check-square-o
-                                input(type='checkbox', name='lamina', value='', data-toggle='checkbox')
+                                input(type='checkbox', name='blade', data-toggle='checkbox', value=(newOrder ? false : order.options.blade ), checked=(order.options.blade ? 'checked' : undefined))
                             td Lâmina / Faceta
                             td
-                              input.form-control(type='number', name='qtdLamina')
+                              input.form-control(type='number', name='qtdBlade', value=(newOrder ? '' : order.options.qtdBlade ))
                           tr
                             td
                               label.checkbox
                                 span.icons
                                   span.first-icon.fa.fa-square-o
                                   span.second-icon.fa.fa-check-square-o
-                                input(type='checkbox', name='lamina', value='', data-toggle='checkbox')
+                                input(type='checkbox', name='crown', data-toggle='checkbox', value=(newOrder ? false : order.options.crown ), checked=(order.options.crown ? 'checked' : undefined))
                             td Coroa
                             td
-                              input.form-control(type='number', name='qtdLamina')
+                              input.form-control(type='number', name='qtdCrown', value=(newOrder ? '' : order.options.qtdCrown ))
                           tr
                             td
                               label.checkbox
                                 span.icons
                                   span.first-icon.fa.fa-square-o
                                   span.second-icon.fa.fa-check-square-o
-                                input(type='checkbox', name='lamina', value='', data-toggle='checkbox')
+                                input(type='checkbox', name='inlay', data-toggle='checkbox', value=(newOrder ? false : order.options.inlay ), checked=(order.options.inlay ? 'checked' : undefined))
                             td Inlay / Onlay
                             td
-                              input.form-control(type='number', name='qtdLamina')
-
-
+                              input.form-control(type='number', name='qtdInlay', value=(newOrder ? '' : order.options.qtdInlay ))
 
                 .row
                   .col-sm-12

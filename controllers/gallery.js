@@ -15,11 +15,7 @@ exports.getGalleries = (req, res) => {
   Gallery.findOne({ name: 'Principal'}).populate('files._role').exec((err, gallery) => {
     if(err) {
       req.flash('errors', { msg: 'Erro ao buscar galeria' });
-      return res.redirect('back')
-    }
-    if(!gallery) {
-      req.flash('errors', { msg: 'Não encontramos a galeria' });
-      return res.redirect('back')
+      return res.redirect('back');
     }
     res.render('viewsdash/pages/gallery', {
       title: preTitle+ 'Galerias',
@@ -65,7 +61,7 @@ exports.postNewMidia = (req, res) => {
           req.flash('errors', { msg: 'Não encontramos a galeria.' })
           return res.redirect('/midia');
         }
-        
+
         gallery.files.push({
           url: returnFileUpdate.secure_url,
           type: returnFileUpdate.resource_type,

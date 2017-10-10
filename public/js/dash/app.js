@@ -17,5 +17,27 @@ $(document).ready(function(){
       autoclose: true,
     });
 
+    $('.teeth').on('click', function(){
+      var teeth = $(this);
+      var teethId = teeth.attr('id');
+
+      // Colore/Deslore dentes Clicados
+      if(teeth.hasClass('selected')) {
+        console.log('clicado');
+        teeth.removeClass('selected');
+        $('#checkbox-'+teethId).attr('checked', false);
+      } else {
+        teeth.addClass('selected');
+        $('#checkbox-'+teethId).attr('checked', true);
+      }
+    });
+
+    $('#selectedTeeth input').each(function(key, checkbox) {
+      if ($(checkbox).is(':checked')) {
+        var nameTeeth = $(checkbox).val();
+        $('#'+nameTeeth).addClass('selected');
+      }
+    });
+
 
 });

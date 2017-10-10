@@ -1,4 +1,5 @@
 const cloudinary = require('cloudinary');
+const moment = require('moment');
 
 const Event = require('../models/Event');
 
@@ -59,8 +60,8 @@ exports.postNewEvent = (req, res) => {
 
   var newEvent = new Event({
     name: req.body.name,
-    startDate: Date(req.body.startDate),
-    endDate: Date(req.body.endDate),
+    startDate: new Date(moment(req.body.startDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm")),
+    endDate: new Date(moment(req.body.endDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm")),
     description: req.body.description
   });
 
@@ -69,7 +70,7 @@ exports.postNewEvent = (req, res) => {
       req.flash('errors', { msg: 'Um erro aconteceu no cadastro do evento.' });
       return res.redirect('/events');
     }
-    if (req.files) {
+    if (req.files.lenght > 0) {
       cloudinary.v2.uploader.upload(req.files.fileUpdate.path,
         {
           resource_type: "auto"
@@ -84,21 +85,23 @@ exports.postNewEvent = (req, res) => {
 
           saveEvent.save((err, saveEvent) => {
             if(err) {
-              return;
+              req.flash('error', { msg: 'Não foi possivel salvar o evento' });
+              return res.redirect('/event');
             }
             req.flash('success', { msg: 'Novo evento criado' });
             return res.redirect('/events');
           })
         }
       );
+    } else {
+      req.flash('success', { msg: 'Evento cadastrado com sucesso!' });
+      return res.redirect('/events');
     }
-    req.flash('success', { msg: 'Evento cadastrado com sucesso!' });
-    return res.redirect('/events');
   });
 
 
 }
 
 exports.postEvent = (req, res) => {
-
+  res.json(req.body);
 }

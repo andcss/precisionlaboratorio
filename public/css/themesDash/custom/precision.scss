@@ -28,3 +28,35 @@
     }
   }
 }
+
+.teeth {
+  cursor: pointer;
+  &:hover {
+    path {
+      stroke: #969696;
+    }
+    line {
+      stroke: #969696;
+    }
+    .numberRef {
+      fill: #969696;
+    }
+    .st0 {
+      stroke: #fff;
+    }
+  }
+  &.selected {
+    path {
+      stroke: #2d2d2d;
+    }
+    line {
+      stroke: #2d2d2d;
+    }
+    .numberRef {
+      fill: #2d2d2d;
+    }
+    .st0 {
+      stroke: #fff;
+    }
+  }
+}

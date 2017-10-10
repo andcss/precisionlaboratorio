@@ -1,5 +1,6 @@
 
 const Role = require('../models/Role');
+const Material = require('../models/Material');
 
 exports.getRole = (req, res) => {
   Role.findById(req.params.id).exec((err, role) => {
@@ -81,3 +82,36 @@ exports.postNewRole = (req, res) => {
     })
   });
 };
+
+exports.populateMaterials = (req, res) => {
+  var materials = ['Modelo de estudo', 'Mordida', 'Transferente',
+      'Moldagem', 'Tróqueis', 'Articulador número',
+      'Modelo Test Drive', 'Escala de cores', 'Arco Facial',
+      'Antagônico', 'Coping', 'Pino Guia',
+      'Moldeiras', 'Abutment', 'CD / PenDrive',
+      'Modelo de trabalho', 'Fotos de rosto', 'Caixa',
+      'Réplica / Análogo', 'Fotos Test-Drive', 'Bolacha / Articulador',
+      'Fotos tomada de cor', 'Gengica Artificial', 'Fotos Remanescentes'
+  ];
+
+  Material.remove({}, (err, data) => {
+    if (!err)
+      console.log('Removido todos materiais');
+      return;
+  });
+
+  for (key in materials) {
+    console.log(materials[key]);
+
+    var newMaterial = new Material({
+      name: materials[key],
+      nameImput: 'material-' + key,
+    });
+
+    newMaterial.save();
+
+  }
+
+  res.json({msg: 'feito'});
+
+}
