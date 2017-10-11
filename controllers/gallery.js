@@ -1,6 +1,6 @@
 const cloudinary = require('cloudinary');
 
-const Gallery = require('../models/gallery');
+const Gallery = require('../models/Gallery');
 
 const preTitle = 'Precision - ';
 
