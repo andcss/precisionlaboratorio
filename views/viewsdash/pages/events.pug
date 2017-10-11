@@ -21,7 +21,9 @@ block content
                     th Nome
                     th Data Início
                     th Data Fim
+                    th.text-center Destaque
                     th.text-center Editar
+                    th.text-center Excluir
                   tbody
                     each event, index in events
                       tr
@@ -29,5 +31,9 @@ block content
                         td=event.name
                         td=formatDate(event.startDate)
                         td=formatDate(event.endDate)
+                        td.text-center=(event.featured ? 'Ativo' : 'Não')
                         td.text-center
                           a(href=`/event/${event._id}`).btn.btn-info.btn-fill Editar Evento
+                        td.text-center
+                          a(href=`/event/delete/${event._id}`).btn.btn-danger.btn-fill
+                            i.fa.fa-trash

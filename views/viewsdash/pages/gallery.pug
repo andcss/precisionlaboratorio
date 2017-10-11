@@ -34,3 +34,23 @@ block content
                                   i.pe-7s-paperclip
                                 span Arquivo para download
                                 a.btn(href=file.url, target='_black') Fazer Download
+                            if (user._role.value > 9)
+                              .footer
+                                .legend
+                                  if (file._role.value >= 3)
+                                    i.fa.fa-circle.text-info
+                                    | Usuário Ouro
+                                  if (file._role.value >= 5)
+                                    i.fa.fa-circle.text-danger
+                                    |  Usuário Prata
+                                  if (file._role.value >= 6)
+                                    i.fa.fa-circle.text-warning
+                                    |  Usuário Bronze
+                                hr
+                                .stats
+                                  .col-sm-6
+                                    a(href=('/midia/'+file._id)).btn.btn-info
+                                      i.fa.fa-edit
+                                  .col-sm-6
+                                    a(href=('/midia/delete/'+file._id)).btn.btn-danger
+                                      i.fa.fa-trash

@@ -517,3 +517,24 @@ exports.postNewUser = (req, res) => {
     return res.redirect('/user/' + newUser._id);
   });
 };
+
+exports.deleteUser = (req, res) => {
+  User.findById(req.params.id).exec((err, findUser) => {
+    if (err) {
+      req.flash('errors', { msg: `Erro ao salvar dados` });
+      return res.redirect('/dashboard/users');
+    }
+    if (findUser.email == req.user.email) {
+      req.flash('errors', { msg: `Você não pode apagar seu usuário.` });
+      return res.redirect('/dashboard/users');
+    }
+    findUser.remove((err) => {
+      if (err) {
+        req.flash('errors', { msg: `Erro ao deletar usuário` });
+        return res.redirect('/dashboard/users');
+      }
+      req.flash('success', { msg: `Usuário deletado` });
+      return res.redirect('/dashboard/users');
+    });
+  });
+}

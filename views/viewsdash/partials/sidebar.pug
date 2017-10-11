@@ -25,11 +25,11 @@
           a(href="/orders")
             i.pe-7s-note2
             | Pedidos
-      if(user._role && user._role.value > 9)
-        li(class=(pageName == 'pages') ? 'active' : '')
-          a(href="/dashboard/pages")
-            i.pe-7s-browser
-            | Páginas Institucionais
+      //- if(user._role && user._role.value > 9)
+      //-   li(class=(pageName == 'pages') ? 'active' : '')
+      //-     a(href="/dashboard/pages")
+      //-       i.pe-7s-browser
+      //-       | Páginas Institucionais
       if(user._role && user._role.value > 9)
         li(class=(pageName == 'events') ? 'active' : '')
           a(href="/events")

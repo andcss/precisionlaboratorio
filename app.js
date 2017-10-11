@@ -185,6 +185,7 @@ app.post('/event/:id', [passportConfig.isAdminUser, multipartMiddleware], eventC
 app.get('/user', passportConfig.isAdminUser, userController.getNewUser);
 app.post('/user', passportConfig.isAdminUser, userController.postNewUser);
 app.get('/user/:id', passportConfig.isAdminUser, userController.getUser);
+app.get('/user/delete/:id', passportConfig.isAdminUser, userController.deleteUser);
 
 app.get('/role', passportConfig.isAdminUser, configController.getNewRole);
 app.get('/role/:id', passportConfig.isAdminUser, configController.getRole);
@@ -202,6 +203,9 @@ app.get('/midia', [passportConfig.isAdminUser, multipartMiddleware], galleryCont
 app.get('/midia/:id', [passportConfig.isAdminUser, multipartMiddleware], galleryController.getMidia);
 app.post('/midia', [passportConfig.isAdminUser, multipartMiddleware], galleryController.postNewMidia);
 app.post('/midia/:id', [passportConfig.isAdminUser, multipartMiddleware], galleryController.postMidia);
+app.get('/midia/delete/:id', [passportConfig.isAdminUser, multipartMiddleware], galleryController.deleteMidia);
+
+
 /**
  * Routes isAuthenticated / All Users
  */

@@ -55,12 +55,12 @@ exports.getEvent = (req, res) => {
 }
 
 exports.postNewEvent = (req, res) => {
-
   var newEvent = new Event({
     name: req.body.name,
     startDate: new Date(moment(req.body.startDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm")),
     endDate: new Date(moment(req.body.endDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm")),
-    description: req.body.description
+    description: req.body.description,
+    featured: req.body.featured ? true : false,
   });
 
   newEvent.save((err, saveEvent) => {

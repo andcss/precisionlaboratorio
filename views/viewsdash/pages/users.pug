@@ -24,6 +24,7 @@ block content
                     th Status
                     th Tipo
                     th.text-center Editar
+                    th.text-center Excluir
                   tbody
                     each user, index in users
                       tr
@@ -45,3 +46,6 @@ block content
                         td=user._role ? user._role.name : 'Sem premissão'
                         td.text-center
                           a(href=`/user/${user._id}`).btn.btn-info.btn-fill Editar Usuário
+                        td.text-center
+                          a(href=`/user/delete/${user._id}`).btn.btn-danger.btn-fill
+                            i.pe-7s-trash

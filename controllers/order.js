@@ -36,6 +36,12 @@ exports.getOrders = (req, res) => {
       req.flash('error', { msg: 'Não foi possível encontrar eventos.'});
       return res.redirect('back');
     }
+
+    orders = orders.filter((order) => {
+      if (order.user.email)
+        return order;
+    });
+
     res.render('viewsdash/pages/orders', {
       title: preTitle+ 'Eventos',
       pageName: 'orders',

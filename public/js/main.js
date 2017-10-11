@@ -77,7 +77,6 @@ $(document).ready(function() {
   $(window).on('scroll', function() {
     if ($('#menuTop').hasClass('black')) {
       if (window.pageYOffset > 50) {
-        console.log('add');
         $('#menuTop').removeClass('absolute').addClass('fixed');
       }
       if (window.pageYOffset <= 50 && $('#menuTop').hasClass('fixed')) {

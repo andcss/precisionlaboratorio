@@ -8,6 +8,7 @@ const eventSchema = new mongoose.Schema({
   url_image: { type: String, default: '' },
   startDate: { type: Date, default: Date.now() },
   endDate: { type: Date, default: Date.now() },
+  featured: { type: Boolean, default: false },
 }, { timestamps: true });
 
 const Event = mongoose.model('Event', eventSchema);

@@ -50,8 +50,27 @@ block content
                       textArea.form-control(name='description')=(event ? event.description : '')
 
                 .row
-                  .col-sm-12
+
+                  .col-sm-3
+                    .form-group
+                      label.checkbox
+                        span.icons
+                          span.first-icon.fa.fa-square-o
+                          span.second-icon.fa.fa-check-square-o
+                        input(type='checkbox', name='featured', data-toggle='checkbox', checked=(event.featured ? 'checked' : undefined))
+                        | Evento de Destaque
+                  .col-sm-9
                     .form-group
                         button.btn.btn-info.btn-fill.pull-right(type='submit')
                           i.fa.fa-pencil
                           | Salvar
+                if (!newEvent && event.url_image)
+                  .row
+                    .col-sm-6
+                      .card
+                        .header
+                          h4.title Imagem de destaque
+                        .content
+                          .image
+                            a(href=event.url_image, target='_black')
+                              img(src=event.url_image)
