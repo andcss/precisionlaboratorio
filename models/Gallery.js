@@ -10,7 +10,7 @@ const gallerySchema = new Schema({
     name: { type: String, default: ''},
     description: { type: String, default: ''},
     public_id: { type: String, default: ''},
-    format: { type: String, default: ''}, 
+    format: { type: String, default: ''},
     _role: { type: Schema.Types.ObjectId, ref: 'Role' },
   }]
 }, { timestamps: true });
