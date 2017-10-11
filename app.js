@@ -181,6 +181,8 @@ app.get('/event', [passportConfig.isAdminUser, multipartMiddleware], eventContro
 app.get('/event/:id', [passportConfig.isAdminUser, multipartMiddleware], eventController.getEvent);
 app.post('/event', [passportConfig.isAdminUser, multipartMiddleware], eventController.postNewEvent);
 app.post('/event/:id', [passportConfig.isAdminUser, multipartMiddleware], eventController.postEvent);
+app.get('/nextevents', [passportConfig.isAdminUser, multipartMiddleware], eventController.getNextEvents);
+
 
 app.get('/user', passportConfig.isAdminUser, userController.getNewUser);
 app.post('/user', passportConfig.isAdminUser, userController.postNewUser);

@@ -109,6 +109,7 @@ exports.postEvent = (req, res) => {
     findEvent.startDate = new Date(moment(req.body.startDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm"));
     findEvent.endDate = new Date(moment(req.body.endDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm"));
     findEvent.description = req.body.description;
+    findEvent.featured = req.body.featured ? true : false;
 
     findEvent.save((err, saveEvent) => {
       if (err) {
@@ -117,5 +118,17 @@ exports.postEvent = (req, res) => {
       }
       return res.redirect('/events');
     });
+  });
+}
+
+exports.getNextEvents = (req, res) => {
+  Event.find({ $and: [
+      { startDate: { $gt: Date.now() } }
+    ]
+  }).sort({startDate: -1}).exec((err, findEvents) => {
+    if (err) {
+      return res.status(400).json({ msg: 'Erro na busca de Eventos' });
+    }
+    return res.json(findEvents);
   });
 }

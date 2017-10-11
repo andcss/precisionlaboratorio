@@ -1,3 +1,5 @@
+const moment = require('moment');
+const Event = require('../models/Event');
 
 /**
  * GET /
@@ -16,9 +18,17 @@ exports.produtos = (req, res) => {
 };
 
 exports.agenda = (req, res) => {
-  res.render('pages/agenda', {
-    title: 'Agenda'
+  Event.find({ $and: [
+      { startDate: { $gt: Date.now() } },
+      { featured: true }
+    ]
+  }).sort({startDate: -1}).exec((err, findEvents) => {
+    res.render('pages/agenda', {
+      title: 'Agenda',
+      destaque: findEvents[0],
+    });
   });
+
 };
 
 exports.portifolio = (req, res) => {

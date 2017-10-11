@@ -15,17 +15,21 @@ block content
             span.f3 DA
             hr
           .conteudo
+            - var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
             .destaque(style="background: url(./images/destaqueAgenda.jpg) center center; background-size: cover;")
               h4 DESTAQUE
                 hr
-              p Estande Ateliê Oral
+              p=destaque.name
                 br
-                | Exposição de projetos do
-                br
-                | Laboratório Precision
-              span.dataDestaque 22 a 24
-                br
-                | de junho
+                | #{destaque.description}
+              - var startDate = new Date(destaque.startDate).getDate()
+              - var endDate = new Date(destaque.endDate).getDate()
+              if (startDate != endDate)
+                span.dataDestaque=(startDate + ' a ' + new Date(destaque.endDate).getDate())
+                  br
+                  span=('de ' + meses[new Date(destaque.startDate).getMonth()-1])
+              else
+                span.dataDestaque=(startDate + ' de ' + meses[new Date(destaque.startDate).getMonth()-1])
 
             .eventos
               .linha
@@ -55,6 +59,6 @@ block content
                       i.fa.fa-chevron-right
               .linha
                 .eventoData
-                  h2 29
-                    small OUTUBRO
+                  h2 -
+                    small -
                 #dates.descricao
