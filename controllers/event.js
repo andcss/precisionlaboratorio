@@ -121,6 +121,19 @@ exports.postEvent = (req, res) => {
   });
 }
 
+exports.deleteEvent = (req, res) => {
+  Event.findById(req.params.id, (err, findEvent) => {
+    if (err) {
+      req.flash('errors', { msg: 'Não foi possivel carregar o evento.' });
+      return res.redirect('/events');
+    }
+    findEvent.remove((err) => {
+      return res.redirect('/events');
+    })
+
+  });
+}
+
 exports.getNextEvents = (req, res) => {
   Event.find({ $and: [
       { startDate: { $gt: Date.now() } }
