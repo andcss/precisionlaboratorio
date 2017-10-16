@@ -209,6 +209,11 @@ app.post('/midia/:id', [passportConfig.isAdminUser, multipartMiddleware], galler
 app.get('/midia/delete/:id', [passportConfig.isAdminUser, multipartMiddleware], galleryController.deleteMidia);
 
 
+app.get('/page/home', passportConfig.isAdminUser, pagesController.editHome);
+app.get('/page/laboratorio', passportConfig.isAdminUser, pagesController.editLaboratorio);
+app.get('/page/portfolio', passportConfig.isAdminUser, pagesController.editPortfolio);
+app.get('/page/produtos', passportConfig.isAdminUser, pagesController.editProdutos);
+
 /**
  * Routes isAuthenticated / All Users
  */

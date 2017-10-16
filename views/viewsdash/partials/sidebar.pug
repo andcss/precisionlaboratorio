@@ -10,36 +10,37 @@
         a(href="/dashboard/home")
           i.pe-7s-graph
           | Dashboard
-      if(user._role && user._role.value > 9)
-        li(class=(pageName == 'users') ? 'active' : '')
-          a(href="/dashboard/users")
-            i.pe-7s-users
-            | Usuários
-      if(user._role)
-        li(class=(pageName == 'gallery') ? 'active' : '')
-          a(href="/galleries")
-            i.pe-7s-photo
-            | Galeria
-      if(user._role)
-        li(class=(pageName == 'orders') ? 'active' : '')
-          a(href="/orders")
-            i.pe-7s-note2
-            | Pedidos
-      //- if(user._role && user._role.value > 9)
-      //-   li(class=(pageName == 'pages') ? 'active' : '')
-      //-     a(href="/dashboard/pages")
-      //-       i.pe-7s-browser
-      //-       | Páginas Institucionais
-      if(user._role && user._role.value > 9)
-        li(class=(pageName == 'events') ? 'active' : '')
-          a(href="/events")
-            i.pe-7s-date
-            | Eventos
-      if(user._role && user._role.value > 9)
-        li(class=(pageName == 'config') ? 'active' : '')
-          a(href="/dashboard/config")
-            i.pe-7s-tools
-            | Configurações
+      if (user.status == 'Ativo')
+        if(user._role && user._role.value > 9)
+          li(class=(pageName == 'users') ? 'active' : '')
+            a(href="/dashboard/users")
+              i.pe-7s-users
+              | Usuários
+        if(user._role)
+          li(class=(pageName == 'gallery') ? 'active' : '')
+            a(href="/galleries")
+              i.pe-7s-photo
+              | Galeria
+        if(user._role)
+          li(class=(pageName == 'orders') ? 'active' : '')
+            a(href="/orders")
+              i.pe-7s-note2
+              | Pedidos
+        if(user._role && user._role.value > 9)
+          li(class=(pageName == 'events') ? 'active' : '')
+            a(href="/events")
+              i.pe-7s-date
+              | Eventos
+        if(user._role && user._role.value > 9)
+          li(class=(pageName == 'pages') ? 'active' : '')
+            a(href="/dashboard/pages")
+              i.pe-7s-browser
+              | Páginas Institucionais
+        if(user._role && user._role.value > 9)
+          li(class=(pageName == 'config') ? 'active' : '')
+            a(href="/dashboard/config")
+              i.pe-7s-tools
+              | Configurações
       li
         a(href="/", target="_black")
           i.pe-7s-home

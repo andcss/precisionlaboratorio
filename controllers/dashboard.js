@@ -42,7 +42,6 @@ exports.getPages = (req, res) => {
 };
 
 exports.getEvent = (req, res) => {
-
   res.render('viewsdash/pages/event', {
     title: preTitle+ 'Informações do evento',
     pageName: 'events',
@@ -57,7 +56,6 @@ exports.getPedidos = (req, res) => {
     user: req.user,
   });
 };
-
 
 exports.getConfig = (req, res) => {
   res.render('viewsdash/pages/config', {

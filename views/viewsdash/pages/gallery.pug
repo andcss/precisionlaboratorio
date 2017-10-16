@@ -22,14 +22,14 @@ block content
                             p.category=file.description
                           .content
                             .image
-                              if(file.type == 'image')
+                              if(file.type == 'image' && file.format != 'pdf')
                                 a(href=file.url, target='_black')
                                   img(src=file.url, alt=file.name)
                               if(file.type == 'video')
                                 video(controls='true')
                                   source(src=file.url, type='video/mp4')
                                   | Seu navegador não suporta o formato do video.
-                              if(file.type == 'raw')
+                              if(file.type == 'raw' || file.format == 'pdf')
                                 strong
                                   i.pe-7s-paperclip
                                 span Arquivo para download

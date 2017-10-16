@@ -22,10 +22,10 @@ exports.agenda = (req, res) => {
       { startDate: { $gt: Date.now() } },
       { featured: true }
     ]
-  }).sort({startDate: -1}).exec((err, findEvents) => {
+  }).sort({startDate: 1}).exec((err, findEvents) => {
     res.render('pages/agenda', {
       title: 'Agenda',
-      destaque: findEvents[0],
+      destaque: findEvents[0] || [],
     });
   });
 
@@ -41,4 +41,32 @@ exports.error404 = (req, res) => {
   res.render('pages/404', {
     title: 'Precision - Página não encontrada'
   });
+}
+
+exports.editHome = (req, res) => {
+  res.render('viewsdash/pages/editPages/home', {
+    title: 'Editar Página Inicial',
+    user: req.user,
+  })
+}
+
+exports.editLaboratorio = (req, res) => {
+  res.render('viewsdash/pages/editPages/laboratorio', {
+    title: 'Editar Laboratóio',
+    user: req.user,
+  })
+}
+
+exports.editPortfolio = (req, res) => {
+  res.render('viewsdash/pages/editPages/portfolio', {
+    title: 'Editar Portfolio',
+    user: req.user,
+  })
+}
+
+exports.editProdutos = (req, res) => {
+  res.render('viewsdash/pages/editPages/produtos', {
+    title: 'Editar Produtos e Serviços',
+    user: req.user,
+  })
 }

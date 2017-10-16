@@ -57,14 +57,11 @@ $(document).ready(function() {
   var token = "1463654275.1677ed0.cacd3a406d914cd29988ad1bbfcf8238";
   var userid = 301363077;
   $.ajax({
-    url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent',
+    url: 'https://api.instagram.com/v1/users/1463654275/media/recent/?access_token=1463654275.0b683df.f540a6c906c54b4e9899f5b84d4965a2',
     type: 'GET',
-    crossDomain: true,
-    dataType: 'jsonp',
-    data: {access_token: token, count: 6},
     success: function(infosInsta) {
-      console.log(infosInsta);
-      //mostraInstagram(infosInsta.data);
+      //console.log(infosInsta);
+      mostraInstagram(infosInsta.data);
     },
     error: function() { console.log('Instagram Fail!'); },
   });

@@ -68,7 +68,7 @@ exports.postNewEvent = (req, res) => {
       req.flash('errors', { msg: 'Um erro aconteceu no cadastro do evento.' });
       return res.redirect('/events');
     }
-    if (req.files.lenght > 0) {
+    if (req.files.fileUpdate.originalFilename != '') {
       cloudinary.v2.uploader.upload(req.files.fileUpdate.path,
         {
           resource_type: "auto"
@@ -116,7 +116,33 @@ exports.postEvent = (req, res) => {
         req.flash('error', { msg: 'Não foi possivel salvar o evento' });
         return res.redirect('back');
       }
-      return res.redirect('/events');
+      if (req.files.fileUpdate.originalFilename != '') {
+        cloudinary.v2.uploader.upload(req.files.fileUpdate.path,
+          {
+            resource_type: "auto"
+          },
+          function(err, returnFileUpdate) {
+            if (err) {
+              req.flash('errors', { msg: 'Um erro aconteceu no upload de arquivo.' });
+              return res.redirect('/events');
+            }
+
+            saveEvent.url_image = returnFileUpdate.secure_url;
+
+            saveEvent.save((err, saveEvent) => {
+              if(err) {
+                req.flash('error', { msg: 'Não foi possivel salvar o evento' });
+                return res.redirect('/event');
+              }
+              req.flash('success', { msg: 'Evento Alterado com sucesso!' });
+              return res.redirect('/events');
+            })
+          }
+        );
+      } else {
+        req.flash('success', { msg: 'Evento Alterado com sucesso!' });
+        return res.redirect('/events');
+      }
     });
   });
 }

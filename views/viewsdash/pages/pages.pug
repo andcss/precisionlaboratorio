@@ -9,15 +9,72 @@ block content
               .header
                 h4.title Páginas Institucionais
                 p.category Páginas abertas ao público
-              .content.table-responsive.table-full-width
-                table.table.table-hover.table-striped
-                  thead
-                    th Pagina
-                    th Descrição
-                    th.text-center Editar
-                  tbody
-                    tr
-                      td Home
-                      td Precision Laboratório
-                      td.text-center
-                        a(href="/dashboard/user/1").btn.btn-info.btn-fill Editar Página
+              .content
+                .row
+                  .col-sm-4
+                    .card
+                      .header
+                        h4.title Home
+                        p.category Página Inicial
+                      .content
+                        .image
+                          img(src='#', alt='Página Inicial')
+                        if (user._role.value > 9)
+                          .footer
+                            hr
+                            .stats
+                              .col-sm-6.col-sm-offset-3
+                                a(href='/page/home').btn.btn-info
+                                  i.fa.fa-edit
+                                  | Editar Página
+                  .col-sm-4
+                    .card
+                      .header
+                        h4.title O Laboratório
+                        p.category Sobre o laboratório
+                      .content
+                        .image
+                          img(src='#', alt='O Laboratório')
+                        if (user._role.value > 9)
+                          .footer
+                            hr
+                            .stats
+                              .col-sm-6.col-sm-offset-3
+                                a(href='/page/laboratorio').btn.btn-info
+                                  i.fa.fa-edit
+                                  | Editar Página
+
+                  .col-sm-4
+                    .card
+                      .header
+                        h4.title Portfolio
+                        p.category Galeria de fotos do portfolio
+                      .content
+                        .image
+                          img(src='#', alt='Portfolio')
+                        if (user._role.value > 9)
+                          .footer
+                            hr
+                            .stats
+                              .col-sm-6.col-sm-offset-3
+                                a(href='/page/portfolio').btn.btn-info
+                                  i.fa.fa-edit
+                                  | Editar Página
+
+
+                  .col-sm-4
+                    .card
+                      .header
+                        h4.title Produtos e Serviços
+                        p.category Descrições de produtos e serviços
+                      .content
+                        .image
+                          img(src='#', alt='Produtos e Serviços')
+                        if (user._role.value > 9)
+                          .footer
+                            hr
+                            .stats
+                              .col-sm-6.col-sm-offset-3
+                                a(href='/page/produtos').btn.btn-info
+                                  i.fa.fa-edit
+                                  | Editar Página
