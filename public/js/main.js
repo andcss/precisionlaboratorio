@@ -59,8 +59,9 @@ $(document).ready(function() {
   $.ajax({
     url: 'https://api.instagram.com/v1/users/1463654275/media/recent/?access_token=1463654275.0b683df.f540a6c906c54b4e9899f5b84d4965a2',
     type: 'GET',
+    crossDomain: true,
+    dataType: 'jsonp',
     success: function(infosInsta) {
-      //console.log(infosInsta);
       mostraInstagram(infosInsta.data);
     },
     error: function() { console.log('Instagram Fail!'); },
