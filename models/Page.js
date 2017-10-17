@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 
 const pageSchema = new mongoose.Schema({
   name: String,
-  name: String,
-}, { timestamps: true });
+  seo: { Schema.Types.ObjectId, ref: 'SEO' },
+}, { timestamps: true, strict: false }, );
 
 const Page = mongoose.model('Page', pageSchema);
 

@@ -43,14 +43,35 @@ exports.error404 = (req, res) => {
   });
 }
 
+
+/**
+ * Edit Pages /
+ * Páginas institucionais dashboard
+ */
 exports.editHome = (req, res) => {
   res.render('viewsdash/pages/editPages/home', {
     title: 'Editar Página Inicial',
     user: req.user,
+    pageInfo: {},
+  })
+}
+
+exports.postHome = (req, res) => {
+  res.render('viewsdash/pages/editPages/home', {
+    title: 'Editar Página Inicial',
+    user: req.user,
+    pageInfo: {},
   })
 }
 
 exports.editLaboratorio = (req, res) => {
+  res.render('viewsdash/pages/editPages/laboratorio', {
+    title: 'Editar Laboratóio',
+    user: req.user,
+  })
+}
+
+exports.postLaboratorio = (req, res) => {
   res.render('viewsdash/pages/editPages/laboratorio', {
     title: 'Editar Laboratóio',
     user: req.user,
@@ -64,7 +85,21 @@ exports.editPortfolio = (req, res) => {
   })
 }
 
+exports.postPortfolio = (req, res) => {
+  res.render('viewsdash/pages/editPages/portfolio', {
+    title: 'Editar Portfolio',
+    user: req.user,
+  })
+}
+
 exports.editProdutos = (req, res) => {
+  res.render('viewsdash/pages/editPages/produtos', {
+    title: 'Editar Produtos e Serviços',
+    user: req.user,
+  })
+}
+
+exports.postProdutos = (req, res) => {
   res.render('viewsdash/pages/editPages/produtos', {
     title: 'Editar Produtos e Serviços',
     user: req.user,

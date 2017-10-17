@@ -210,9 +210,13 @@ app.get('/midia/delete/:id', [passportConfig.isAdminUser, multipartMiddleware], 
 
 
 app.get('/page/home', passportConfig.isAdminUser, pagesController.editHome);
+app.post('/page/home', passportConfig.isAdminUser, pagesController.postHome);
 app.get('/page/laboratorio', passportConfig.isAdminUser, pagesController.editLaboratorio);
+app.post('/page/laboratorio', passportConfig.isAdminUser, pagesController.postLaboratorio);
 app.get('/page/portfolio', passportConfig.isAdminUser, pagesController.editPortfolio);
+app.post('/page/portfolio', passportConfig.isAdminUser, pagesController.postPortfolio);
 app.get('/page/produtos', passportConfig.isAdminUser, pagesController.editProdutos);
+app.post('/page/produtos', passportConfig.isAdminUser, pagesController.postProdutos);
 
 /**
  * Routes isAuthenticated / All Users
