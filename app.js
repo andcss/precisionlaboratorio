@@ -33,7 +33,6 @@ dotenv.load({ path: '.env' });
 /**
  * Controllers (route handlers).
  */
-const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const contactController = require('./controllers/contact');
 const pagesController = require('./controllers/pages');
@@ -145,7 +144,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-app.get('/', homeController.index);
+app.get('/', pagesController.index);
 app.get('/laboratorio', pagesController.laboratorio);
 app.get('/produtos', pagesController.produtos);
 app.get('/agenda', pagesController.agenda);
@@ -173,7 +172,6 @@ app.get('/admin/configurations', passportConfig.isAdminUser, userController.admi
 
 
 app.get('/dashboard/users', passportConfig.isAdminUser, dashboardController.getUsers);
-app.get('/dashboard/pages', passportConfig.isAdminUser, dashboardController.getPages);
 app.get('/dashboard/config', passportConfig.isAdminUser, dashboardController.getConfig);
 
 app.get('/events', passportConfig.isAdminUser, eventController.getEvents);
@@ -208,16 +206,16 @@ app.post('/midia', [passportConfig.isAdminUser, multipartMiddleware], galleryCon
 app.post('/midia/:id', [passportConfig.isAdminUser, multipartMiddleware], galleryController.postMidia);
 app.get('/midia/delete/:id', [passportConfig.isAdminUser, multipartMiddleware], galleryController.deleteMidia);
 
-
+app.get('/pages', passportConfig.isAdminUser, dashboardController.getPages);
 app.get('/page/home', passportConfig.isAdminUser, pagesController.editHome);
-app.post('/page/home', passportConfig.isAdminUser, pagesController.postHome);
+app.post('/page/home', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postHome);
 app.get('/page/laboratorio', passportConfig.isAdminUser, pagesController.editLaboratorio);
-app.post('/page/laboratorio', passportConfig.isAdminUser, pagesController.postLaboratorio);
+app.post('/page/laboratorio', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postLaboratorio);
 app.get('/page/portfolio', passportConfig.isAdminUser, pagesController.editPortfolio);
-app.post('/page/portfolio', passportConfig.isAdminUser, pagesController.postPortfolio);
+app.post('/page/portfolio', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postPortfolio);
 app.get('/page/produtos', passportConfig.isAdminUser, pagesController.editProdutos);
-app.post('/page/produtos', passportConfig.isAdminUser, pagesController.postProdutos);
-
+app.post('/page/produtos', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postProdutos);
+app.post('/produto/:id', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postProduto);
 /**
  * Routes isAuthenticated / All Users
  */

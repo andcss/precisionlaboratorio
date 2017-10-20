@@ -15,65 +15,53 @@ block content
 
         .flex.flex-60
           .box.boxL.height-maximo(style="background: url(./images/produtos/p1.jpg) no-repeat center center; background-size: cover;")
-            h5.to-right.to-bold Coroa Emax
+
           .box.boxP.c-cinza-escuro.bottom-position
-            h5 Enceramento diagnóstico por elemento
+            h5=produtos[0].name
+            .description
+              p=produtos[0].descripton
 
       .linha
         .flex.flex-40.column
           .linha
             .box.height-maximo(style="background: url(./images/produtos/p2.jpg) no-repeat center center; background-size: cover;")
-              h5 Protocolo cerâmico dento
-                br
-                | gengival completo (ZR +
-                br
-                | Emax + Aplicação de
-                br
-                | gengiva)
+              h5=produtos[1].name
+              .description
+                p=produtos[1].descripton
           .linha.linhaP
-            .box.height-minimo.c-cinza
-              h5 Gengiva artificial cerâmica/silicone
-            .box.height-minimo(style="background: url(./images/produtos/p3.jpg) no-repeat center center; background-size: cover;")
-              h5.to-right Coping ZR
+            .box.height-minimo(style="background: url(./images/produtos/p3.jpg) no-repeat center 10%; background-size: cover;")
+              h5.to-right=produtos[2].name
+              .description
+                p=produtos[2].descripton
           .linha
             .box.height-minimo.c-cinza-escuro
-              h5 Elemento de fixa sobre
-                br
-                | implante parafusado ou
-                br
-                | cimentado (ZR + Emax) – fixa
-                br
-                | por elemento
+              h5=produtos[3].name
+              .description
+                p=produtos[3].descripton
 
         .flex.flex-60.column
           .linha
             .box.height-minimo(style="background: url(./images/produtos/p6.jpg) no-repeat center center; background-size: cover;")
-              h5 Lente de
-                br
-                | contato
-                br
-                | Emax
+              h5=produtos[4].name
+              .description
+                p=produtos[4].descripton
             .box.height-minimo.c-cinza-escuro
-              h5 Faceta laminada
-                br
-                | Emax
+              h5=produtos[5].name
+              .description
+                p=produtos[5].descripton
             .box.height-minimo.c-cinza
-              h5.to-right Inlay/Onlay
-                br
-                | Emax
+              h5.to-right=produtos[6].name
+              .description
+                p=produtos[6].descripton
           .linha
             .box.boxL.height-maximo.c-cinza.bottom-position
-              h5 Coroa sobre implante
-                br
-                | parafusada ou cimentada
-                br
-                | (ZR + Emax)
+              h5=produtos[7].name
+              .description
+                p=produtos[7].descripton
             .box.boxP(style="background: url(./images/produtos/p5.jpg) no-repeat center center; background-size: cover;")
-              h5 Coroa ZR
-                br
-                | monolítica
-                br
-                | maquiada
+              h5=produtos[8].name
+              .description
+                p=produtos[8].descripton
           .linha
             .box.height-minimo.portifolio
               span.bg-fundo

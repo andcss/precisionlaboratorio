@@ -10,6 +10,7 @@
     line-height: 60px;
     position: absolute;
     left: 100px;
+    z-index: 999;
     @media (min-width: 1200px) {
       left: 20%;
     }
@@ -80,10 +81,13 @@
         padding: 4px 15px;
         display: flex;
         min-height: 150px;
+        position: relative;
         h5 {
           font-size: 17px;
           flex: 1;
+          max-width: 250px;
           &.to-right {
+            margin-left: auto;
             text-align: right;
           }
           &.to-bold {
@@ -140,6 +144,33 @@
             margin: 0;
             @media (max-width: 480px) {
               padding-left: 10px;
+            }
+          }
+        }
+        .description {
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: rgba(0,0,0,0.7);
+          padding: 20px 10px;
+          height: 100%;
+          z-index: 9;
+          overflow-y: auto;
+          opacity: 0;
+          p {
+            color: #fff;
+          }
+        }
+        &:hover {
+          .description {
+            transition: 1s;
+            opacity: 1;
+            &::-webkit-scrollbar {
+                width: 6px;
+                background-color: #F5F5F5;
+            }
+            &::-webkit-scrollbar-thumb {
+              background-color: #464646;
             }
           }
         }

@@ -17,13 +17,13 @@ block content
                         h4.title Home
                         p.category Página Inicial
                       .content
-                        .image
-                          img(src='#', alt='Página Inicial')
+                        .image.auto-height
+                          img(src='../images/pagesPreview/Home.png', alt='Página Inicial')
                         if (user._role.value > 9)
                           .footer
                             hr
                             .stats
-                              .col-sm-6.col-sm-offset-3
+                              .col-sm-10.col-sm-offset-1
                                 a(href='/page/home').btn.btn-info
                                   i.fa.fa-edit
                                   | Editar Página
@@ -33,13 +33,13 @@ block content
                         h4.title O Laboratório
                         p.category Sobre o laboratório
                       .content
-                        .image
-                          img(src='#', alt='O Laboratório')
+                        .image.auto-height
+                          img(src='../images/pagesPreview/O-laboratorio.png', alt='O Laboratório')
                         if (user._role.value > 9)
                           .footer
                             hr
                             .stats
-                              .col-sm-6.col-sm-offset-3
+                              .col-sm-10.col-sm-offset-1
                                 a(href='/page/laboratorio').btn.btn-info
                                   i.fa.fa-edit
                                   | Editar Página
@@ -50,13 +50,13 @@ block content
                         h4.title Portfolio
                         p.category Galeria de fotos do portfolio
                       .content
-                        .image
-                          img(src='#', alt='Portfolio')
+                        .image.auto-height
+                          img(src='../images/pagesPreview/portfolio.png', alt='Portfolio')
                         if (user._role.value > 9)
                           .footer
                             hr
                             .stats
-                              .col-sm-6.col-sm-offset-3
+                              .col-sm-10.col-sm-offset-1
                                 a(href='/page/portfolio').btn.btn-info
                                   i.fa.fa-edit
                                   | Editar Página
@@ -68,13 +68,13 @@ block content
                         h4.title Produtos e Serviços
                         p.category Descrições de produtos e serviços
                       .content
-                        .image
-                          img(src='#', alt='Produtos e Serviços')
+                        .image.auto-height
+                          img(src='../images/pagesPreview/Produtos.png', alt='Produtos e Serviços')
                         if (user._role.value > 9)
                           .footer
                             hr
                             .stats
-                              .col-sm-6.col-sm-offset-3
+                              .col-sm-10.col-sm-offset-1
                                 a(href='/page/produtos').btn.btn-info
                                   i.fa.fa-edit
                                   | Editar Página

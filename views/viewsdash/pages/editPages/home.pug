@@ -9,9 +9,8 @@ block content
             .header
               h4.title Página Inicial
             .content
-              form(action='page/home', method='POST', enctype="multipart/form-data")
+              form(action=action, method='POST', enctype="multipart/form-data")
                 input(type='hidden', name='_csrf', value=_csrf)
-                input(type='hidden', name='page', value='home')
                 .row
                   .col-sm-12
                     if !signup
@@ -19,51 +18,30 @@ block content
                 .row
                   .col-sm-6
                     .form-group
-                      label.control-label(for='title') Título Mensagem
-                      input.form-control(type='text', name='title', id='title', required)
+                      label.control-label(for='titleMesage') Título Mensagem
+                      input.form-control(type='text', name='titleMesage', id='titleMesage', value=pageInfo.customFields.titleMesage, required)
                   .col-sm-6
                     .form-group
-                      label.control-label(for='text') Texto
-                      textarea.form-control(type='text', name='text', required)
-                .row
-                  .col-sm-12
-                    h5 Video/Imagens Slide
-                    hr
-                .row
-                  .col-sm-4
-                    .card
-                      .header
-                        h4.title Imagem de destaque
-                      .content
-                        .image
-                          a(href, target='_black')
-                            img(src)
-                      .footer
-                        hr
-                        .stats
-                          .col-sm-6
-                            a(href).btn.btn-info
-                              i.fa.fa-edit
-                          .col-sm-6
-                            a(href).btn.btn-danger
-                              i.fa.fa-trash
+                      label.control-label(for='mesage') Texto
+                      textarea.form-control(rows='5', type='text', name='mesage', id='mesage' required)=pageInfo.customFields.mesage
+
                 .row
                   .col-sm-12
                     h5 Configurações de SEO
                     hr
                 .row
-                  .col-sm-4
+                  .col-sm-6
                     .form-group
                       label.control-label(for='seoTitle') Título
-                      input.form-control(type='text', name='seoTitle', id='seoTitle', required)
-                  .col-sm-4
-                    .form-group
-                      label.control-label(for='seoDescription') Descrição Curta
-                      input.form-control(type='text', name='seoDescription', required)
-                  .col-sm-4
+                      input.form-control(type='text', name='seoTitle', id='seoTitle', value=pageInfo.seo.title)
                     .form-group
                       label.control-label(for='seoImage') Imagem de destaque
-                      input.form-control(type='file', name='seoImage', id='seoImage', value='', placeholder='Selecione o arquivo')
+                      input.form-control(type='file', name='seoImage', id='seoImage', placeholder='Selecione o arquivo')
+                  .col-sm-6
+                    .form-group
+                      label.control-label(for='seoDescription') Descrição Curta
+                      textarea.form-control(rows='5', type='text', name='seoDescription')=pageInfo.seo.descripton
+
 
                 .row
                   .col-sm-12
@@ -72,7 +50,7 @@ block content
                           i.fa.fa-pencil
                           | Salvar
 
-                if (pageInfo.seo && pageInfo.seo.urlImage)
+                if (pageInfo.seo)
                   .row
                     .col-sm-4
                       .card
@@ -81,4 +59,4 @@ block content
                         .content
                           .image
                             a(href=pageInfo.seo.urlImage, target='_black')
-                              img(src=ageInfo.seo.urlImage)
+                              img(src=pageInfo.seo.urlImage)

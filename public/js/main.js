@@ -92,6 +92,16 @@ $(document).ready(function() {
     $('#signup').addClass('active');
   });
 
+  $(document).on('click', '.openRecuperar', function() {
+    $('#login').css({'display': 'none'});
+    $('#forgot').css({'display': 'flex'});
+  });
+
+  $(document).on('click', '.openLogin', function() {
+    $('#forgot').css({'display': 'none'});
+    $('#login').css({'display': 'flex'});
+  });
+
   /**
    * Mascaras para inputs
    * ---------------------------------------

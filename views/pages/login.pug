@@ -6,7 +6,7 @@ block content
 
   #formsRegister
     .container
-      #login
+      #login(style=(reset ? 'display: none' : ''))
         form(method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
           if !signup
@@ -21,12 +21,45 @@ block content
               input(type='password', name='password', id='password', required)
           .linha
             .flex
-              a Esqueceu a senha?
+              a.openRecuperar Esqueceu a senha?
           .linha
             button.entrar(type='submit') ENTRAR
           .linha
             .flex
               a.cadastro CADASTRAR
+      #forgot
+        form(method='POST', action='/forgot')
+          input(type='hidden', name='_csrf', value=_csrf)
+          if !signup
+            include ../partials/flash
+          .linha
+            .flex
+              label EMAIL
+              input(type='email', name='email', id='email', autofocus, required)
+          .linha
+            .flex
+              a.openLogin Fazer Login
+          .linha
+            button.recuperar(type='submit') RECUPERAR
+          .linha
+            .flex
+              a.cadastro CADASTRAR
+      #reset(style=(reset ? 'display: flex' : ''))
+        form(method='POST', action='/reset/'+reset)
+          input(type='hidden', name='_csrf', value=_csrf)
+          if !signup
+            include ../partials/flash
+          .linha
+            .flex
+              label NOVA SENHA
+              input(type='password', name='password', id='password', required)
+          .linha
+            .flex
+              label CONFIRMAR SENHA
+              input(type='password', name='confirm', id='confirm', required)
+          .linha
+            button.reset(type='submit') RECUPERAR
+
       #divider(class=signup ? 'active': '')
         hr
       #signup(class=signup ? 'active': '')

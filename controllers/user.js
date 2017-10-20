@@ -19,9 +19,11 @@ exports.getLogin = (req, res) => {
   }
 
   let signup = req.query.signup ? true : false;
+  let reset = req.query.reset ? req.query.reset : false;
   res.render('pages/login', {
     title: 'Login',
     signup,
+    reset,
   });
 };
 
@@ -308,9 +310,7 @@ exports.getReset = (req, res, next) => {
         req.flash('errors', { msg: 'Token para nova senha expirou.' });
         return res.redirect('/forgot');
       }
-      res.render('account/reset', {
-        title: 'Password Reset'
-      });
+      res.redirect('/login?reset=true')
     });
 };
 
@@ -326,7 +326,7 @@ exports.postReset = (req, res, next) => {
 
   if (errors) {
     req.flash('errors', errors);
-    return res.redirect('back');
+    return res.redirect('/login?reset='+req.params.token);
   }
 
   const resetPassword = () =>
@@ -336,7 +336,7 @@ exports.postReset = (req, res, next) => {
       .then((user) => {
         if (!user) {
           req.flash('errors', { msg: 'Seu token para nova senha expirou.' });
-          return res.redirect('back');
+          return res.redirect('/login');
         }
         user.password = req.body.password;
         user.passwordResetToken = undefined;
@@ -352,21 +352,23 @@ exports.postReset = (req, res, next) => {
   const sendResetPasswordEmail = (user) => {
     if (!user) { return; }
     const transporter = nodemailer.createTransport({
-      service: 'SendGrid',
-      auth: {
-        user: process.env.SENDGRID_USER,
-        pass: process.env.SENDGRID_PASSWORD
-      }
+      host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+          user: 'tnavarrodesenvolvimento@gmail.com', // generated ethereal user
+          pass: 'tu08686040'  // generated ethereal password
+        }
     });
     const mailOptions = {
       to: user.email,
-      from: 'hackathon@starter.com',
-      subject: 'Your Hackathon Starter password has been changed',
-      text: `Hello,\n\nThis is a confirmation that the password for your account ${user.email} has just been changed.\n`
+      from: 'contato@precisionlaboratorio.com.br',
+      subject: 'Precision - Senha alterado com sucesso',
+      text: `Olá,\n\nEste email é uma confirmação que sua senha do login ${user.email} foi alterada.\n`
     };
     return transporter.sendMail(mailOptions)
       .then(() => {
-        req.flash('success', { msg: 'Success! Your password has been changed.' });
+        req.flash('success', { msg: 'Você receberá um email com o link para criar uma nova senha' });
       });
   };
 
@@ -384,9 +386,7 @@ exports.getForgot = (req, res) => {
   if (req.isAuthenticated()) {
     return res.redirect('/');
   }
-  res.render('account/forgot', {
-    title: 'Forgot Password'
-  });
+  res.redirect('/login')
 };
 
 /**
@@ -394,14 +394,14 @@ exports.getForgot = (req, res) => {
  * Create a random token, then the send user an email with a reset link.
  */
 exports.postForgot = (req, res, next) => {
-  req.assert('email', 'Please enter a valid email address.').isEmail();
+  req.assert('email', 'Este email não é válido.').isEmail();
   req.sanitize('email').normalizeEmail({ gmail_remove_dots: false });
 
   const errors = req.validationErrors();
 
   if (errors) {
     req.flash('errors', errors);
-    return res.redirect('/forgot');
+    return res.redirect('/login');
   }
 
   const createRandomToken = crypto
@@ -426,24 +426,26 @@ exports.postForgot = (req, res, next) => {
     if (!user) { return; }
     const token = user.passwordResetToken;
     const transporter = nodemailer.createTransport({
-      service: 'SendGrid',
-      auth: {
-        user: process.env.SENDGRID_USER,
-        pass: process.env.SENDGRID_PASSWORD
-      }
+      host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+          user: 'tnavarrodesenvolvimento@gmail.com', // generated ethereal user
+          pass: 'tu08686040'  // generated ethereal password
+        }
     });
     const mailOptions = {
       to: user.email,
-      from: 'hackathon@starter.com',
-      subject: 'Reset your password on Hackathon Starter',
-      text: `You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n
-        Please click on the following link, or paste this into your browser to complete the process:\n\n
-        http://${req.headers.host}/reset/${token}\n\n
-        If you did not request this, please ignore this email and your password will remain unchanged.\n`
+      from: 'contato@precisionlaboratorio.com.br',
+      subject: 'Precision - Recuperação de senha',
+      text: `Você está recebendo este e-mail porque você (ou outra pessoa) solicitou a recuperação de senha da sua conta.\n\n
+        Por favor, clique no link a seguir, ou cole este no seu navegador para concluir o processo:\n\n
+        http://${req.headers.host}/login?reset=${token}\n\n
+        Se você não solicitou isso, ignore este e-mail e sua senha permanecerá inalterada.\n`
     };
     return transporter.sendMail(mailOptions)
       .then(() => {
-        req.flash('info', { msg: `An e-mail has been sent to ${user.email} with further instructions.` });
+        req.flash('info', { msg: `Um e-mail foi enviado para ${user.email} com mais instruções.` });
       });
   };
 

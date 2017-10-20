@@ -9,3 +9,76 @@ block content
             .header
               h4.title Produtos e Serviços
             .content
+              .row
+                .col-sm-12
+                  if !signup
+                    include ../../../partials/flash
+              each produto, index in pageInfo.customFields.produtos
+                form(action=('/produto/'+index), method='POST', enctype='multipart/form-data')
+                  input(type='hidden', name='_csrf', value=_csrf)
+                  .row
+                    .col-sm-12
+                      h5 #{produto.name}
+                  .row
+                    .col-sm-6
+                      .form-group
+                        label.control-label(for='name') Nome
+                        input.form-control(type='text', name='name', id='name', value=produto.name)
+                      .form-group
+                        label.control-label(for='fileUpdate') Imagem de destaque
+                          if (produto.url_image != '')
+                            | |
+                            a(href=produto.url_image)
+                              i.fa.fa-eye
+                              | VISUALIZAR ATUAL
+                        input.form-control(type='file', name='fileUpdate', id='fileUpdate', placeholder='Selecione o arquivo')
+                    .col-sm-6
+                      .form-group
+                        label.control-label(for='descripton') Descrição Curta
+                        textarea.form-control(rows='5', type='text', name='descripton')=produto.descripton
+                  .row
+                    .col-sm-12
+                      .form-group
+                          button.btn.btn-info.btn-fill.pull-right(type='submit')
+                            i.fa.fa-pencil
+                            | Salvar Produto
+                    .col-sm-12
+                      hr
+
+              form(action='/page/produtos', method='POST', enctype='multipart/form-data')
+                input(type='hidden', name='_csrf', value=_csrf)
+                .row
+                  .col-sm-12
+                    h5 Configurações de SEO
+                    hr
+                .row
+                  .col-sm-6
+                    .form-group
+                      label.control-label(for='seoTitle') Título
+                      input.form-control(type='text', name='seoTitle', id='seoTitle', value=pageInfo.seo.title)
+                    .form-group
+                      label.control-label(for='seoImage') Imagem de destaque
+                      input.form-control(type='file', name='seoImage', id='seoImage', placeholder='Selecione o arquivo')
+                  .col-sm-6
+                    .form-group
+                      label.control-label(for='seoDescription') Descrição Curta
+                      textarea.form-control(rows='5', type='text', name='seoDescription')=pageInfo.seo.descripton
+
+
+                .row
+                  .col-sm-12
+                    .form-group
+                        button.btn.btn-info.btn-fill.pull-right(type='submit')
+                          i.fa.fa-pencil
+                          | Salvar
+
+                if (pageInfo.seo)
+                  .row
+                    .col-sm-4
+                      .card
+                        .header
+                          h4.title Imagem de destaque
+                        .content
+                          .image
+                            a(href=pageInfo.seo.urlImage, target='_black')
+                              img(src=pageInfo.seo.urlImage)
