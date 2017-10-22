@@ -9,3 +9,35 @@ block content
             .header
               h4.title Portfolio
             .content
+              .row
+                .col-sm-12
+                  if !signup
+                    include ../../../partials/flash
+              form(action='/portfolio/midia', method='POST', enctype='multipart/form-data')
+                .row
+                  .col-sm-12
+                    h5 Adicionar nova imagem
+                .row
+                  .col-sm-4
+                    .form-group
+                      input.form-control(type='file', accept="image/*", name='fileUpdate', id='fileUpdate', placeholder='Selecione o arquivo', required)
+                  .col-sm-8
+                    .form-group
+                      button.btn.btn-info.btn-fill(type='submit')
+                        i.fa.fa-pencil
+                        | Salvar
+                  .col-sm-12
+                    hr
+              .row
+                each image, index in pageInfo.customFields.images
+                  .col-sm-4
+                    .card
+                      .content
+                        .image.auto-height
+                          img(src=image.url_image)
+                        .footer
+                          hr
+                          .stats
+                            .col-sm-6.col-sm-offset-6
+                              a(href=('/portfolio/midia/'+index)).btn.btn-danger
+                                i.fa.fa-trash

@@ -40,4 +40,26 @@ $(document).ready(function(){
     });
 
 
+    tinymce.init({
+      selector: '.tiny',
+      height: 300,
+      menubar: false,
+      toolbar: 'bold italic backcolor',
+      invalid_styles: {
+        '*': 'color font-size', // Global invalid styles
+        'a': 'background' // Link specific invalid styles
+      },
+      convert_fonts_to_spans : true,
+      invalid_elements : 'span,em',
+      forced_root_block : 'p',
+      plugins : "paste",
+      paste_use_dialog : false,
+      paste_auto_cleanup_on_paste : true,
+      paste_convert_headers_to_strong : false,
+      paste_strip_class_attributes : "all",
+      paste_remove_spans : true,
+      paste_remove_styles : true,
+      paste_retain_style_properties : "",
+    });
+
 });

@@ -10,8 +10,21 @@ const Page = require('../models/Page');
  */
 
 exports.laboratorio = (req, res) => {
-  res.render('pages/laboratorio', {
-    title: 'Laboratório'
+  Page.findOne({ name: 'Laboratorio' }).exec((err, pageInfo) => {
+    if (err) {
+      return res.redirect('/dashboard/pages');
+    }
+
+    if (!pageInfo) {
+      return res.redirect('/404');
+    }
+
+    else {
+      res.render('pages/laboratorio', {
+        title: 'Laboratório',
+        pageInfo
+      })
+    }
   });
 };
 
@@ -27,12 +40,6 @@ exports.agenda = (req, res) => {
     });
   });
 
-};
-
-exports.portifolio = (req, res) => {
-  res.render('pages/portifolio', {
-    title: 'Portifólio'
-  });
 };
 
 exports.error404 = (req, res) => {
@@ -85,13 +92,16 @@ exports.index = (req, res) => {
 exports.postHome = (req, res) => {
   Page.findOne({ name: 'Home' }).exec((err, pageInfo) => {
     if (err) {
-      return res.redirect('/dashboard/pages');
+      req.flash('errors', { msg: 'Não foi possível salvar a página.' });
+      return res.redirect('/page/home');
     }
 
     pageInfo.customFields.titleMesage = req.body.titleMesage;
     pageInfo.customFields.mesage = req.body.mesage;
     pageInfo.seo.title = req.body.seoTitle;
     pageInfo.seo.descripton = req.body.seoDescription;
+    pageInfo.markModified('customFields');
+    pageInfo.markModified('seo');
 
     pageInfo.save((err, pageSave) => {
       if (err) {
@@ -155,26 +165,227 @@ exports.editHome = (req, res) => {
   });
 }
 
+function createLaboratorio() {
+  return new Promise((resolve, reject) => {
+    const laboratorio = new Page({
+      name: 'Laboratorio',
+      customFields: {
+        historia: '',
+        sobre: '',
+        proposito: '',
+        digital: '',
+      },
+      seo: {
+        title: 'Precision - Laboratório de excelência',
+        descripton: 'Perfeição depende dos conhecimentos adquiridos e da experiênciaaplicada entre os técnicos e cirurgiões dentistas comprometidos com o resultado.',
+        urlImage: '/images/capa-preview.png',
+      }
+    });
+
+    laboratorio.save((err, pageInfo) => {
+      return resolve(pageInfo);
+    });
+  });
+}
+
 exports.editLaboratorio = (req, res) => {
-  res.render('viewsdash/pages/editPages/laboratorio', {
-    title: 'Editar Laboratóio',
-    user: req.user,
-  })
+  Page.findOne({ name: 'Laboratorio' }).exec((err, pageInfo) => {
+    if (err) {
+      return res.redirect('/dashboard/pages');
+    }
+
+    if (!pageInfo) {
+      createLaboratorio().then((pageCreated) => {
+        res.render('viewsdash/pages/editPages/laboratorio', {
+          title: 'Editar Laboratóio',
+          user: req.user,
+          pageInfo: pageCreated
+        })
+      });
+    }
+
+    else {
+      res.render('viewsdash/pages/editPages/laboratorio', {
+        title: 'Editar Laboratóio',
+        user: req.user,
+        pageInfo
+      })
+    }
+  });
+
 }
 
 exports.postLaboratorio = (req, res) => {
-  res.render('viewsdash/pages/editPages/laboratorio', {
-    title: 'Editar Laboratóio',
-    user: req.user,
-  })
+
+  Page.findOne({ name: 'Laboratorio' }).exec((err, pageInfo) => {
+    if (err) {
+      req.flash('errors', { msg: 'Não foi possível salvar a página.' });
+      return res.redirect('/page/laboratorio');
+    }
+
+    pageInfo.customFields.historia = req.body.historia;
+    pageInfo.customFields.sobre = req.body.sobre;
+    pageInfo.customFields.proposito = req.body.proposito;
+    pageInfo.customFields.digital = req.body.digital;
+
+    pageInfo.seo.title = req.body.seoTitle;
+    pageInfo.seo.descripton = req.body.seoDescription;
+    pageInfo.markModified('customFields');
+    pageInfo.markModified('seo');
+
+    pageInfo.save((err, pageSave) => {
+      if (err) {
+        req.flash('errors', { msg: 'Erro ao salvar Home' });
+        return res.redirect('/page/laboratorio');
+      }
+
+      if (req.files.seoImage.originalFilename != '') {
+        cloudinary.v2.uploader.upload(req.files.seoImage.path,
+          {
+            resource_type: "auto"
+          },
+          function(err, returnFileUpdate) {
+            if (err) {
+              req.flash('errors', { msg: 'Um erro aconteceu no upload de arquivo.' });
+              return res.redirect('/page/laboratorio');
+            }
+
+            pageSave.seo.urlImage = returnFileUpdate.secure_url;
+
+            pageSave.save((err, pageSave) => {
+              if(err) {
+                req.flash('error', { msg: 'Não foi possivel salvar a página' });
+                return res.redirect('/page/laboratorio');
+              }
+              req.flash('success', { msg: 'Página alterada com sucesso!' });
+              return res.redirect('/page/laboratorio');
+            })
+          });
+      } else {
+        req.flash('success', { msg: 'Página alterada com sucesso!' });
+        return res.redirect('/page/laboratorio');
+      }
+    });
+  });
 }
 
-exports.editPortfolio = (req, res) => {
-  res.render('viewsdash/pages/editPages/portfolio', {
-    title: 'Editar Portfolio',
-    user: req.user,
-  })
+function createPortfolio() {
+  return new Promise((resolve, reject) => {
+    const portfolio = new Page({
+      name: 'Portfolio',
+      customFields: {
+        images: []
+      },
+      seo: {
+        title: 'Precision - Laboratório de excelência',
+        descripton: 'Perfeição depende dos conhecimentos adquiridos e da experiênciaaplicada entre os técnicos e cirurgiões dentistas comprometidos com o resultado.',
+        urlImage: '/images/capa-preview.png',
+      }
+    });
+
+    portfolio.save((err, pageInfo) => {
+      return resolve(pageInfo);
+    });
+  });
 }
+
+
+
+exports.editPortfolio = (req, res) => {
+  Page.findOne({ name: 'Portfolio' }).exec((err, pageInfo) => {
+    if (err) {
+      return res.redirect('/dashboard/pages');
+    }
+
+    if (!pageInfo) {
+      createPortfolio().then((pageCreated) => {
+        res.render('viewsdash/pages/editPages/portfolio', {
+          title: 'Editar Portfolio',
+          pageInfo: pageCreated,
+        })
+      });
+    }
+
+    else {
+      res.render('viewsdash/pages/editPages/portfolio', {
+        title: 'Editar Portfolio',
+        user: req.user,
+        pageInfo,
+      })
+    }
+  });
+
+}
+
+exports.postPortfolioMidia = (req, res) => {
+  Page.findOne({ name: 'Portfolio' }).exec((err, pageInfo) => {
+    if (err) {
+      return res.redirect('/pages/portfolio');
+    }
+    if (req.files.fileUpdate.originalFilename != '') {
+      cloudinary.v2.uploader.upload(req.files.fileUpdate.path,
+        {
+          resource_type: "auto"
+        },
+        function(err, returnFileUpdate) {
+          if (err) {
+            req.flash('errors', { msg: 'Um erro aconteceu no upload de arquivo.' });
+            return res.redirect('/events');
+          }
+
+          pageInfo.customFields.images.push({ url_image: returnFileUpdate.secure_url });
+          pageInfo.markModified('customFields.images');
+          pageInfo.save((err, pageSave) => {
+            if(err) {
+              req.flash('error', { msg: 'Não foi possivel salvar o novo arquivo' });
+              return res.redirect('/page/portfolio');
+            }
+            req.flash('success', { msg: 'Nova Imagens salva com sucesso!' });
+            return res.redirect('/page/portfolio');
+          })
+        });
+    } else {
+      req.flash('error', { msg: 'Selecione uma imagem' });
+      return res.redirect('/page/portfolio');
+    }
+
+  });
+}
+
+exports.deletePortfolioMidia = (req, res) => {
+  Page.findOne({ name: 'Portfolio' }).exec((err, pageInfo) => {
+    if (err) {
+      return res.redirect('/pages/portfolio');
+    }
+
+    pageInfo.customFields.images.splice(req.params.id, 1);
+    pageInfo.markModified('customFields.images');
+    pageInfo.save((err, pageSave) => {
+      if(err) {
+        req.flash('error', { msg: 'Não foi possivel apagar o arquivo' });
+        return res.redirect('/page/portfolio');
+      }
+      req.flash('success', { msg: 'Imagem removida com sucesso!' });
+      return res.redirect('/page/portfolio');
+    });
+
+  });
+}
+
+exports.portifolio = (req, res) => {
+  Page.findOne({ name: 'Portfolio' }).exec((err, pageInfo) => {
+    if (err) {
+      res.redirect('/404');
+    }
+
+    res.render('pages/portifolio', {
+      title: 'Portifólio',
+      pageInfo
+    });
+
+  });
+
+};
 
 exports.postPortfolio = (req, res) => {
   res.render('viewsdash/pages/editPages/portfolio', {

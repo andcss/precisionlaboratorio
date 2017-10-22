@@ -9,7 +9,7 @@ block content
             .header
               h4.title Página Inicial
             .content
-              form(action=action, method='POST', enctype="multipart/form-data")
+              form(action='/page/home', method='POST', enctype="multipart/form-data")
                 input(type='hidden', name='_csrf', value=_csrf)
                 .row
                   .col-sm-12

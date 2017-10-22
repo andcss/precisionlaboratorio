@@ -14,41 +14,78 @@ block content
             br
             span.f3 LIO
             hr
-
+          - var images = pageInfo.customFields.images;
           #carouselGaleria.slideGaleria.carousel.slide(data-ride='carousel')
             .carousel-inner(role='listbox')
               .item.active
                 .linha
-                  .item
-                    img(src="images/portifolio/img1.jpg")
-                  .item
-                    img(src="images/portifolio/img2.jpg")
-                  .item
-                    img(src="images/portifolio/img3.jpg")
+                  if (images[0])
+                    .item
+                      img(src=images[0].url_image)
+                  if (images[1])
+                    .item
+                      img(src=images[1].url_image)
+                  if (images[3])
+                    .item
+                      img(src=images[3].url_image)
                 .linha
-                  .item
-                    img(src="images/portifolio/img4.jpg")
-                  .item
-                    img(src="images/portifolio/img5.jpg")
-                  .item
-                    img(src="images/portifolio/img6.jpg")
-              .item
-                .linha
-                  .item
-                    img(src="images/portifolio/img5.jpg")
-                  .item
-                    img(src="images/portifolio/img3.jpg")
-                  .item
-                    img(src="images/portifolio/img6.jpg")
-                .linha
-                  .item
-                    img(src="images/portifolio/img1.jpg")
-                  .item
-                    img(src="images/portifolio/img4.jpg")
-                  .item
-                    img(src="images/portifolio/img2.jpg")
-            .linha
-              a.voltar(href="#carouselGaleria", role="button", data-slide="prev")
-                include ../../public/svg/arrow-left.svg
-              a.proximo(href="#carouselGaleria", role="button", data-slide="next")
-                include ../../public/svg/arrow-right.svg
+                  if (images[4])
+                    .item
+                      img(src=images[4].url_image)
+                  if (images[5])
+                    .item
+                      img(src=images[5].url_image)
+                  if (images[6])
+                    .item
+                      img(src=images[6].url_image)
+              if (images[7])
+                .item
+                  .linha
+                    if (images[7])
+                      .item
+                        img(src=images[7].url_image)
+                    if (images[8])
+                      .item
+                        img(src=images[8].url_image)
+                    if (images[9])
+                      .item
+                        img(src=images[9].url_image)
+                  .linha
+                    if (images[10])
+                      .item
+                        img(src=images[10].url_image)
+                    if (images[11])
+                      .item
+                        img(src=images[11].url_image)
+                    if (images[12])
+                      .item
+                        img(src=images[12].url_image)
+              if (images[13])
+                .item
+                  .linha
+                    if (images[13])
+                      .item
+                        img(src=images[13].url_image)
+                    if (images[14])
+                      .item
+                        img(src=images[14].url_image)
+                    if (images[15])
+                      .item
+                        img(src=images[15].url_image)
+                  .linha
+                    if (images[16])
+                      .item
+                        img(src=images[16].url_image)
+                    if (images[17])
+                      .item
+                        img(src=images[17].url_image)
+                    if (images[18])
+                      .item
+                        img(src=images[18].url_image)
+
+
+              .linha
+                a.voltar(href="#carouselGaleria", role="button", data-slide="prev")
+                  include ../../public/svg/arrow-left.svg
+                a.proximo(href="#carouselGaleria", role="button", data-slide="next")
+                  include ../../public/svg/arrow-right.svg
