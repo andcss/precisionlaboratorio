@@ -148,7 +148,7 @@ app.get('/', pagesController.index);
 app.get('/laboratorio', pagesController.laboratorio);
 app.get('/produtos', pagesController.produtos);
 app.get('/agenda', pagesController.agenda);
-app.get('/portifolio', pagesController.portifolio);
+app.get('/portfolio', pagesController.portfolio);
 
 app.get('/importMaterials', configController.populateMaterials);
 

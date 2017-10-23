@@ -374,7 +374,7 @@ exports.deletePortfolioMidia = (req, res) => {
   });
 }
 
-exports.portifolio = (req, res) => {
+exports.portfolio = (req, res) => {
   Page.findOne({ name: 'Portfolio' }).exec((err, pageInfo) => {
     if (err) {
       res.redirect('/404');
