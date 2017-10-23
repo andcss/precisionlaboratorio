@@ -14,7 +14,8 @@ const transporter = nodemailer.createTransport({
  */
 exports.getContact = (req, res) => {
   res.render('pages/contact', {
-    title: 'Contact'
+    title: 'Contact',
+    pageInfo: {}
   });
 };
 
@@ -34,19 +35,28 @@ exports.postContact = (req, res) => {
     return res.redirect('/contact');
   }
 
-  const mailOptions = {
-    to: 'your@email.com',
-    from: `${req.body.name} <${req.body.email}>`,
-    subject: 'Contact Form | Hackathon Starter',
-    text: req.body.message
-  };
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: 'tnavarrodesenvolvimento@gmail.com', // generated ethereal user
+        pass: 'tu08686040'  // generated ethereal password
+      }
+  });
 
+  const mailOptions = {
+    to: 'contato@precisionlaboratorio.com.br',
+    from: `${req.body.name} <${req.body.email}>`,
+    subject: 'Precision - Contato',
+    text: req.body.messagem,
+  };
   transporter.sendMail(mailOptions, (err) => {
     if (err) {
       req.flash('errors', { msg: err.message });
       return res.redirect('/contact');
     }
-    req.flash('success', { msg: 'Email has been sent successfully!' });
+    req.flash('success', { msg: 'Sua mensagem foi enviar, aguarde que logo nossa equipe entrará em contato.' });
     res.redirect('/contact');
   });
 };

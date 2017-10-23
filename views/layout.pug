@@ -6,7 +6,16 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='theme-color' content='#4DA5F4')
     meta(name='csrf-token', content=_csrf)
-    title #{title}
+
+    if(pageInfo.seo)
+      title(itemprop="name")=pageInfo.seo.title
+      meta(content=pageInfo.seo.description, name='description')
+      meta(name='og:site_name', content='Laboratório Presicion')
+      meta(name='og:image', content=pageInfo.seo.urlImage)
+      meta(name='og:description', content=pageInfo.seo.description)
+      meta(name='og:title', content=pageInfo.seo.title)
+
+
     link(rel='shortcut icon', href='/favicon.png')
     link(rel='stylesheet', href='/css/main.css')
 
@@ -26,7 +35,7 @@ html
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD6AbY7omGiPIbc8xR2zmqqHaBKbRbwxzM&callback=initMap')
     script(src='//www.powr.io/powr.js', external-type='html')
 
-    
+
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.

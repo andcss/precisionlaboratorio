@@ -216,8 +216,8 @@ app.post('/page/portfolio', [passportConfig.isAdminUser, multipartMiddleware], p
 app.get('/page/produtos', passportConfig.isAdminUser, pagesController.editProdutos);
 app.post('/page/produtos', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postProdutos);
 app.post('/produto/:id', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postProduto);
-app.post('/portfolio/midia', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postPortfolioMidia);
-app.get('/portfolio/midia/:id', passportConfig.isAdminUser, pagesController.deletePortfolioMidia);
+app.post('/edit/portfolio/midia', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postPortfolioMidia);
+app.get('/delete/portfolio/midia/:id', passportConfig.isAdminUser, pagesController.deletePortfolioMidia);
 /**
  * Routes isAuthenticated / All Users
  */

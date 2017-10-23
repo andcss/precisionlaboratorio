@@ -37,6 +37,7 @@ exports.agenda = (req, res) => {
     res.render('pages/agenda', {
       title: 'Agenda',
       destaque: findEvents[0] || [],
+      pageInfo: {}
     });
   });
 
@@ -44,7 +45,8 @@ exports.agenda = (req, res) => {
 
 exports.error404 = (req, res) => {
   res.render('pages/404', {
-    title: 'Precision - Página não encontrada'
+    title: 'Precision - Página não encontrada',
+    pageInfo: {}
   });
 }
 
@@ -398,7 +400,7 @@ exports.postPortfolio = (req, res) => {
 function createProdutos() {
   return new Promise((resolve, reject) => {
     const produtos = new Page({
-      name: 'Produtos',
+      name: 'Pro]dutos',
       customFields: {
         produtos: [
           {
@@ -601,7 +603,8 @@ exports.produtos = (req, res) => {
     else {
       res.render('pages/produtos', {
         title: 'Produtos e Serviços',
-        produtos: pageInfo.customFields.produtos
+        produtos: pageInfo.customFields.produtos,
+        pageInfo
       });
     }
   });
