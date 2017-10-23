@@ -24,6 +24,7 @@ exports.getLogin = (req, res) => {
     title: 'Login',
     signup,
     reset,
+    pageInfo: {}
   });
 };
 
@@ -75,7 +76,8 @@ exports.getSignup = (req, res) => {
     return res.redirect('/');
   }
   res.render('account/signup', {
-    title: 'Create Account'
+    title: 'Create Account',
+    pageInfo: {}
   });
 };
 
@@ -177,7 +179,8 @@ exports.getAccount = (req, res) => {
     title: 'Informações do perfil',
     config: req.config,
     findUser: req.user,
-    newUser: false
+    newUser: false,
+    pageInfo: {}
   });
 };
 
@@ -476,7 +479,8 @@ exports.getUser = (req, res) => {
       pageName: 'users',
       config: req.config,
       findUser: user,
-      newUser: false
+      newUser: false,
+      pageInfo: {}
     });
   })
 };
