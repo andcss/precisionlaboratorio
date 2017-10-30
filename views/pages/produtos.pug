@@ -23,11 +23,12 @@ block content
 
       .linha
         .flex.flex-40.column
-          .linha
-            .box.height-maximo(style="background: url(./images/produtos/p2.jpg) no-repeat center center; background-size: cover;")
-              h5=produtos[1].name
-              .description
-                p=produtos[1].descripton
+          if (produtos[1].descripton != "")
+            .linha
+              .box.height-maximo(style="background: url(./images/produtos/p2.jpg) no-repeat center center; background-size: cover;")
+                h5=produtos[1].name
+                .description
+                  p=produtos[1].descripton
           .linha.linhaP
             .box.height-minimo(style="background: url(./images/produtos/p3.jpg) no-repeat center 10%; background-size: cover;")
               h5.to-right=produtos[2].name
