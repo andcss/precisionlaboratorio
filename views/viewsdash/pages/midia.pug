@@ -31,8 +31,8 @@ block content
                         label.control-label(for='role') Permissão
                         select.form-control(name='role')
                           each info, index in config._roles
-                            if (!newMidia && info.role.type == type)
-                              option(value=info.role._id, selected)=type
+                            if (!newMidia && info.role.value == midia._role.value)
+                              option(value=info.role._id, selected)=info.role.name
                             else
                               option(value=info.role._id)=info.role.name
 

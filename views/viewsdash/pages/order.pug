@@ -32,7 +32,7 @@ block content
                       .form-group
                         label.control-label(for='status') Status
                         select.form-control(name='status', id='status')
-                          - var status = ['pendente', 'Em produção', 'Finalizado', 'Cancelado'];
+                          - var status = ['Rascunho', 'Enviado', 'Pendente', 'Em produção', 'Finalizado', 'Cancelado'];
                           each std in status
                             if (!newOrder && order.status == std)
                               option(value=std, selected)=std
@@ -93,7 +93,7 @@ block content
                       label.control-label(for='note') Observações
                       textarea.form-control(name='note', id='note', rows='10')=newOrder ? '' : order.orderInfos.note
                     .form-group.col-sm-6
-                      label.control-label(for='implat') Implate
+                      label.control-label(for='implat') Implante
                       input.form-control(type='text', name='implat', id='implat', value=(newOrder ? '' : order.orderInfos.implat ))
                     .form-group.col-sm-6
                       label.control-label(for='model') Modelo
@@ -101,12 +101,17 @@ block content
                     .form-group.col-sm-6
                       label.control-label(for='diameter') Diâmetro
                       input.form-control(type='text', name='diameter', id='diameter', value=(newOrder ? '' : order.orderInfos.diameter ))
-                    .form-group.col-sm-6
-                      label.control-label(for='previewDate') Data Prevista
-                      .input-group.date
-                          input.form-control.datepicker(type='text', name='previewDate' value=formatDate(order.orderInfos.previewDate), required)
-                          span.input-group-addon
-                            span.pe-7s-clock
+                    if(!newOrder && user._role.value > 9 )
+                      .form-group.col-sm-6
+                        label.control-label(for='previewDate') Data Prevista
+                        .input-group.date
+                            input.form-control.datepicker(type='text', name='previewDate' value=(previewDate ? formatDate(order.orderInfos.previewDate) : ''), required)
+                            span.input-group-addon
+                              span.pe-7s-clock
+                    else if (order.orderInfos.previewDate)
+                      .form-group.col-sm-6
+                        label.control-label(for='previewDate') Data Prevista
+                        label.form-control=(newOrder ? '---' : formatDate(order.orderInfos.previewDate))
                     .form-group
                       .clearfix
                       h5 Relação de Materiais
@@ -121,6 +126,11 @@ block content
                               span.second-icon.fa.fa-check-square-o
                             input(type='checkbox', name='materials', value=material._id, data-toggle='checkbox', checked=(order.materials.indexOf(material._id) > -1 ? 'checked' : undefined))
                             | #{material.name}
+                    .row
+                      .col-sm-12
+                        .form-group
+                          label.control-label(for='othersMaterials') Outros materiais
+                          input.form-control(type='text', name='othersMaterials', id='othersMaterials', value=(newOrder ? '' : order.othersMaterials ))
 
                   .col-sm-4
                     include ../../../public/svg/model-teeth.svg
@@ -171,6 +181,10 @@ block content
                 .row
                   .col-sm-12
                     .form-group
-                        button.btn.btn-info.btn-fill.pull-right(type='submit')
+                        button.btn.btn-success.btn-fill.pull-right(type='submit')
                           i.fa.fa-pencil
-                          | Salvar
+                          | Enviar Pedido
+                        input#rascunho(type="hidden", value="false" name="rascunho")
+                        button.btn.btn-info.btn-fill(onClick="document.getElementById('rascunho').value = true" )
+                          i.fa.fa-pencil
+                          | Salvar Rascunho

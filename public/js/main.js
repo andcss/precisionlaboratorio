@@ -4,7 +4,6 @@ $(document).ready(function() {
    * Open & Close Menu Top
    * ---------------------------------------
    */
-
   $(document).on('click', '.open-menu.m-close', function(){
     $(this).removeClass('m-close');
     $(this).addClass('open');

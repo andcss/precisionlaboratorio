@@ -1,4 +1,4 @@
-const cloudinary = require('cloudinary');
+const cloudinary = require('./cloudinary');
 
 const moment = require('moment');
 const Event = require('../models/Event');
@@ -80,13 +80,15 @@ function createHome() {
 
 
 exports.index = (req, res) => {
+  var ua = req.header('user-agent');
   Page.findOne({ name: 'Home' }).exec((err, pageInfo) => {
     if (err) {
       return res.redirect('/404');
     }
     res.render('pages/home', {
       title: 'Precision - Laboratório de execelência',
-      pageInfo
+      pageInfo,
+      mobile: /mobile/i.test(ua)
     });
   });
 };

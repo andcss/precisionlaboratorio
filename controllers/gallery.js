@@ -1,15 +1,8 @@
-const cloudinary = require('cloudinary');
+const cloudinary = require('./cloudinary');
 
 const Gallery = require('../models/Gallery');
 
 const preTitle = 'Precision - ';
-
-cloudinary.config({
-  cloud_name: 'dgv0w6dst',
-  api_key: '543319621828891',
-  api_secret: 'CFL7R37APT6tfNNqhkg6W96Z7-o',
-  resource_type: 'auto',
-});
 
 exports.getGalleries = (req, res) => {
   Gallery.findOne({ name: 'Principal'}).populate('files._role').exec((err, gallery) => {

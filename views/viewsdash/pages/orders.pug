@@ -20,6 +20,7 @@ block content
                     th Profissional
                     th Paciente
                     th Status
+                    th Criado em
                     th Data Prevista
                     th.text-center Editar
                   tbody
@@ -29,6 +30,7 @@ block content
                         td #{order.user.profile.firstName}
                         td #{order.patient.name}
                         td #{order.status}
-                        td #{formatDate(order.orderInfos.previewDate)}
+                        td=formatDate(order.createdAt)
+                        td=(order.orderInfos.previewDate ? formatDate(order.orderInfos.previewDate) : 'Não informado')
                         td.text-center
                           a(href=`/order/${order._id}`).btn.btn-info.btn-fill Editar Pedido

@@ -1,16 +1,11 @@
-const cloudinary = require('cloudinary');
+
 const moment = require('moment');
 
 const Event = require('../models/Event');
 
 const preTitle = 'Precision - ';
 
-cloudinary.config({
-  cloud_name: 'dgv0w6dst',
-  api_key: '543319621828891',
-  api_secret: 'CFL7R37APT6tfNNqhkg6W96Z7-o',
-  resource_type: 'auto',
-});
+const cloudinary = require('./cloudinary');
 
 exports.getEvents = (req, res) => {
   Event.find({}).exec((err, events) => {
@@ -161,10 +156,11 @@ exports.deleteEvent = (req, res) => {
 }
 
 exports.getNextEvents = (req, res) => {
-  Event.find({ $and: [
-      { startDate: { $gt: Date.now() } }
-    ]
-  }).sort({startDate: -1}).exec((err, findEvents) => {
+  // filter date now
+  // $and: [
+  //    { startDate: { $gt: Date.now() } }
+  //  ]
+  Event.find({}).sort({startDate: 1}).exec((err, findEvents) => {
     if (err) {
       return res.status(400).json({ msg: 'Erro na busca de Eventos' });
     }

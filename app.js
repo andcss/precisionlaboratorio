@@ -174,13 +174,15 @@ app.get('/admin/configurations', passportConfig.isAdminUser, userController.admi
 app.get('/dashboard/users', passportConfig.isAdminUser, dashboardController.getUsers);
 app.get('/dashboard/config', passportConfig.isAdminUser, dashboardController.getConfig);
 
+app.get('/nextevents', eventController.getNextEvents);
+
 app.get('/events', passportConfig.isAdminUser, eventController.getEvents);
 app.get('/event', [passportConfig.isAdminUser, multipartMiddleware], eventController.getNewEvent);
 app.get('/event/:id', [passportConfig.isAdminUser, multipartMiddleware], eventController.getEvent);
 app.post('/event', [passportConfig.isAdminUser, multipartMiddleware], eventController.postNewEvent);
 app.post('/event/:id', [passportConfig.isAdminUser, multipartMiddleware], eventController.postEvent);
 app.get('/event/delete/:id', [passportConfig.isAdminUser, multipartMiddleware], eventController.deleteEvent);
-app.get('/nextevents', [passportConfig.isAdminUser, multipartMiddleware], eventController.getNextEvents);
+
 
 
 app.get('/user', passportConfig.isAdminUser, userController.getNewUser);

@@ -1,18 +1,10 @@
-const cloudinary = require('cloudinary');
+const cloudinary = require('./cloudinary');
 const moment = require('moment');
 
 const Order = require('../models/Order');
 const Material = require('../models/Material');
 
 const preTitle = 'Precision - ';
-
-cloudinary.config({
-  cloud_name: 'dgv0w6dst',
-  api_key: '543319621828891',
-  api_secret: 'CFL7R37APT6tfNNqhkg6W96Z7-o',
-  resource_type: 'auto',
-});
-
 
 function getMaterials() {
   return new Promise((result, reject) => {
@@ -31,7 +23,7 @@ exports.getOrders = (req, res) => {
   if (req.user._role.value < 9) {
     queryWhere = { user: req.user._id }
   }
-  Order.find(queryWhere).populate('user').exec((err, orders) => {
+  Order.find(queryWhere).populate('user').sort({createdAt: -1}).exec((err, orders) => {
     if(err) {
       req.flash('error', { msg: 'Não foi possível encontrar eventos.'});
       return res.redirect('back');
@@ -94,6 +86,7 @@ exports.postNewOrder = (req, res) => {
 
   var newOrder = new Order({
     user: req.user._id,
+    status: req.body.rascunho == 'true' ? 'Rascunho' : 'Enviado',
     patient: {
       name: req.body.name,
       age: req.body.age,
@@ -107,7 +100,7 @@ exports.postNewOrder = (req, res) => {
       implat: req.body.implat,
       model: req.body.model,
       diameter: req.body.diameter,
-      previewDate: new Date(moment(req.body.previewDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm")),
+
     },
     selectedTeeth: {
       t1: selectedTeeth.indexOf('t1') > -1,
@@ -144,6 +137,7 @@ exports.postNewOrder = (req, res) => {
       t32: selectedTeeth.indexOf('t32') > -1,
     },
     materials: req.body.materials,
+    othersMaterials: req.body.othersMaterials,
     options: {
       blade: req.body.blade,
       qtdBlade: req.body.qtdBlade,
@@ -179,7 +173,11 @@ exports.postOrder = (req, res) => {
       age: req.body.age,
       gender: req.body.gender,
     };
-    findOrder.status = req.body.status || findOrder.status;
+    if (req.body.rascunho == 'true'){
+      findOrder.status = 'Rascunho';
+    } else {
+      findOrder.status = req.body.status || 'Enviado';
+    }
     findOrder.domainColor = req.body.domainColor;
     findOrder.remainingColor = req.body.remainingColor;
     findOrder.usedScale = req.body.usedScale;
@@ -188,8 +186,12 @@ exports.postOrder = (req, res) => {
       implat: req.body.implat,
       model: req.body.model,
       diameter: req.body.diameter,
-      previewDate: new Date(moment(req.body.previewDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm")),
-    },
+    };
+
+    if(req.body.previewDate) {
+      findOrder.orderInfos.previewDate = new Date(moment(req.body.previewDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm"));
+    }
+
     findOrder.selectedTeeth = {
       t1: selectedTeeth.indexOf('t1') > -1,
       t2: selectedTeeth.indexOf('t2') > -1,
@@ -225,6 +227,7 @@ exports.postOrder = (req, res) => {
       t32: selectedTeeth.indexOf('t32') > -1,
     };
     findOrder.materials = req.body.materials;
+    findOrder.othersMaterials = req.body.othersMaterials;
     findOrder.options = {
       blade: req.body.blade,
       qtdBlade: req.body.qtdBlade,

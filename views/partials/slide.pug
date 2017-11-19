@@ -21,7 +21,10 @@
   .carousel-inner(role='listbox')
     .alpha-black
     .item.active
-      video(poster='./images/bg-slide-1.jpg' playsinline autoplay muted loop)
-        source(src='./images/videos/BG_Home.mp4' type='video/mp4')
+      if (mobile)
+        .background-image(style="background-image: url('./images/bg-slide-1.jpg')")
+      else
+        video(poster='./images/bg-slide-1.jpg' playsinline autoplay muted loop)
+          source(src='./images/videos/BG_Home.mp4' type='video/mp4')
     //- .item(style='background: url(./images/bg-slide-1.jpg) no-repeat center center; background-size: cover;')
     //- .item(style='background: url(./images/bg-slide-2.jpg) no-repeat center center; background-size: cover;')

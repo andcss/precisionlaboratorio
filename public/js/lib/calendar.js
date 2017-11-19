@@ -10,7 +10,9 @@ var tempust = {
         "D","S","T","Q","Q","S","S"
     ],
     sds: function (d) {
-        return d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
+        var date = d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
+        console.log(d.getMonth());
+        return date;
     },
     di: function (y, m, o, e) {
         var lmd = {},
@@ -103,7 +105,8 @@ var tempust = {
                         ).show();
                         var nomeMes = $('.meses .active').html();
                         var dia = new Date($(this).attr("data-date")).getDate();
-                        $('.eventoData').html(`<h2>${dia}<small>${nomeMes}</small></h2>`);
+                        var ano = new Date($(this).attr("data-date")).getFullYear();
+                        $('.eventoData').html(`<h2><small>${ano}</small>${dia}<small>${nomeMes}</small></h2>`);
                     });
                     events.push({
                         date: tempust.sds(dates[day].date),
@@ -125,7 +128,9 @@ var tempust = {
                         );
                         var nomeMes = tempust.npm[new Date(event.date).getMonth()];
                         var dia = new Date(event.date).getDate();
-                        $('.eventoData').html(`<h2>${dia}<small>${nomeMes}</small></h2>`);
+                        var ano = new Date(event.date).getFullYear();
+
+                        $('.eventoData').html(`<h2><small>${ano}</small>${dia}<small>${nomeMes}</small></h2>`);
                         $("[data-idmes='"+date.getMonth()+"']").addClass('active');
                     });
                     events = [];
@@ -246,7 +251,6 @@ var tempust = {
             var ano = parseInt($('.year').val()) + 1;
             $('.year').val(ano);
             self.data().date.setFullYear(ano);
-            console.log($('.year').val());
             self.trigger({
                 type: "changeDate",
                 date: self.data().date

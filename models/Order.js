@@ -17,7 +17,7 @@ const orderSchema = new Schema({
     implat: { type: String, default: '' },
     model: { type: String, default: '' },
     diameter: { type: String, default: '' },
-    previewDate: { type: Date, default: Date.now },
+    previewDate: { type: Date },
   },
   selectedTeeth: {
     t1: { type: Boolean, default: false },
@@ -54,6 +54,7 @@ const orderSchema = new Schema({
     t32: { type: Boolean, default: false },
   },
   materials: [{ type: Schema.Types.ObjectId, ref: 'Material' }],
+  othersMaterials: { type: String, default: '' },
   options: {
     blade: { type: Boolean, default: false },
     qtdBlade: { type: Number, default: 0},

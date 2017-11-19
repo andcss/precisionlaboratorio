@@ -37,15 +37,34 @@ block content
                             if (user._role.value > 9)
                               .footer
                                 .legend
-                                  if (file._role.value >= 3)
+                                  p Autorização de acesso
+                                  if (file._role.value <= 3)
                                     i.fa.fa-circle.text-info
                                     | Usuário Ouro
-                                  if (file._role.value >= 5)
+                                    br
                                     i.fa.fa-circle.text-danger
                                     |  Usuário Prata
-                                  if (file._role.value >= 6)
+                                    br
                                     i.fa.fa-circle.text-warning
                                     |  Usuário Bronze
+                                  else if (file._role.value >= 5 && file._role.value < 7)
+                                    i.fa.fa-circle.text-danger
+                                    |  Usuário Ouro
+                                    br
+                                    i.fa.fa-circle.text-warning
+                                    |  Usuário Prata
+                                    br
+                                    i.fa.fa-close
+                                    | Usuário Bronze
+                                  else if (file._role.value >= 7)
+                                    i.fa.fa-circle.text-warning
+                                    |  Usuário Ouro
+                                    br
+                                    i.fa.fa-close
+                                    |  Usuário Prata
+                                    br
+                                    i.fa.fa-close
+                                    | Usuário Bronze
                                 hr
                                 .stats
                                   .col-sm-6
