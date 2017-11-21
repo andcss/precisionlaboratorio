@@ -1,48 +1,44 @@
 function dateFormat(date) {
   date = new Date(date);
-  return date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+  return date.getFullYear() + '-' + parseInt(date.getMonth()+1) + '-' + date.getDate();
 }
 
-function sumDayDate(date) {
-  if (!date.getTime)
-    date = new Date(date);
-  return new Date(date.getTime()+1000*60*60*24);
+function myDateFunction(id) {
+  var date = $("#" + id).data("date");
+  var hasEvent = $("#" + id).data("hasEvent");
+  var title = $("#" + id).attr("title");
+  var description = $("#" + id).attr("description");
+  var footer = $("#" + id).attr("footer");
+
+  console.log(title, description);
 }
 
 $(document).ready(function () {
   if ($('#calendar').is(':visible')) {
+
+    var eventData = [];
+
     $.get(window.location.origin + '/nextevents', function(findEvents) {
-
-      var events = {};
-      var firstEvent = new Date(findEvents[0].startDate).getFullYear() + '/' + new Date(findEvents[0].startDate).getMonth() + '/' + new Date(findEvents[0].startDate).getDate();
-
       for (var key = 0; key < findEvents.length; key++) {
-        var event = findEvents[key];
-        var startDate = dateFormat(event.startDate);
-        var endDate = dateFormat(event.endDate);
-
-        if (startDate == endDate) {
-          events[startDate] = $('<div><h3>'+ event.name +'</h3><p>'+ event.description +'</p><a href='+ event.link +'>'+ event.link +'</a></div>');
-        } else {
-          do {
-            events[startDate] = $('<div><h3>'+ event.name +'</h3><p>'+ event.description +'</p><a href='+ event.link +'>'+ event.link +'</a></div>');
-            event.startDate = sumDayDate(event.startDate)
-            startDate = dateFormat(event.startDate);
-          } while(startDate != endDate)
-        }
+        eventData.push({
+          "date": dateFormat(findEvents[key].startDate),
+          "badge":false,
+          "title":"Ola pessoas",
+          "body":"Descricao ola",
+          "footer":"que issso",
+        });
       }
-      $('#calendar').tempust({
-        date: new Date(firstEvent),
-        offset: 1,
-        events: events
-      });
 
-      $('#calendar').on('changeDate', function (event) {
-        $('#output')
-        .append('Date Changed!')
-        .append('<br/>');
-      });
+      console.log(eventData);
 
+      $("#zubuto-calendar").zabuto_calendar({
+        data: eventData,
+        language: "pt",
+        modal: true,
+        action: function () {
+          return myDateFunction(this.id);
+        },
+      });
     });
   }
 
