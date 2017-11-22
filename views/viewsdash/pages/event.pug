@@ -48,7 +48,15 @@ block content
                     .form-group
                       label Descrição Curta
                       textArea.form-control(name='description')=(event ? event.description : '')
-
+                .row
+                  .col-sm-6
+                    .form-group
+                      label Link externo
+                      input.form-control(type='text', name='link' value=(link ? link : ''))
+                  .col-sm-6
+                    .form-group
+                      label Texto do link
+                      input.form-control(type='text', name='linkText' value=(linkText ? linkText : ''))
                 .row
 
                   .col-sm-3

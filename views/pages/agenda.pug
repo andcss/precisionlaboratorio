@@ -26,10 +26,12 @@ block content
                   | #{destaque.description}
                 - var startDate = new Date(destaque.startDate).getDate()
                 - var endDate = new Date(destaque.endDate).getDate()
+                - var monthString = meses[new Date(destaque.startDate).getMonth()];
+                - var yearString = new Date(destaque.startDate).getFullYear();
                 if (startDate != endDate)
                   span.dataDestaque=(startDate + ' a ' + new Date(destaque.endDate).getDate())
                     br
-                    span=('de ' + meses[new Date(destaque.startDate).getMonth()-1])
+                    span=('de ' + monthString)
                 else
                   span.dataDestaque=(startDate + ' de ' + meses[new Date(destaque.startDate).getMonth()-1])
 
@@ -43,8 +45,13 @@ block content
                 #calendar
                   #zubuto-calendar
               .linha
-                .eventoData
-                  h2 -
-                    small -
-                    small -
+                #showEvent.eventoData
+                  h2=startDate
+                    small=monthString
+                    small=yearString
                 #dates.descricao
+                  h3=destaque.name
+                  p=destaque.description
+                  if(destaque.link != '')
+                    strong
+                      a(href=destaque.link)=destaque.linkText

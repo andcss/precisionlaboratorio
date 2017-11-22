@@ -56,6 +56,8 @@ exports.postNewEvent = (req, res) => {
     endDate: new Date(moment(req.body.endDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm")),
     description: req.body.description,
     featured: req.body.featured ? true : false,
+    link: req.body.link,
+    linkText: req.body.linkText,
   });
 
   newEvent.save((err, saveEvent) => {
@@ -105,6 +107,8 @@ exports.postEvent = (req, res) => {
     findEvent.endDate = new Date(moment(req.body.endDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm"));
     findEvent.description = req.body.description;
     findEvent.featured = req.body.featured ? true : false;
+    findEvent.link = req.body.link;
+    findEvent.linkText = req.body.linkText;
 
     findEvent.save((err, saveEvent) => {
       if (err) {
