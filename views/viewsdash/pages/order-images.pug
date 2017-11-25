@@ -1,0 +1,147 @@
+.row
+  .col-sm-12
+    h5 Arquivos de fotos
+      small
+        a(href="#") Esconder
+    hr
+
+  .col-sm-12
+    .col-sm-12
+    .form-group.col-sm-3
+      label.control-label(for='s1') Sorriso
+      if(!newOrder && order.photos.s1.url_image != '')
+        img(src=order.photos.s1.url_image)
+      else
+        img(src="/images/modelos/sorrindo.jpg")
+      input.form-control(type='file', name='s1', id='s1')
+    .form-group.col-sm-3
+      label.control-label(for='s2') Sorriso entre aberto
+      if(!newOrder && order.photos.s2.url_image != '')
+        img(src=order.photos.s2.url_image)
+      else
+        img(src="/images/modelos/sorrindo-aberto.jpg")
+      input.form-control(type='file', name='s2', id='s2')
+    .form-group.col-sm-3
+      label.control-label(for='s3') Boca Fechada
+      if(!newOrder && order.photos.s3.url_image != '')
+        img(src=order.photos.s3.url_image)
+      else
+        img(src="/images/modelos/boca-fechada.jpg")
+      input.form-control(type='file', name='s3', id='s3')
+    .form-group.col-sm-3
+      label.control-label(for='s4') Lábios em repouso
+      if(!newOrder && order.photos.s4.url_image != '')
+        img(src=order.photos.s4.url_image)
+      else
+        img(src="/images/modelos/labios-repouso.jpg")
+      input.form-control(type='file', name='s4', id='s4')
+  .col-sm-12
+    .form-group.col-sm-3
+      label.control-label(for='s5') Perfil boca fechada (Direita)
+      if(!newOrder && order.photos.s5.url_image != '')
+        img(src=order.photos.s5.url_image)
+      else
+        img(src="/images/modelos/perfil-direita.jpg")
+      input.form-control(type='file', name='s5', id='s5')
+    .form-group.col-sm-3
+      label.control-label(for='s6') Perfil boca fechada (Esquerda)
+      if(!newOrder && order.photos.s6.url_image != '')
+        img(src=order.photos.s6.url_image)
+      else
+        img(src="/images/modelos/perfil-esquerda.jpg")
+      input.form-control(type='file', name='s6', id='s6')
+    .form-group.col-sm-3
+      label.control-label(for='s7') Perfil sorrindo (Direita)
+      if(!newOrder && order.photos.s7.url_image != '')
+        img(src=order.photos.s7.url_image)
+      else
+        img(src="/images/modelos/perfil-sorrindo-direita.jpg")
+      input.form-control(type='file', name='s7', id='s7')
+    .form-group.col-sm-3
+      label.control-label(for='s8') Perfil sorrindo (Esquerda)
+      if(!newOrder && order.photos.s8.url_image != '')
+        img(src=order.photos.s8.url_image)
+      else
+        img(src="/images/modelos/perfil-sorrindo-esquerda.jpg")
+      input.form-control(type='file', name='s8', id='s8')
+  .col-sm-12
+    .form-group.col-sm-6
+      label.control-label(for='s9') Foco em boca (Direita)
+      if(!newOrder && order.photos.s9.url_image != '')
+        img(src=order.photos.s9.url_image)
+      else
+        img(src="/images/modelos/sorrindo-direita-foco.jpg")
+      input.form-control(type='file', name='s9', id='s9')
+    .form-group.col-sm-6
+      label.control-label(for='s10') Foco em boca (Esquerda)
+      if(!newOrder && order.photos.s10.url_image != '')
+        img(src=order.photos.s10.url_image)
+      else
+        img(src="/images/modelos/sorrindo-esquerda-foco.jpg")
+      input.form-control(type='file', name='s10', id='s10')
+  .col-sm-12
+    .form-group.col-sm-4
+      label.control-label(for='s11') Foco em boca (Sorrindo)
+      if(!newOrder && order.photos.s11.url_image != '')
+        img(src=order.photos.s11.url_image)
+      else
+        img(src="/images/modelos/labios-sorrindo.jpg")
+      input.form-control(type='file', name='s11', id='s11')
+    .form-group.col-sm-4
+      label.control-label(for='s12') Foco em boca (Sorrindo entre aberto)
+      if(!newOrder && order.photos.s12.url_image != '')
+        img(src=order.photos.s12.url_image)
+      else
+        img(src="/images/modelos/labios-sorrindo-aberto.jpg")
+      input.form-control(type='file', name='s12', id='s12')
+    .form-group.col-sm-4
+      label.control-label(for='s13') Foco em boca (Lábios em repouso)
+      if(!newOrder && order.photos.s13.url_image != '')
+        img(src=order.photos.s13.url_image)
+      else
+        img(src="/images/modelos/labios-repouso-foco.jpg")
+      input.form-control(type='file', name='s13', id='s13')
+  .col-sm-12
+    .form-group.col-sm-4
+      label.control-label(for='s14') Afastador em oclusão
+      if(!newOrder && order.photos.s14.url_image != '')
+        img(src=order.photos.s14.url_image)
+      else
+        img(src="/images/modelos/afastador-fechado.jpg")
+      input.form-control(type='file', name='s14', id='s14')
+    .form-group.col-sm-4
+      label.control-label(for='s15') Afastador
+      if(!newOrder && order.photos.s15.url_image != '')
+        img(src=order.photos.s15.url_image)
+      else
+        img(src="/images/modelos/afastador-aberto.jpg")
+      input.form-control(type='file', name='s15', id='s15')
+    .form-group.col-sm-4
+      label.control-label(for='s16') Afastador com fundo preto
+      if(!newOrder && order.photos.s16.url_image != '')
+        img(src=order.photos.s16.url_image)
+      else
+        img(src="/images/modelos/afastador-fundo.jpg")
+      input.form-control(type='file', name='s16', id='s16')
+  .col-sm-12
+    .form-group.col-sm-4
+      label.control-label(for='s17') Afastador em oclusão (Foco)
+      if(!newOrder && order.photos.s17.url_image != '')
+        img(src=order.photos.s17.url_image)
+      else
+        img(src="/images/modelos/afastador-foco.jpg")
+      input.form-control(type='file', name='s17', id='s17')
+    .form-group.col-sm-4
+      label.control-label(for='s18') Afastador dentes entre aberto (Foco)
+      if(!newOrder && order.photos.s18.url_image != '')
+        img(src=order.photos.s18.url_image)
+      else
+        img(src="/images/modelos/afastador-aberto-foco.jpg")
+      input.form-control(type='file', name='s18', id='s18')
+    .form-group.col-sm-4
+      label.control-label(for='s19') Afastador com fundo preto (Foco)
+      if(!newOrder && order.photos.s19.url_image != '')
+        img(src=order.photos.s19.url_image)
+      else
+        img(src="/images/modelos/afastador-fundo-foco.jpg")
+      input.form-control(type='file', name='s19', id='s19')

@@ -10,6 +10,16 @@
   }
 }
 
+.form-group {
+  img {
+    width: auto;
+    max-width: 100%;
+    max-height: 400px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
 .mensagem {
   padding: 80px 40px;
   background: url(/images/bg-slide-1.jpg) no-repeat center;

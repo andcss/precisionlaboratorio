@@ -42,7 +42,11 @@ block content
                           input.form-control.datepicker(type='text', name='endDate' value=(event ? formatDate(event.endDate) : ''), required)
                           span.input-group-addon
                             span.pe-7s-clock
-
+                .row
+                  .col-sm-12
+                    .form-group
+                      label Título do evento
+                      input.form-control(name='title', value=(event ? event.title : ''), required)
                 .row
                   .col-sm-12
                     .form-group

@@ -37,7 +37,13 @@ exports.agenda = (req, res) => {
     res.render('pages/agenda', {
       title: 'Agenda',
       destaque: findEvents[0] || [],
-      pageInfo: {}
+      pageInfo: {
+        seo: {
+          title: 'Precision - Laboratório de excelência',
+          descripton: 'Perfeição depende dos conhecimentos adquiridos e da experiência aplicada entre os técnicos e cirurgiões dentistas comprometidos com o resultado.',
+          urlImage: '/images/capa-preview.png',
+        }
+      }
     });
   });
 
@@ -337,7 +343,10 @@ exports.postPortfolioMidia = (req, res) => {
             return res.redirect('/events');
           }
 
-          pageInfo.customFields.images.push({ url_image: returnFileUpdate.secure_url });
+          pageInfo.customFields.images.push({
+            url_image: returnFileUpdate.secure_url,
+            public_id: returnFileUpdate.public_id
+          });
           pageInfo.markModified('customFields.images');
           pageInfo.save((err, pageSave) => {
             if(err) {
@@ -359,20 +368,28 @@ exports.postPortfolioMidia = (req, res) => {
 exports.deletePortfolioMidia = (req, res) => {
   Page.findOne({ name: 'Portfolio' }).exec((err, pageInfo) => {
     if (err) {
+      req.flash('error', { msg: 'Não foi possivel apagar o arquivo' });
       return res.redirect('/pages/portfolio');
     }
 
-    pageInfo.customFields.images.splice(req.params.id, 1);
-    pageInfo.markModified('customFields.images');
-    pageInfo.save((err, pageSave) => {
-      if(err) {
-        req.flash('error', { msg: 'Não foi possivel apagar o arquivo' });
-        return res.redirect('/page/portfolio');
-      }
-      req.flash('success', { msg: 'Imagem removida com sucesso!' });
-      return res.redirect('/page/portfolio');
+    cloudinary.v2.uploader.destroy(
+      pageInfo.customFields.images[req.params.id].public_id,
+      (error, result) => {
+        if (error) {
+          req.flash('error', { msg: 'Não foi possivel apagar o arquivo' });
+          return res.redirect('/page/portfolio');
+        }
+        pageInfo.customFields.images.splice(req.params.id, 1);
+        pageInfo.markModified('customFields.images');
+        pageInfo.save((err, pageSave) => {
+          if(err) {
+            req.flash('error', { msg: 'Não foi possivel apagar o arquivo' });
+            return res.redirect('/page/portfolio');
+          }
+          req.flash('success', { msg: 'Imagem removida com sucesso!' });
+          return res.redirect('/page/portfolio');
+        });
     });
-
   });
 }
 

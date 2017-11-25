@@ -59,7 +59,8 @@ exports.postNewMidia = (req, res) => {
 
   cloudinary.v2.uploader.upload(req.files.fileUpdate.path,
     {
-      resource_type: "auto"
+      resource_type: "auto",
+      public_id: "galeria/"+req.files.fileUpdate.name
     },
     function(err, returnFileUpdate) {
       if (err) {
@@ -101,7 +102,8 @@ exports.postMidia = (req, res) => {
   if (req.files.fileUpdate.originalFilename != '') {
     cloudinary.v2.uploader.upload(req.files.fileUpdate.path,
       {
-        resource_type: "auto"
+        resource_type: "auto",
+        public_id: "galeria/"+req.files.fileUpdate.name
       },
       function(err, returnFileUpdate) {
         if (err) {
@@ -177,16 +179,31 @@ exports.deleteMidia = (req, res) => {
       req.flash('errors', { msg: 'Não encontramos a galeria.' })
       return res.redirect('/midia');
     }
-
+    var removeFile;
     gallery.files = gallery.files.filter((file) => {
       if (file._id != req.params.id) {
         return file;
+      } else {
+        removeFile = file
       }
     });
 
-    gallery.save((err, saveGallery) => {
-      req.flash('success', { msg: 'Novo arquivo adicionado a galeria.' })
-      return res.redirect('/galleries');
-    })
+    cloudinary.v2.uploader.destroy(
+      removeFile.public_id,
+      (error, result) => {
+
+        if(error) {
+          req.flash('errors', { msg: 'Não encontramos a galeria.' })
+          return res.redirect('/midia');
+        }
+
+
+
+        gallery.save((err, saveGallery) => {
+          req.flash('success', { msg: 'Novo arquivo adicionado a galeria.' })
+          return res.redirect('/galleries');
+        });
+      });
+
   });
 }

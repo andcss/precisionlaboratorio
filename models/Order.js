@@ -63,7 +63,84 @@ const orderSchema = new Schema({
     inlay: { type: Boolean, default: false },
     qtdInlay: { type: Number, default: 0},
   },
-
+  photos: {
+    s1: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s2: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s3: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s4: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s5: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s6: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s7: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s8: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s9: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s10: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s11: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s12: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s13: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s14: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s15: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s16: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s17: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s18: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+    s19: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
+  },
 }, { timestamps: true });
 
 const Order = mongoose.model('Order', orderSchema);

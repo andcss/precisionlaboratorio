@@ -11,7 +11,7 @@ block content
               .content
                 - var action = newMidia ? '/midia' : '/midia/'+midia._id;
                 form(action=action, method='POST', enctype="multipart/form-data")
-                  input(type='hidden', name='_csrf', value=_csrf)
+                  
                   .row
                     .col-sm-12
                       if !signup

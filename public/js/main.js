@@ -44,8 +44,7 @@ $(document).ready(function() {
     var html = '<ul>';
     for (var i = 0; i < maxImage; i++) {
       html += `<li>
-                  <a href="${data[i].link}" target="_black">
-                    <img src="${data[i].images.low_resolution.url}"/>
+                  <a href="${data[i].link}" target="_black" style="background-image: url(${data[i].images.low_resolution.url})">
                   </a>
                 </li>`;
     }

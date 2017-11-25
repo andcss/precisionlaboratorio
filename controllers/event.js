@@ -52,6 +52,7 @@ exports.getEvent = (req, res) => {
 exports.postNewEvent = (req, res) => {
   var newEvent = new Event({
     name: req.body.name,
+    title: req.body.title,
     startDate: new Date(moment(req.body.startDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm")),
     endDate: new Date(moment(req.body.endDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm")),
     description: req.body.description,
@@ -103,6 +104,7 @@ exports.postEvent = (req, res) => {
     }
 
     findEvent.name = req.body.name;
+    findEvent.title = req.body.title;
     findEvent.startDate = new Date(moment(req.body.startDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm"));
     findEvent.endDate = new Date(moment(req.body.endDate, 'DD/MM/YYYY HH:mm').format("MM/DD/YYYY HH:mm"));
     findEvent.description = req.body.description;

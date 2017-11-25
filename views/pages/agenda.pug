@@ -18,10 +18,10 @@ block content
             - var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
             - var urlImage = destaque.url_image || './images/destaqueAgenda.jpg'
             .destaque(style="background: url("+urlImage+") center center; background-size: cover;")
-              if (destaque.name)
+              if (destaque.title)
                 h4 DESTAQUE
                   hr
-                p=destaque.name
+                p=destaque.title
                   br
                   | #{destaque.description}
                 - var startDate = new Date(destaque.startDate).getDate()
@@ -50,7 +50,7 @@ block content
                     small=monthString
                     small=yearString
                 #dates.descricao
-                  h3=destaque.name
+                  h3=destaque.title
                   p=destaque.description
                   if(destaque.link != '')
                     strong

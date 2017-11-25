@@ -198,8 +198,8 @@ app.post('/role/:id', passportConfig.isAdminUser, configController.postRole);
 app.get('/orders', passportConfig.isAuthenticated, orderController.getOrders);
 app.get('/order', passportConfig.isAuthenticated, orderController.getNewOrder);
 app.get('/order/:id', passportConfig.isAuthenticated, orderController.getOrder);
-app.post('/order', passportConfig.isAuthenticated, orderController.postNewOrder);
-app.post('/order/:id', passportConfig.isAuthenticated, orderController.postOrder);
+app.post('/order', [passportConfig.isAuthenticated, multipartMiddleware], orderController.postNewOrder);
+app.post('/order/:id', [passportConfig.isAuthenticated, multipartMiddleware], orderController.postOrder);
 
 app.get('/galleries', passportConfig.isAuthenticated, galleryController.getGalleries);
 app.get('/midia', [passportConfig.isAdminUser, multipartMiddleware], galleryController.getNewMidia);

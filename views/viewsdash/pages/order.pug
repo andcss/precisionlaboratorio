@@ -10,8 +10,7 @@ block content
               h4.title Informações do pedido
             .content
               - var action = newOrder ? '/order' : '/order/' + order._id;
-              form(action=action, method='POST')
-                input(type='hidden', name='_csrf', value=_csrf)
+              form(action=action, method='POST', enctype="multipart/form-data")
                 .row
                   .col-sm-4
                     if !signup
@@ -104,7 +103,7 @@ block content
                       .form-group.col-sm-6
                         label.control-label(for='previewDate') Data Prevista
                         .input-group.date
-                            input.form-control.datepicker(type='text', name='previewDate' value=(previewDate ? formatDate(order.orderInfos.previewDate) : ''), required)
+                            input.form-control.datepicker(type='text', name='previewDate' value=(order.orderInfos.previewDate ? formatDate(order.orderInfos.previewDate) : ''))
                             span.input-group-addon
                               span.pe-7s-clock
                     else if (order.orderInfos.previewDate)
@@ -176,6 +175,7 @@ block content
                             td Inlay / Onlay
                             td
                               input.form-control(type='number', name='qtdInlay', value=(newOrder ? '' : order.options.qtdInlay ))
+                include order-images
 
                 .row
                   .col-sm-12
@@ -184,6 +184,8 @@ block content
                           i.fa.fa-pencil
                           | Enviar Pedido
                         input#rascunho(type="hidden", value="false" name="rascunho")
-                        button.btn.btn-info.btn-fill(onClick="document.getElementById('rascunho').value = true" )
-                          i.fa.fa-pencil
-                          | Salvar Rascunho
+
+                        if (newOrder || (order.status == status[0] || order.status == status[1] || order.status == status[2]))
+                          button.btn.btn-info.btn-fill(onClick="document.getElementById('rascunho').value = true" )
+                            i.fa.fa-pencil
+                            | Salvar Rascunho

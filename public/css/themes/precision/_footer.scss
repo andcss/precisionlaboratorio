@@ -79,8 +79,15 @@
           flex: 1;
           list-style: none;
           display: inline-block;
+          height: 150px;
           a {
             color: #fff;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            display: block;
+            background-repeat: no-repeat;
+            background-position: center;
             img {
               width: 100%;
             }

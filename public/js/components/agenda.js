@@ -59,7 +59,7 @@ $(document).ready(function () {
         eventData.push({
           "date": dateFormat(findEvents[key].startDate),
           "badge": false,
-          "title": findEvents[key].name,
+          "title": findEvents[key].title,
           "body": findEvents[key].description,
           "footer": footer,
         });
@@ -72,7 +72,7 @@ $(document).ready(function () {
             eventData.push({
               "date": dateFormat(startDate),
               "badge": false,
-              "title": findEvents[key].name,
+              "title": findEvents[key].title,
               "body": findEvents[key].description,
               "footer": footer,
             });
