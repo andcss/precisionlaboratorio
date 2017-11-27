@@ -43,10 +43,7 @@ $(document).ready(function() {
     var maxImage = 4;
     var html = '<ul>';
     for (var i = 0; i < maxImage; i++) {
-      html += `<li>
-                  <a href="${data[i].link}" target="_black" style="background-image: url(${data[i].images.low_resolution.url})">
-                  </a>
-                </li>`;
+      html += '<li<a href='+data[i].link+'" target="_black" style="background-image: url('+ data[i].images.low_resolution.url+')"></a></li>';
     }
     html += '</ul>';
     $('#instagramBlock .mural').html(html);
