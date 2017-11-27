@@ -220,6 +220,7 @@ app.post('/page/produtos', [passportConfig.isAdminUser, multipartMiddleware], pa
 app.post('/produto/:id', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postProduto);
 app.post('/edit/portfolio/midia', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postPortfolioMidia);
 app.get('/delete/portfolio/midia/:id', passportConfig.isAdminUser, pagesController.deletePortfolioMidia);
+
 /**
  * Routes isAuthenticated / All Users
  */

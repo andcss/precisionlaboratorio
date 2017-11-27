@@ -64,7 +64,7 @@ exports.postNewRole = (req, res) => {
         console.log(err.message);
       }
       if(!config) {
-        console.log('configNaoEncontrada :D');
+        console.log('configNaoEncontrada');
       }
 
       config._roles.push({ role: newRole._id });
@@ -96,13 +96,10 @@ exports.populateMaterials = (req, res) => {
 
   Material.remove({}, (err, data) => {
     if (!err)
-      console.log('Removido todos materiais');
       return;
   });
 
   for (key in materials) {
-    console.log(materials[key]);
-
     var newMaterial = new Material({
       name: materials[key],
       nameImput: 'material-' + key,
@@ -112,6 +109,6 @@ exports.populateMaterials = (req, res) => {
 
   }
 
-  res.json({msg: 'feito'});
+  res.json({msg: 'Material removido com sucesso!'});
 
 }

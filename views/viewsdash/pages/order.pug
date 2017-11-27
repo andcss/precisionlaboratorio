@@ -1,6 +1,8 @@
 extends ../layout
 
 block content
+  - var status = ['Rascunho', 'Enviado', 'Pendente', 'Em produção', 'Finalizado', 'Cancelado'];
+  - var action = newOrder ? '/order' : '/order/' + order._id;
   .content
     .container-fluid
       .row
@@ -9,7 +11,6 @@ block content
             .header
               h4.title Informações do pedido
             .content
-              - var action = newOrder ? '/order' : '/order/' + order._id;
               form(action=action, method='POST', enctype="multipart/form-data")
                 .row
                   .col-sm-4
@@ -25,12 +26,10 @@ block content
                       .form-group
                         label.control-label Profissional
                         a(href=('/user/'+order.user._id), target="_blank").form-control=(order.user.profile.firstName + ' ' + order.user.profile.lastName + ' CRO: '+ order.user.ufCro + '-' + order.user.typeCro + '-' + order.user.cro)
-
                     .col-sm-6
                       .form-group
                         label.control-label(for='status') Status
                         select.form-control(name='status', id='status')
-                          - var status = ['Rascunho', 'Enviado', 'Pendente', 'Em produção', 'Finalizado', 'Cancelado'];
                           each std in status
                             if (!newOrder && order.status == std)
                               option(value=std, selected)=std
@@ -44,7 +43,7 @@ block content
                   .col-sm-4
                     .form-group
                       label.control-label(for='name') Nome
-                      input.form-control(type='text', name='name', id='name', value=(newOrder ? '' : order.patient.name ))
+                      input.form-control(type='text', name='name', id='name', value=(newOrder ? '' : order.patient.name ), required)
 
                   .col-sm-4
                     .form-group
@@ -180,12 +179,15 @@ block content
                 .row
                   .col-sm-12
                     .form-group
-                        button.btn.btn-success.btn-fill.pull-right(type='submit')
-                          i.fa.fa-pencil
-                          | Enviar Pedido
-                        input#rascunho(type="hidden", value="false" name="rascunho")
-
+                        if (user._role.value > 9 || (order.status != status[3] && order.status != status[4] && order.status != status[5]))
+                          button.btn.btn-success.btn-fill.pull-right(type='submit')
+                            i.fa.fa-pencil
+                            | Enviar Pedido
+                        else
+                          a.btn.btn-disable.btn-fill.pull-right
+                            | #{order.status}
                         if (newOrder || (order.status == status[0] || order.status == status[1] || order.status == status[2]))
+                          input#rascunho(type="hidden", value="false" name="rascunho")
                           button.btn.btn-info.btn-fill(onClick="document.getElementById('rascunho').value = true" )
                             i.fa.fa-pencil
                             | Salvar Rascunho

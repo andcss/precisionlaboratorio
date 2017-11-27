@@ -56,11 +56,11 @@ block content
                   .col-sm-6
                     .form-group
                       label Link externo
-                      input.form-control(type='text', name='link' value=(link ? link : ''))
+                      input.form-control(type='text', name='link' value=(event ? event.link : ''))
                   .col-sm-6
                     .form-group
                       label Texto do link
-                      input.form-control(type='text', name='linkText' value=(linkText ? linkText : ''))
+                      input.form-control(type='text', name='linkText' value=(event ? event.linkText : ''))
                 .row
 
                   .col-sm-3

@@ -20,7 +20,7 @@
         img(src=order.photos.s2.url_image)
       else
         img(src="/images/modelos/sorrindo-aberto.jpg")
-      input.form-control(type='file', name='s2', id='s2')
+      input.form-control(type='file', name='s2', id='s2', value=(order.photos.s2 ? order.photos.s2.url_image : '' ))
     .form-group.col-sm-3
       label.control-label(for='s3') Boca Fechada
       if(!newOrder && order.photos.s3.url_image != '')

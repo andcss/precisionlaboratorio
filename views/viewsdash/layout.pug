@@ -10,6 +10,13 @@ html
     meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0', name='viewport')
     meta(name="viewport", content="width=device-width")
 
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-110263401-1')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110263401-1');
+
 
     // Bootstrap core CSS
     link(href="/css/themesDash/bootstrap.min.css", rel="stylesheet")
@@ -39,4 +46,3 @@ html
               block content
 
         include footer
-    
