@@ -62,4 +62,14 @@ $(document).ready(function(){
       paste_retain_style_properties : "",
     });
 
+    $('#hidePhotos').click(function(){
+      if($('#photosSection').hasClass('hide')) {
+        $(this).text('Esconder Arquivos');
+        $('#photosSection').removeClass('hide');
+      } else {
+        $(this).text('Mostrar Arquivos');
+        $('#photosSection').addClass('hide');
+      }
+    });
+
 });
