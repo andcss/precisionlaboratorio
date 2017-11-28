@@ -4,7 +4,7 @@ $(document).ready(function() {
    * Open & Close Menu Top
    * ---------------------------------------
    */
-  $(document).on('click', '.m-close', function(){
+  $(document).on('click touchstart', '.m-close', function(){
     $(this).removeClass('m-close');
     $(this).addClass('open');
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
     }, 200);
   });
 
-  $(document).on('click', '.open', function(){
+  $(document).on('click touchstart', '.open', function(){
     $(this).removeClass('open');
     $(this).addClass('m-close');
 
