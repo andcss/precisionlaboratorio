@@ -4,7 +4,7 @@ $(document).ready(function() {
    * Open & Close Menu Top
    * ---------------------------------------
    */
-  $(document).on('click', '.open-menu.m-close', function(){
+  $(document).on('click', '.m-close', function(){
     $(this).removeClass('m-close');
     $(this).addClass('open');
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
     }, 200);
   });
 
-  $(document).on('click', '.open-menu.open', function(){
+  $(document).on('click', '.open', function(){
     $(this).removeClass('open');
     $(this).addClass('m-close');
 
@@ -43,7 +43,7 @@ $(document).ready(function() {
     var maxImage = 4;
     var html = '<ul>';
     for (var i = 0; i < maxImage; i++) {
-      html += '<li<a href='+data[i].link+'" target="_black" style="background-image: url('+ data[i].images.low_resolution.url+')"></a></li>';
+      html += '<li><a href="'+data[i].link+'" target="_black" style="background-image: url(\''+ data[i].images.low_resolution.url+'\')"></a></li>';
     }
     html += '</ul>';
     $('#instagramBlock .mural').html(html);
