@@ -4,6 +4,8 @@ block content
   - var status = ['Rascunho', 'Enviado', 'Pendente', 'Em produção', 'Finalizado', 'Cancelado'];
   - var action = newOrder ? '/order' : '/order/' + order._id;
   - var disabledInputs = !newOrder && user._id.toString() != order.user._id.toString() ? {'disabled': true } : {};
+  if (order.status == 'Em produçao' || order.status == 'Finalizado' )
+    - disabledInputs = {'disabled': true };
   .content
     .container-fluid
       .row
