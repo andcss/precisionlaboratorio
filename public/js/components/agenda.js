@@ -1,6 +1,8 @@
 function dateFormat(date) {
   date = new Date(date);
-  return date.getFullYear() + '-' + parseInt(date.getMonth()+1) + '-' + date.getDate();
+  var month = parseInt(date.getMonth()+1)
+  month = month < 10 ? "0"+month : month;
+  return date.getFullYear() + '-' + month + '-' + date.getDate();;
 }
 
 function sumDayDate(date) {
@@ -12,10 +14,10 @@ function sumDayDate(date) {
 function clickEventDay(id) {
   var date = $("#" + id).data("date");
   var hasEvent = $("#" + id).data("hasEvent");
+
   var title = $("#" + id).attr("title");
   var description = $("#" + id).attr("description");
   var footer = $("#" + id).attr("footer");
-console.log(footer);
   var months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
   var date = new Date(date);
@@ -35,11 +37,15 @@ function showDateInfo(year, day, month) {
 }
 
 function showEventInfo(title, description, footer) {
-  var htmlElement = `<h3>${title}</h3><p>${description}</p><strong>${footer}</strong>`;
-  $('.descricao').html(htmlElement);
+  if (title != undefined) {
+    var htmlElement = `<h3>${title}</h3><p>${description}</p><strong>${footer}</strong>`;
+    $('.descricao').html(htmlElement);
+  }
 }
 
 $(document).ready(function () {
+
+
   if ($('#calendar').is(':visible')) {
 
     var eventData = [];
@@ -54,7 +60,7 @@ $(document).ready(function () {
         var oneDay = 24*60*60*1000;
 
         if (findEvents[key].link != '') {
-          footer = `<a href="${findEvents[key].link}">${findEvents[key].linkText}</a>`;
+          footer = `<a href='${findEvents[key].link}'>${findEvents[key].linkText}</a>`;
         }
         eventData.push({
           "date": dateFormat(findEvents[key].startDate),

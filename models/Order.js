@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const mongoosePaginate = require('mongoose-paginate');
 
 const orderSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -142,6 +143,8 @@ const orderSchema = new Schema({
     },
   },
 }, { timestamps: true });
+
+orderSchema.plugin(mongoosePaginate);
 
 const Order = mongoose.model('Order', orderSchema);
 

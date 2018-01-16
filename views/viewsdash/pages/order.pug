@@ -3,6 +3,7 @@ extends ../layout
 block content
   - var status = ['Rascunho', 'Enviado', 'Pendente', 'Em produção', 'Finalizado', 'Cancelado'];
   - var action = newOrder ? '/order' : '/order/' + order._id;
+  - var disabledInputs = !newOrder && user._id.toString() != order.user._id.toString() ? {'disabled': true } : {};
   .content
     .container-fluid
       .row
@@ -10,6 +11,10 @@ block content
           .card
             .header
               h4.title Informações do pedido
+              if (user._role.value > 9)
+                button.btn.btn-info.btn-fill(onClick="window.print()")
+                  i.fa.fa-print
+                  | Imprimir / Salvar PDF
             .content
               form(action=action, method='POST', enctype="multipart/form-data")
                 .row
@@ -43,17 +48,17 @@ block content
                   .col-sm-4
                     .form-group
                       label.control-label(for='name') Nome
-                      input.form-control(type='text', name='name', id='name', value=(newOrder ? '' : order.patient.name ), required)
+                      input.form-control(type='text',name='name', id='name', value=(newOrder ? '' : order.patient.name ), required)&attributes(disabledInputs)
 
                   .col-sm-4
                     .form-group
                       label.control-label(for='age') Idade
-                      input.form-control(type='number', name='age', id='age', value=(newOrder ? '' : order.patient.age ))
+                      input.form-control(type='number', name='age', id='age', value=(newOrder ? '' : order.patient.age ))&attributes(disabledInputs)
 
                   .col-sm-4
                     .form-group
                       label.control-label(for='gender') Sexo
-                      select.form-control(name='gender', id='gender')
+                      select.form-control(name='gender', id='gender')&attributes(disabledInputs)
                         - var genders = ['Masculino', 'Feminino'];
                         each gender in genders
                           if (!newOrder && order.patient.gender == gender)
@@ -69,17 +74,17 @@ block content
                   .col-sm-4
                     .form-group
                       label.control-label(for='domainColor') Cor dominante
-                      input.form-control(type='text', name='domainColor', id='domainColor', value=(newOrder ? '' : order.domainColor ))
+                      input.form-control(type='text', name='domainColor', id='domainColor', value=(newOrder ? '' : order.domainColor ))&attributes(disabledInputs)
 
                   .col-sm-4
                     .form-group
                       label.control-label(for='remainingColor') Cor remanescente
-                      input.form-control(type='text', name='remainingColor', id='remainingColor', value=(newOrder ? '' : order.remainingColor ))
+                      input.form-control(type='text', name='remainingColor', id='remainingColor', value=(newOrder ? '' : order.remainingColor ))&attributes(disabledInputs)
 
                   .col-sm-4
                     .form-group
                       label.control-label(for='usedScale') Escala utilizada
-                      input.form-control(type='text', name='usedScale', id='usedScale', value=(newOrder ? '' : order.usedScale ))
+                      input.form-control(type='text', name='usedScale', id='usedScale', value=(newOrder ? '' : order.usedScale ))&attributes(disabledInputs)
 
                 .row
                   .col-sm-8
@@ -88,16 +93,16 @@ block content
                       hr
                     .form-group.col-sm-12
                       label.control-label(for='note') Observações
-                      textarea.form-control(name='note', id='note', rows='10')=newOrder ? '' : order.orderInfos.note
+                      textarea.form-control(name='note', id='note', rows='10')&attributes(disabledInputs)=newOrder ? '' : order.orderInfos.note
                     .form-group.col-sm-6
                       label.control-label(for='implat') Implante
-                      input.form-control(type='text', name='implat', id='implat', value=(newOrder ? '' : order.orderInfos.implat ))
+                      input.form-control(type='text', name='implat', id='implat', value=(newOrder ? '' : order.orderInfos.implat ))&attributes(disabledInputs)
                     .form-group.col-sm-6
                       label.control-label(for='model') Modelo
-                      input.form-control(type='text', name='model', id='model', value=(newOrder ? '' : order.orderInfos.model ))
+                      input.form-control(type='text', name='model', id='model', value=(newOrder ? '' : order.orderInfos.model ))&attributes(disabledInputs)
                     .form-group.col-sm-6
                       label.control-label(for='diameter') Diâmetro
-                      input.form-control(type='text', name='diameter', id='diameter', value=(newOrder ? '' : order.orderInfos.diameter ))
+                      input.form-control(type='text', name='diameter', id='diameter', value=(newOrder ? '' : order.orderInfos.diameter ))&attributes(disabledInputs)
                     if(!newOrder && user._role.value > 9 )
                       .form-group.col-sm-6
                         label.control-label(for='previewDate') Data Prevista
@@ -121,13 +126,13 @@ block content
                             span.icons
                               span.first-icon.fa.fa-square-o
                               span.second-icon.fa.fa-check-square-o
-                            input(type='checkbox', name='materials', value=material._id, data-toggle='checkbox', checked=(order.materials.indexOf(material._id) > -1 ? 'checked' : undefined))
+                            input(type='checkbox', name='materials', value=material._id, data-toggle='checkbox', checked=(order.materials.indexOf(material._id) > -1 ? 'checked' : undefined))&attributes(disabledInputs)
                             | #{material.name}
                     .row
                       .col-sm-12
                         .form-group
                           label.control-label(for='othersMaterials') Outros materiais
-                          input.form-control(type='text', name='othersMaterials', id='othersMaterials', value=(newOrder ? '' : order.othersMaterials ))
+                          input.form-control(type='text', name='othersMaterials', id='othersMaterials', value=(newOrder ? '' : order.othersMaterials ))&attributes(disabledInputs)
 
                   .col-sm-4
                     include ../../../public/svg/model-teeth.svg
@@ -135,7 +140,7 @@ block content
                     #selectedTeeth.hide
                       while teethNumber < 32
                         - teethNumber++
-                        input(type='checkbox', name='selectedTeeth', value=('t'+teethNumber), id=('checkbox-t'+teethNumber), checked=(order.selectedTeeth['t'+teethNumber] ? 'checked' : undefined))
+                        input(type='checkbox', name='selectedTeeth', value=('t'+teethNumber), id=('checkbox-t'+teethNumber), checked=(order.selectedTeeth['t'+teethNumber] ? 'checked' : undefined))&attributes(disabledInputs)
                     .table-full-width
                       table.table
                         thead
@@ -150,30 +155,30 @@ block content
                                 span.icons
                                   span.first-icon.fa.fa-square-o
                                   span.second-icon.fa.fa-check-square-o
-                                input(type='checkbox', name='blade', data-toggle='checkbox', value=(newOrder ? false : order.options.blade ), checked=(order.options.blade ? 'checked' : undefined))
+                                input(type='checkbox', name='blade', data-toggle='checkbox', value=(newOrder ? false : order.options.blade ), checked=(order.options.blade ? 'checked' : undefined))&attributes(disabledInputs)
                             td Lâmina / Faceta
                             td
-                              input.form-control(type='number', name='qtdBlade', value=(newOrder ? '' : order.options.qtdBlade ))
+                              input.form-control(type='number', name='qtdBlade', value=(newOrder ? '' : order.options.qtdBlade ))&attributes(disabledInputs)
                           tr
                             td
                               label.checkbox
                                 span.icons
                                   span.first-icon.fa.fa-square-o
                                   span.second-icon.fa.fa-check-square-o
-                                input(type='checkbox', name='crown', data-toggle='checkbox', value=(newOrder ? false : order.options.crown ), checked=(order.options.crown ? 'checked' : undefined))
+                                input(type='checkbox', name='crown', data-toggle='checkbox', value=(newOrder ? false : order.options.crown ), checked=(order.options.crown ? 'checked' : undefined))&attributes(disabledInputs)
                             td Coroa
                             td
-                              input.form-control(type='number', name='qtdCrown', value=(newOrder ? '' : order.options.qtdCrown ))
+                              input.form-control(type='number', name='qtdCrown', value=(newOrder ? '' : order.options.qtdCrown ))&attributes(disabledInputs)
                           tr
                             td
                               label.checkbox
                                 span.icons
                                   span.first-icon.fa.fa-square-o
                                   span.second-icon.fa.fa-check-square-o
-                                input(type='checkbox', name='inlay', data-toggle='checkbox', value=(newOrder ? false : order.options.inlay ), checked=(order.options.inlay ? 'checked' : undefined))
+                                input(type='checkbox', name='inlay', data-toggle='checkbox', value=(newOrder ? false : order.options.inlay ), checked=(order.options.inlay ? 'checked' : undefined))&attributes(disabledInputs)
                             td Inlay / Onlay
                             td
-                              input.form-control(type='number', name='qtdInlay', value=(newOrder ? '' : order.options.qtdInlay ))
+                              input.form-control(type='number', name='qtdInlay', value=(newOrder ? '' : order.options.qtdInlay ))&attributes(disabledInputs)
                 include order-images
 
                 .row

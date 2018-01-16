@@ -49,3 +49,11 @@ block content
                         td.text-center
                           a(href=`/user/delete/${user._id}`).btn.btn-danger.btn-fill
                             i.pe-7s-trash
+                .row
+                  .col-sm-8.col-sm-offset-2.text-center
+                    ul.pagination
+                      - var n = 0;
+                      while n < pages
+                        - n++
+                        li(class=(n==page ? 'active' : ''))
+                          a(href='?page='+n)=n

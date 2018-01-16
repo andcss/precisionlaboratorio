@@ -4,6 +4,7 @@ const moment = require('moment');
 const Event = require('../models/Event');
 const Page = require('../models/Page');
 
+
 /**
  * GET /
  * Páginas institucionais

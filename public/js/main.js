@@ -49,10 +49,9 @@ $(document).ready(function() {
     $('#instagramBlock .mural').html(html);
   }
 
-  var token = "1463654275.1677ed0.cacd3a406d914cd29988ad1bbfcf8238";
-  var userid = 301363077;
+  let instaToken = '1463654275.1677ed0.168f0b64d4a34bae957c05495370c7a1'
   $.ajax({
-    url: 'https://api.instagram.com/v1/users/1463654275/media/recent/?access_token=1463654275.0b683df.f540a6c906c54b4e9899f5b84d4965a2',
+    url: 'https://api.instagram.com/v1/users/1463654275/media/recent/?access_token=' + instaToken,
     type: 'GET',
     crossDomain: true,
     dataType: 'jsonp',

@@ -18,16 +18,22 @@ function getMaterials() {
 }
 
 exports.getOrders = (req, res) => {
+  let page = req.query.page || 1;
+  let limit = 10;
+  let queryWhere = {};
+  let options = {
+    sort: { createdAt: -1 },
+    populate: 'user',
+    page,
+    limit
+  };
 
-  var queryWhere = {}
   if (req.user._role.value < 9) {
     queryWhere = { user: req.user._id }
   }
-  Order.find(queryWhere).populate('user').sort({createdAt: -1}).exec((err, orders) => {
-    if(err) {
-      req.flash('error', { msg: 'Não foi possível encontrar eventos.'});
-      return res.redirect('back');
-    }
+
+  Order.paginate(queryWhere, options).then(function(result) {
+    let orders = result.docs;
 
     orders = orders.filter((order) => {
       if (order.user.email)
@@ -38,10 +44,11 @@ exports.getOrders = (req, res) => {
       title: preTitle+ 'Eventos',
       pageName: 'orders',
       user: req.user,
-      orders
+      orders,
+      pages: Math.ceil(result.total/limit),
+      page
     });
   });
-
 };
 
 

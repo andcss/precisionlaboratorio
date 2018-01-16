@@ -1,6 +1,7 @@
 extends ../layout
 
 block content
+  - var states = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];
   .content
     .container-fluid
       .row
@@ -45,9 +46,8 @@ block content
                       label.control-label(for='ufCro') UF CRO
                       if (user._role && user._role.value > 9)
                         select.form-control(name='ufCro', id='ufCro', required)
-                          - var states = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];
                           each state in states
-                            if (messages.user && messages.user[0].ufCro == state)
+                            if (findUser && findUser.ufCro == state)
                               option(value=state, selected) #{state}
                             else
                               option(value=state)=state
@@ -88,7 +88,35 @@ block content
                             option(value='true') Válido
                       else
                         input.form-control(value=(findUser.validationCRO ? 'Válido' : 'Não Validado'), disabled)
+                .row
+                  .col-sm-8
+                    .form-group
+                      label.control-label(for='city') Cidade
+                      input.form-control(type='city', name='city', id='city', value=findUser.address.city)
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='state') Estado
+                      select.form-control(name='state', id='state', required)
+                        each state in states
+                          if (findUser && findUser.address.state == state)
+                            option(value=state, selected) #{state}
+                          else
+                            option(value=state)=state
 
+                .row
+                  .col-sm-8
+                    .form-group
+                      label.control-label(for='street') Endereço
+                      input.form-control(type='street', name='street', id='street', value=findUser.address.street)
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='number') Número
+                      input.form-control(type='number', name='number', id='number', value=findUser.address.number)
+                .row
+                  .col-sm-4
+                    .form-group
+                      label.control-label(for='complement') Complemento
+                      input.form-control(type='complement', name='complement', id='complement', value=findUser.address.complement)
                 .row
                   .col-sm-7
                     .form-group

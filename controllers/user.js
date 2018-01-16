@@ -225,6 +225,12 @@ exports.postUpdateProfile = (req, res, next) => {
     user.profile.phone = req.body.phone || '';
     user.profile.profession = req.body.profession || '';
 
+    user.address.city = req.body.city || '';
+    user.address.complement = req.body.complement || '';
+    user.address.number = req.body.number || '';
+    user.address.street = req.body.street || '';
+    user.address.state = req.body.state || '';
+
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
@@ -514,6 +520,12 @@ exports.postNewUser = (req, res) => {
   user.profile.office = req.body.office || '';
   user.profile.phone = req.body.phone || '';
   user.profile.profession = req.body.profession || '';
+
+  user.address.city = req.body.city || '';
+  user.address.complement = req.body.complement || '';
+  user.address.number = req.body.number || '';
+  user.address.street = req.body.street || '';
+  user.address.state = req.body.state || '';
 
   user.save((err, newUser) => {
     if(err) {

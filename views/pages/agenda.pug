@@ -22,8 +22,8 @@ block content
                 h4 DESTAQUE
                   hr
                 p=destaque.title
-                  br
-                  | #{destaque.description}
+                  //- br
+                  //- | #{destaque.description}
                 - var startDate = new Date(destaque.startDate).getDate()
                 - var endDate = new Date(destaque.endDate).getDate()
                 - var monthString = meses[new Date(destaque.startDate).getMonth()];
@@ -33,7 +33,7 @@ block content
                     br
                     span=('de ' + monthString)
                 else
-                  span.dataDestaque=(startDate + ' de ' + meses[new Date(destaque.startDate).getMonth()-1])
+                  span.dataDestaque=(startDate + ' de ' + monthString)
 
             .eventos
               .linha

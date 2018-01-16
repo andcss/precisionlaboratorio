@@ -17,17 +17,23 @@ exports.getHome = (req, res) => {
 };
 
 exports.getUsers = (req, res) => {
-  User.find({}).populate('_role').exec((err, users) => {
-    if (err) {
-      redirect('/');
-    } else {
-      res.render('viewsdash/pages/users', {
-        title: preTitle + 'Usuários Cadastrados',
-        config: req.config,
-        pageName: 'users',
-        users
-      });
-    }
+  let page = req.query.page || 1;
+  let limit = 10;
+  let options = {
+    populate: '_role',
+    page,
+    limit
+  };
+
+  User.paginate({}, options).then(function(result) {
+    res.render('viewsdash/pages/users', {
+      title: preTitle + 'Usuários Cadastrados',
+      config: req.config,
+      pageName: 'users',
+      users: result.docs,
+      pages: Math.ceil(result.total/limit),
+      page
+    });
   });
 
 };

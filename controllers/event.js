@@ -8,16 +8,23 @@ const preTitle = 'Precision - ';
 const cloudinary = require('./cloudinary');
 
 exports.getEvents = (req, res) => {
-  Event.find({}).exec((err, events) => {
-    if(err) {
-      req.flash('error', { msg: 'Não foi possível encontrar eventos.'});
-      return res.redirect('back');
-    }
+  let page = req.query.page || 1;
+  let limit = 10;
+  let queryWhere = {};
+  let options = {
+    sort: { createdAt: -1 },
+    page,
+    limit
+  };
+
+  Event.paginate({}, options).then(function(result) {
     res.render('viewsdash/pages/events', {
       title: preTitle+ 'Eventos',
       pageName: 'events',
       user: req.user,
-      events
+      events: result.docs,
+      pages: Math.ceil(result.total/limit),
+      page
     });
   });
 }

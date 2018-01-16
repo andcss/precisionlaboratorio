@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 
 const eventSchema = new mongoose.Schema({
   name: { type: String, default: '' },
@@ -12,6 +13,8 @@ const eventSchema = new mongoose.Schema({
   endDate: { type: Date, default: Date.now() },
   featured: { type: Boolean, default: false },
 }, { timestamps: true });
+
+eventSchema.plugin(mongoosePaginate);
 
 const Event = mongoose.model('Event', eventSchema);
 

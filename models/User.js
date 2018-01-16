@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const mongoosePaginate = require('mongoose-paginate');
 
 const userSchema = new Schema({
   email: { type: String, unique: true },
@@ -24,9 +25,17 @@ const userSchema = new Schema({
     picture: { type: String, default: '' },
     phone: { type: String, default: '' },
     office: { type: String, default: '' },
+  },
+  address: {
+    city: { type: String, default: '' },
+    complement: { type: String, default: '' },
+    number: { type: String, default: '' },
+    street: { type: String, default: '' },
+    state: { type: String, default: '' },
   }
 }, { timestamps: true });
 
+userSchema.plugin(mongoosePaginate);
 /**
  * Password hash middleware.
  */
