@@ -141,6 +141,10 @@ const orderSchema = new Schema({
       url_image: { type: String, default: ""},
       public_id: { type: String, default: ""},
     },
+    s20: {
+      url_image: { type: String, default: ""},
+      public_id: { type: String, default: ""},
+    },
   },
 }, { timestamps: true });
 

@@ -146,3 +146,11 @@
         else
           img(src="/images/modelos/afastador-fundo-foco.jpg")
         input.form-control(type='file', name='s19', id='s19')&attributes(disabledInputs)
+    .col-sm-12
+      .form-group.col-sm-4
+        label.control-label(for='s20') Tomada de cor em caso de preparo (Foco)
+        if(!newOrder && order.photos.s20.url_image != '')
+          img(src=order.photos.s20.url_image)
+        else
+          img(src="/images/modelos/Foto-tomada-de-cor-site.jpg")
+        input.form-control(type='file', name='s20', id='s20')&attributes(disabledInputs)

@@ -21,9 +21,12 @@ $(document).ready(function(){
       var teeth = $(this);
       var teethId = teeth.attr('id');
 
+      if ($('#checkbox-'+teethId).attr('disabled')) {
+        return false;
+      }
+
       // Colore/Deslore dentes Clicados
       if(teeth.hasClass('selected')) {
-        console.log('clicado');
         teeth.removeClass('selected');
         $('#checkbox-'+teethId).attr('checked', false);
       } else {
