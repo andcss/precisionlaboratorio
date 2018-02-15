@@ -3,6 +3,22 @@ extends ../layout
 block content
   .content
       .container-fluid
+        .row(style="margin-bottom: 20px;")
+
+          .col-md-12.text-right
+            form.form-inline(action="/search/order")
+              .form-group(style="margin-right: 10px", class=(user._role.value > 9 ? '' : 'hide'))
+                label
+                .input-group
+                  select(name="type").form-control
+                    option(value="Pedido") Por Pedido
+                    option(value="Profissional") Por Profissional
+
+              .form-group
+                label
+                input(name="search").form-control
+              button.btn.btn-primary(style="margin-left: 10px;") Pesquisar
+
         .row
           .col-md-12
             .card
@@ -41,4 +57,4 @@ block content
                       while n < pages
                         - n++
                         li(class=(n==page ? 'active' : ''))
-                          a(href='?page='+n)=n
+                          a(href='?page='+n+linkComplete)=n

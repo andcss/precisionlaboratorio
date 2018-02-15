@@ -5,6 +5,9 @@
   justify-content: center;
   .container {
     display: flex;
+    @media (max-width: 758px) {
+      flex-direction: column;
+    }
   }
   form {
     label {
@@ -146,6 +149,10 @@
     flex: 0;
     transition: 1s;
     overflow: hidden;
+    @media (max-width: 758px) {
+      margin-top: 20px;
+      border-top: 1px solid;
+    }
     &.active {
       display: block;
       transition: 1s;

@@ -1,11 +1,9 @@
 
 const moment = require('moment');
-
 const Event = require('../models/Event');
+const cloudinary = require('./cloudinary');
 
 const preTitle = 'Precision - ';
-
-const cloudinary = require('./cloudinary');
 
 exports.getEvents = (req, res) => {
   let page = req.query.page || 1;

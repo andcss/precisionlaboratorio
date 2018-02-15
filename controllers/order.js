@@ -3,6 +3,8 @@ const moment = require('moment');
 
 const Order = require('../models/Order');
 const Material = require('../models/Material');
+const User = require('../models/User')
+const mongoose = require('mongoose');
 
 const preTitle = 'Precision - ';
 
@@ -46,7 +48,7 @@ exports.getOrders = (req, res) => {
       user: req.user,
       orders,
       pages: Math.ceil(result.total/limit),
-      page
+      page,
     });
   });
 };
@@ -63,7 +65,6 @@ exports.getNewOrder = (req, res, next) => {
       materials,
     });
   });
-
 }
 
 exports.getOrder = (req, res) => {
@@ -326,5 +327,103 @@ exports.postOrder = (req, res) => {
       });
     });
   });
-
 }
+
+
+const searchForOrder = (res, req, page, pesquisa, type) => {
+  let limit = 10;
+  let queryWhere = {$or:
+    [
+      {'status': { "$regex": pesquisa, "$options": "i" } },
+      {'patient.name': { "$regex": pesquisa, "$options": "i" } },
+    ]};
+
+  let options = {
+    sort: { createdAt: -1 },
+    populate: {
+      path: 'user',
+    },
+    page,
+    limit
+  };
+
+  if (req.user._role.value < 9) {
+    queryWhere = { user: req.user._id };
+  }
+
+  Order.paginate(queryWhere, options).then(function(result) {
+    let orders = result.docs;
+    orders = orders.filter((order) => {
+      if (order.user.email)
+        return order;
+    });
+
+    res.render('viewsdash/pages/orders', {
+      title: preTitle+ 'Eventos',
+      pageName: 'orders',
+      user: req.user,
+      orders,
+      pages: Math.ceil(result.total/limit),
+      page,
+      linkComplete: '&search='+ pesquisa
+    });
+  });
+}
+
+const searchForUser = (res, req, page, pesquisa, type) => {
+  let limit = 10;
+  let queryWhereUser = {$or:
+    [
+      {'profile.firstName': { "$regex": pesquisa, "$options": "i" } },
+      {'profile.lastName': { "$regex": pesquisa, "$options": "i" } },
+      {'profile.lastName': { "$regex": pesquisa, "$options": "i" } },
+      {'cro': { "$regex": pesquisa, "$options": "i" } },
+    ]};
+
+  let options = {
+    sort: { createdAt: -1 },
+    populate: {
+      path: 'user',
+    },
+    page,
+    limit
+  };
+
+  User.find(queryWhereUser, function(err, users) {
+    let usersId = users.map(function(user) {
+      return { user:user._id };
+    });
+
+    let queryWhere = usersId.lenght > 0 ? { _id: ''} : {$or: usersId };
+
+    Order.paginate(queryWhere, options).then(function(result) {
+      let orders = result.docs;
+      orders = orders.filter((order) => {
+        if (order.user.email)
+          return order;
+      });
+
+      res.render('viewsdash/pages/orders', {
+        title: preTitle+ 'Eventos',
+        pageName: 'orders',
+        user: req.user,
+        orders,
+        pages: Math.ceil(result.total/limit),
+        page,
+        linkComplete: '&search='+ pesquisa
+      });
+    });
+  });
+}
+
+exports.searchOrders = (req, res) => {
+  let page = req.query.page || 1;
+  let pesquisa = req.query.search;
+  let type = req.query.type;
+
+  if (type == 'Pedido') {
+    return searchForOrder(res, req, page, pesquisa, type);
+  } else {
+    return searchForUser(res, req, page, pesquisa, type);
+  }
+};
