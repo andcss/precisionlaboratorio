@@ -23,14 +23,19 @@ block content
                               p.category=file.description
                             .content
                               .image
-                                if(file.type == 'image' && file.format != 'pdf')
+                                if (file.codeYoutube && file.codeYoutube != '')
+                                  iframe(src=('https://www.youtube.com/embed/'+file.codeYoutube), width="100%")
+                                else if (file.preview) 
+                                  a(href=file.url, target='_black')
+                                    img(src=file.preview, alt=file.name)
+                                else if (file.type == 'image' && file.format != 'pdf')
                                   a(href=file.url, target='_black')
                                     img(src=file.url, alt=file.name)
-                                if(file.type == 'video')
+                                else if (file.type == 'video')
                                   video(controls='true')
                                     source(src=file.url, type='video/mp4')
                                     | Seu navegador não suporta o formato do video.
-                                if(file.type == 'raw' || file.format == 'pdf')
+                                else if (file.type == 'raw' || file.format == 'pdf')
                                   strong
                                     i.pe-7s-paperclip
                                   span Arquivo para download
@@ -74,3 +79,5 @@ block content
                                     .col-sm-6
                                       a(href=('/midia/delete/'+file._id)).btn.btn-danger
                                         i.fa.fa-trash
+
+              
