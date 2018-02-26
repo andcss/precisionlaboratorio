@@ -6,6 +6,8 @@ const Material = require('../models/Material');
 const User = require('../models/User')
 const mongoose = require('mongoose');
 
+const Emails = require('./emails')
+
 const preTitle = 'Precision - ';
 
 function getMaterials() {
@@ -197,6 +199,9 @@ exports.postNewOrder = (req, res) => {
           req.flash('errors', { msg: 'Erro ao salvar perdido' });
           return res.redirect('back');
         }
+        if (req.body.rascunho != 'true') {
+          Emails.sendNotificationNewOrder(req.get('host'), saveOrder._id);
+        }
         res.redirect('/orders');
     });
   })
@@ -323,6 +328,9 @@ exports.postOrder = (req, res) => {
           req.flash('errors', { msg: 'Erro ao salvar perdido' });
           return res.redirect('back');
         }
+        if (req.body.rascunho != 'true') {
+          Emails.sendNotificationNewOrder(req.get('host'), saveOrder._id);
+        }
         res.redirect('/orders');
       });
     });
@@ -375,7 +383,6 @@ const searchForUser = (res, req, page, pesquisa, type) => {
   let queryWhereUser = {$or:
     [
       {'profile.firstName': { "$regex": pesquisa, "$options": "i" } },
-      {'profile.lastName': { "$regex": pesquisa, "$options": "i" } },
       {'profile.lastName': { "$regex": pesquisa, "$options": "i" } },
       {'cro': { "$regex": pesquisa, "$options": "i" } },
     ]};

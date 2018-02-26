@@ -33,17 +33,18 @@ exports.postContact = (req, res) => {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: 'tnavarrodesenvolvimento@gmail.com', // generated ethereal user
-        pass: 'tu08686040'  // generated ethereal password
+        user: process.env.ACCOUNT_SMTP_GMAIL, // generated ethereal user
+        pass: process.env.PASS_SMTP_GMAIL  // generated ethereal password
       }
   });
 
   const mailOptions = {
-    to: 'contato@precisionlaboratorio.com.br',
+    to: process.env.EMAIL_CONTACT,
     from: `${req.body.name} <${req.body.email}>`,
     subject: 'Precision - Contato',
-    text: req.body.messagem,
+    text: req.body.message,
   };
+
   transporter.sendMail(mailOptions, (err) => {
     if (err) {
       req.flash('errors', { msg: err.message });

@@ -24,7 +24,37 @@ block content
                     .form-group
                       label.control-label(for='mesage') Texto
                       textarea.form-control(rows='5', type='text', name='mesage', id='mesage' required)=pageInfo.customFields.mesage
-
+                
+                .row
+                  .col-sm-12
+                    h5 Slides
+                    hr
+                .row
+                  .col-sm-6
+                    .form-group
+                      label.control-label(for='slide1') Slide 1
+                      input.form-control(type='text', name='slide1', id='slide1', value=pageInfo.customFields.slide1)
+                  .col-sm-6
+                    .form-group
+                      label.control-label(for='slide2') Slide 2
+                      input.form-control(type='text', name='slide2', id='slide2', value=pageInfo.customFields.slide2)
+                
+                .row
+                  .col-sm-6
+                    .form-group
+                      label.control-label(for='slide3') Slide 3 
+                      input.form-control(type='text', name='slide3', id='slide3', value=pageInfo.customFields.slide3)
+                  .col-sm-6
+                    .form-group
+                      label.control-label(for='slide4') Slide 4
+                      input.form-control(type='text', name='slide4', id='slide4', value=pageInfo.customFields.slide4)
+                              
+                .row
+                  .col-sm-6
+                    .form-group
+                      label.control-label(for='slide5') Slide 5
+                      input.form-control(type='text', name='slide5', id='slide5', value=pageInfo.customFields.slide5)
+                                
                 .row
                   .col-sm-12
                     h5 Configurações de SEO

@@ -7,6 +7,8 @@ const requestify = require('requestify');
 
 const User = require('../models/User');
 
+const Emails = require('./emails');
+
 const preTitle = 'Precision - ';
 
 /**
@@ -117,11 +119,20 @@ function createUser(req, res, infosUser) {
       return res.redirect('/login?signup=true');
     }
     user.save((err) => {
-      if (err) { return next(err); }
+      if (err) {
+        console.log(err);
+        req.flash('errors', { msg: 'Um erro aconteceu!' });
+        req.flash('user', infosUser);
+        return res.redirect('/login?signup=true');
+      }
       req.logIn(user, (err) => {
         if (err) {
-          return next(err);
+          console.log(err);
+          req.flash('errors', { msg: 'Um erro aconteceu!' });
+          req.flash('user', infosUser);
+          return res.redirect('/login?signup=true');
         }
+        Emails.sendNotificationNewUser(req.get('host'), user._id);
         res.redirect('/dashboard/home');
       });
     });
@@ -140,6 +151,9 @@ exports.postSignup = (req, res, next) => {
 
   const errors = req.validationErrors();
 
+  let firstName = req.body.firstName.charAt(0).toUpperCase() + req.body.firstName.slice(1);
+  let lastName = req.body.lastName.charAt(0).toUpperCase() + req.body.lastName.slice(1);
+
   const infosUser = {
     email: req.body.email || '',
     password: req.body.password || '',
@@ -149,8 +163,8 @@ exports.postSignup = (req, res, next) => {
     typeCro: req.body.typeCro || '',
     howMeet: req.body.howMeet || '',
     profile: {
-      firstName: req.body.firstName || '',
-      lastName: req.body.lastName || '',
+      firstName,
+      lastName,
     }
   }
 
@@ -206,6 +220,9 @@ exports.postUpdateProfile = (req, res, next) => {
     }
     user.email = req.body.email || '';
 
+    let firstName = req.body.firstName.charAt(0).toUpperCase() + req.body.firstName.slice(1);
+    let lastName = req.body.lastName.charAt(0).toUpperCase() + req.body.lastName.slice(1);
+
     if (req.user._role && req.user._role.value > 9) {
       user.ufCro = req.body.ufCro || '';
       user.status = req.body.status || '';
@@ -216,8 +233,8 @@ exports.postUpdateProfile = (req, res, next) => {
         user._role = mongoose.Types.ObjectId(req.body.role);
     }
 
-    user.profile.firstName = req.body.firstName || '';
-    user.profile.lastName = req.body.lastName || '';
+    user.profile.firstName = firstName;
+    user.profile.lastName = lastName;
     user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';

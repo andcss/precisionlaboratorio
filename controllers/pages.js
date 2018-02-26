@@ -109,6 +109,13 @@ exports.postHome = (req, res) => {
 
     pageInfo.customFields.titleMesage = req.body.titleMesage;
     pageInfo.customFields.mesage = req.body.mesage;
+
+    pageInfo.customFields.slide1 = req.body.slide1;
+    pageInfo.customFields.slide2 = req.body.slide2;
+    pageInfo.customFields.slide3 = req.body.slide3;
+    pageInfo.customFields.slide4 = req.body.slide4;
+    pageInfo.customFields.slide5 = req.body.slide5;
+
     pageInfo.seo.title = req.body.seoTitle;
     pageInfo.seo.descripton = req.body.seoDescription;
     pageInfo.markModified('customFields');

@@ -3,6 +3,14 @@ extends ../layout
 block content
   .content
       .container-fluid
+        .row(style="margin-bottom: 20px;")
+
+          .col-md-12.text-right
+            form.form-inline(action="/dashboard/search/users")
+              .form-group
+                label
+                input(name="search").form-control
+              button.btn.btn-primary(style="margin-left: 10px;") Pesquisar
         .row
           .col-md-12
             .card

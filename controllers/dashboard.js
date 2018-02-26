@@ -21,17 +21,18 @@ exports.getUsers = (req, res) => {
   let limit = 10;
   let options = {
     populate: '_role',
+    sort: { 'profile.firstName': 'asc' },
     page,
     limit
   };
-
-  User.paginate({}, options).then(function(result) {
+  
+  User.paginate({}, options).then(function(users) {
     res.render('viewsdash/pages/users', {
       title: preTitle + 'Usuários Cadastrados',
       config: req.config,
       pageName: 'users',
-      users: result.docs,
-      pages: Math.ceil(result.total/limit),
+      users: users.docs,
+      pages: Math.ceil(users.total/limit),
       page
     });
   });
@@ -71,3 +72,37 @@ exports.getConfig = (req, res) => {
     newRole: true,
   });
 };
+
+exports.searchUsers = (req, res) => {
+  let page = req.query.page || 1;
+  let pesquisa = req.query.search;
+  let type = req.query.type;
+
+  let limit = 10;
+  let queryWhereUser = {$or:
+    [
+      {'profile.firstName': { "$regex": pesquisa, "$options": "i" } },
+      {'profile.lastName': { "$regex": pesquisa, "$options": "i" } },
+      {'cro': { "$regex": pesquisa, "$options": "i" } },
+    ]};
+
+  let options = {
+    sort: { 'profile.firstName': 1 },
+    populate: {
+      path: 'user',
+    },
+    page,
+    limit
+  };
+
+  User.paginate(queryWhereUser, options).then(function(users) {
+    res.render('viewsdash/pages/users', {
+      title: preTitle + 'Usuários Cadastrados',
+      config: req.config,
+      pageName: 'users',
+      users: users.docs,
+      pages: Math.ceil(users.total/limit),
+      page
+    });
+  });
+}

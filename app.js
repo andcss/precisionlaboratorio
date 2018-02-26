@@ -173,6 +173,7 @@ app.get('/admin/configurations', passportConfig.isAdminUser, userController.admi
 
 app.get('/dashboard/users', passportConfig.isAdminUser, dashboardController.getUsers);
 app.get('/dashboard/config', passportConfig.isAdminUser, dashboardController.getConfig);
+app.get('/dashboard/search/users', passportConfig.isAdminUser, dashboardController.searchUsers);
 
 app.get('/nextevents', eventController.getNextEvents);
 
@@ -189,6 +190,7 @@ app.get('/user', passportConfig.isAdminUser, userController.getNewUser);
 app.post('/user', passportConfig.isAdminUser, userController.postNewUser);
 app.get('/user/:id', passportConfig.isAdminUser, userController.getUser);
 app.get('/user/delete/:id', passportConfig.isAdminUser, userController.deleteUser);
+
 
 app.get('/role', passportConfig.isAdminUser, configController.getNewRole);
 app.get('/role/:id', passportConfig.isAdminUser, configController.getRole);
