@@ -25,7 +25,7 @@ function clickEventDay(id) {
   var year = date.getUTCFullYear();
   var day = date.getUTCDate();
   var month = months[date.getMonth()];
-
+  $('.descricao').html('');
   showDateInfo(year, day, month);
   showEventInfo(title, description, footer)
 }
@@ -49,9 +49,14 @@ $(document).ready(function () {
   if ($('#calendar').is(':visible')) {
 
     var eventData = [];
-
+    var nextEventMonth = new Date().getMonth() == 11 ? 0 : new Date().getMonth() + 1;
     $.get(window.location.origin + '/nextevents', function(findEvents) {
       var footer =  '';
+
+      if(findEvents.length > 0 ) {
+        nextEventMonth = new Date(findEvents[0].startDate).getMonth() == 11 ? 0 : new Date(findEvents[0].startDate).getMonth() + 1;
+      }
+
       for (var key = 0; key < findEvents.length; key++) {
         var startDateString = dateFormat(findEvents[key].startDate);
         var endDateString = dateFormat(findEvents[key].endDate);
@@ -62,6 +67,7 @@ $(document).ready(function () {
         if (findEvents[key].link != '') {
           footer = `<a href='${findEvents[key].link}'>${findEvents[key].linkText}</a>`;
         }
+
         eventData.push({
           "date": dateFormat(findEvents[key].startDate),
           "badge": false,
@@ -88,6 +94,7 @@ $(document).ready(function () {
 
       $("#zubuto-calendar").zabuto_calendar({
         data: eventData,
+        month: nextEventMonth,
         language: "pt",
         modal: true,
         action: function () {

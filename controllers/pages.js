@@ -106,53 +106,99 @@ exports.postHome = (req, res) => {
       req.flash('errors', { msg: 'Não foi possível salvar a página.' });
       return res.redirect('/page/home');
     }
+    var photosFiles = {};
+    var promisesFiles = [];
 
-    pageInfo.customFields.titleMesage = req.body.titleMesage;
-    pageInfo.customFields.mesage = req.body.mesage;
+    for (var key in req.files) {
+      if (req.files[key].originalFilename) {
+        promisesFiles.push(new Promise((resolve, reject) => {
+          var fileIndex = key;
+          cloudinary.v2.uploader.upload(req.files[fileIndex].path,
+            {
+              resource_type: "auto",
+              public_id: "slideHome/" + "/" + req.files[fileIndex].name
+            },
+            function(err, returnFileUpdate) {
+                if(err)
+                  reject(err);
+                else {
+                  photosFiles[fileIndex] = {
+                    url_image: returnFileUpdate.secure_url,
+                    public_id: returnFileUpdate.public_id,
+                  }
+                  resolve();
+                }
+            });
+        }));
 
-    pageInfo.customFields.slide1 = req.body.slide1;
-    pageInfo.customFields.slide2 = req.body.slide2;
-    pageInfo.customFields.slide3 = req.body.slide3;
-    pageInfo.customFields.slide4 = req.body.slide4;
-    pageInfo.customFields.slide5 = req.body.slide5;
+      }
+    }
 
-    pageInfo.seo.title = req.body.seoTitle;
-    pageInfo.seo.descripton = req.body.seoDescription;
-    pageInfo.markModified('customFields');
-    pageInfo.markModified('seo');
+    Promise.all(promisesFiles).then(() => {
 
-    pageInfo.save((err, pageSave) => {
-      if (err) {
-        req.flash('errors', { msg: 'Erro ao salvar Home' });
-        return res.redirect('/page/home');
+      pageInfo.customFields.titleMesage = req.body.titleMesage;
+      pageInfo.customFields.mesage = req.body.mesage;
+
+      pageInfo.customFields.slide1 = req.body.slide1;
+      pageInfo.customFields.slide2 = req.body.slide2;
+      pageInfo.customFields.slide3 = req.body.slide3;
+      pageInfo.customFields.slide4 = req.body.slide4;
+      pageInfo.customFields.slide5 = req.body.slide5;
+
+
+      pageInfo.customFields.imagens = Object.assign({}, pageInfo.customFields.imagens, photosFiles);
+
+      if (req.body.slideImagemRemover1 == 'on') {
+        delete pageInfo.customFields.imagens.slideImagem1;
+      }
+      if (req.body.slideImagemRemover2 == 'on') {
+        delete pageInfo.customFields.imagens.slideImagem2;
+      }
+      if (req.body.slideImagemRemover3 == 'on') {
+        delete pageInfo.customFields.imagens.slideImagem3;
+      }
+      if (req.body.slideImagemRemover4 == 'on') {
+        delete pageInfo.customFields.imagens.slideImagem4;
       }
 
-      if (req.files.seoImage.originalFilename != '') {
-        cloudinary.v2.uploader.upload(req.files.seoImage.path,
-          {
-            resource_type: "auto"
-          },
-          function(err, returnFileUpdate) {
-            if (err) {
-              req.flash('errors', { msg: 'Um erro aconteceu no upload de arquivo.' });
-              return res.redirect('/events');
-            }
+      pageInfo.seo.title = req.body.seoTitle;
+      pageInfo.seo.descripton = req.body.seoDescription;
+      pageInfo.markModified('customFields');
+      pageInfo.markModified('seo');
 
-            pageSave.seo.urlImage = returnFileUpdate.secure_url;
+      pageInfo.save((err, pageSave) => {
+        if (err) {
+          req.flash('errors', { msg: 'Erro ao salvar Home' });
+          return res.redirect('/page/home');
+        }
 
-            pageSave.save((err, pageSave) => {
-              if(err) {
-                req.flash('error', { msg: 'Não foi possivel salvar a página' });
-                return res.redirect('/page/home');
+        if (req.files.seoImage.originalFilename != '') {
+          cloudinary.v2.uploader.upload(req.files.seoImage.path,
+            {
+              resource_type: "auto"
+            },
+            function(err, returnFileUpdate) {
+              if (err) {
+                req.flash('errors', { msg: 'Um erro aconteceu no upload de arquivo.' });
+                return res.redirect('/events');
               }
-              req.flash('success', { msg: 'Página alterada com sucesso!' });
-              return res.redirect('/pages');
-            })
-          });
-      } else {
-        req.flash('success', { msg: 'Página alterada com sucesso!' });
-        return res.redirect('/pages');
-      }
+
+              pageSave.seo.urlImage = returnFileUpdate.secure_url;
+
+              pageSave.save((err, pageSave) => {
+                if(err) {
+                  req.flash('error', { msg: 'Não foi possivel salvar a página' });
+                  return res.redirect('/page/home');
+                }
+                req.flash('success', { msg: 'Página alterada com sucesso!' });
+                return res.redirect('/pages');
+              })
+            });
+        } else {
+          req.flash('success', { msg: 'Página alterada com sucesso!' });
+          return res.redirect('/pages');
+        }
+      });
     });
   });
 }
