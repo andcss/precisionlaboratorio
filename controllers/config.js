@@ -1,6 +1,8 @@
 
 const Role = require('../models/Role');
 const Material = require('../models/Material');
+const Config = require('../models/Config');
+const cloudinary = require('./cloudinary');
 
 exports.getRole = (req, res) => {
   Role.findById(req.params.id).exec((err, role) => {
@@ -111,4 +113,40 @@ exports.populateMaterials = (req, res) => {
 
   res.json({msg: 'Material removido com sucesso!'});
 
+}
+
+exports.postTabelaPreco = (req, res) => {
+  cloudinary.v2.uploader.upload(req.files.fileUpdate.path,
+    {
+      resource_type: "auto",
+      public_id: "tabelasPreco/"+req.files.fileUpdate.name
+    },
+    function(err, returnFileUpdate) {
+      if (err) {
+        req.flash('errors', { msg: 'Um erro aconteceu no upload de arquivo.' })
+        return res.redirect('/dashboard/config');
+      }
+      Config.findOne({}).exec((err, config) => {
+        if(err) {
+          console.log(err.message);
+        }
+        if(!config) {
+          console.log('configNaoEncontrada');
+        }
+
+        config.priceTable = returnFileUpdate.secure_url
+
+        config.save((err, saveConfig) => {
+          if (err) {
+            req.flash('errors', { msg: 'Um erro aconteceu no upload de arquivo.' })
+            return res.redirect('/dashboard/config');
+          }
+          else {
+            req.flash('success', { msg: 'Configuração Salva' })
+            return res.redirect('/dashboard/config');
+          }
+        });
+      });
+
+    });
 }

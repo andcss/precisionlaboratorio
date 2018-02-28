@@ -173,8 +173,8 @@ app.get('/admin/configurations', passportConfig.isAdminUser, userController.admi
 
 app.get('/dashboard/users', passportConfig.isAdminUser, dashboardController.getUsers);
 app.get('/dashboard/config', passportConfig.isAdminUser, dashboardController.getConfig);
+app.post('/dashboard/config/uploadTabelaPreco', [passportConfig.isAdminUser, multipartMiddleware], configController.postTabelaPreco);
 app.get('/dashboard/search/users', passportConfig.isAdminUser, dashboardController.searchUsers);
-
 app.get('/nextevents', eventController.getNextEvents);
 
 app.get('/events', passportConfig.isAdminUser, eventController.getEvents);
@@ -204,7 +204,7 @@ app.post('/order', [passportConfig.isAuthenticated, multipartMiddleware], orderC
 app.post('/order/:id', [passportConfig.isAuthenticated, multipartMiddleware], orderController.postOrder);
 app.get('/search/order', passportConfig.isAuthenticated, orderController.searchOrders);
 
-app.get('/galleries', passportConfig.isAuthenticated, galleryController.getGalleries);
+app.get('/galleries/:page?', passportConfig.isAuthenticated, galleryController.getGalleries);
 app.get('/midia', [passportConfig.isAdminUser, multipartMiddleware], galleryController.getNewMidia);
 app.get('/midia/:id', [passportConfig.isAdminUser, multipartMiddleware], galleryController.getMidia);
 app.post('/midia', [passportConfig.isAdminUser, multipartMiddleware], galleryController.postNewMidia);

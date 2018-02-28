@@ -32,3 +32,17 @@ block content
                         td=info.role.value
                         td.text-center
                           a(href=`/role/${info.role._id}`).btn.btn-info.btn-fill Editar
+        .row
+          .col-md-12
+            .card
+              .header
+                h4.title Tabela de preços
+              .content
+                form(action='/dashboard/config/uploadTabelaPreco', method='POST', enctype="multipart/form-data")
+                  .row
+                    .col-sm-4
+                      .form-group
+                        label.control-label(for='fileUpdate') Arquivo de preços
+                        input.form-control(type='file', name='fileUpdate', id='fileUpdate')
+                    .col-sm-4
+                      button.btn.btn-primary(style="margin-top: 25px") Salvar

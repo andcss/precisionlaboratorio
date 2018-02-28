@@ -65,6 +65,7 @@ exports.getNewOrder = (req, res, next) => {
       order: new Order(),
       newOrder: true,
       materials,
+      config: req.config,
     });
   });
 }
@@ -85,6 +86,7 @@ exports.getOrder = (req, res) => {
           order: findOrder,
           newOrder: false,
           materials,
+          config: req.config,
         });
     });
   });
@@ -417,6 +419,7 @@ const searchForUser = (res, req, page, pesquisa, type) => {
         orders,
         pages: Math.ceil(result.total/limit),
         page,
+        limit,
         linkComplete: '&search='+ pesquisa
       });
     });

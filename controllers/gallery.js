@@ -5,6 +5,8 @@ const Gallery = require('../models/Gallery');
 const preTitle = 'Precision - ';
 
 exports.getGalleries = (req, res) => {
+  var limit = 6;
+  var page = req.query.page || 1;
   Gallery.findOne({ name: 'Principal'}).populate('files._role').exec((err, gallery) => {
     if(err) {
       req.flash('errors', { msg: 'Erro ao buscar galeria' });
@@ -14,6 +16,10 @@ exports.getGalleries = (req, res) => {
       title: preTitle+ 'Galerias',
       pageName: 'gallery',
       gallery,
+      countItens: gallery.files.length,
+      limit,
+      page,
+      pages: Math.ceil(gallery.files.length / limit)
     });
 
   });
