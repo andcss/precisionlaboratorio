@@ -40,7 +40,7 @@ block content
                     .col-sm-6
                       .form-group
                         label Código video do Youtube 
-                        input.form-control(type='text', name='codeYoutube', id='codeYoutube')
+                        input.form-control(type='text', name='codeYoutube', id='codeYoutube' value=(newMidia ? '' : midia.codeYoutube))
                     .col-sm-6
                       .form-group
                         label Ou Arquivo 
@@ -68,8 +68,8 @@ block content
                             p.category=midia.description
                           .content
                             .image
-                              if (file.codeYoutube && file.codeYoutube != '')
-                                iframe(src=('https://www.youtube.com/embed/'+file.codeYoutube), width="100%")
+                              if (midia.codeYoutube && midia.codeYoutube != '')
+                                iframe(src=('https://www.youtube.com/embed/'+midia.codeYoutube), width="100%")
                               else if (midia.preview)
                                 a(href=midia.url, target='_black')
                                   img(src=midia.preview, alt=midia.name)

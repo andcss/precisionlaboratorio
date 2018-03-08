@@ -382,10 +382,11 @@ exports.postReset = (req, res, next) => {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-          user: 'tnavarrodesenvolvimento@gmail.com', // generated ethereal user
-          pass: 'tu08686040'  // generated ethereal password
+          user: process.env.ACCOUNT_SMTP_GMAIL, // generated ethereal user
+          pass: process.env.PASS_SMTP_GMAIL  // generated ethereal password
         }
     });
+
     const mailOptions = {
       to: user.email,
       from: 'contato@precisionlaboratorio.com.br',
@@ -456,8 +457,8 @@ exports.postForgot = (req, res, next) => {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-          user: 'tnavarrodesenvolvimento@gmail.com', // generated ethereal user
-          pass: 'tu08686040'  // generated ethereal password
+          user: process.env.ACCOUNT_SMTP_GMAIL, // generated ethereal user
+          pass: process.env.PASS_SMTP_GMAIL  // generated ethereal password
         }
     });
     const mailOptions = {

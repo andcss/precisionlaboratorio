@@ -328,22 +328,28 @@ exports.deleteMidia = (req, res) => {
       }
     });
 
-    cloudinary.v2.uploader.destroy(
-      removeFile.public_id,
-      (error, result) => {
-
-        if(error) {
-          req.flash('errors', { msg: 'Não encontramos a galeria.' })
-          return res.redirect('/midia');
-        }
-
-
-
-        gallery.save((err, saveGallery) => {
-          req.flash('success', { msg: 'Novo arquivo adicionado a galeria.' })
-          return res.redirect('/galleries');
-        });
+    if (removeFile.public_id == '') {
+      gallery.save((err, saveGallery) => {
+        req.flash('success', { msg: 'Novo arquivo adicionado a galeria.' })
+        return res.redirect('/galleries');
       });
+    } else {
+      cloudinary.v2.uploader.destroy(
+        removeFile.public_id,
+        (error, result) => {
+
+          if(error) {
+            req.flash('errors', { msg: 'Não encontramos a galeria.' })
+            return res.redirect('/midia');
+          }
+
+          gallery.save((err, saveGallery) => {
+            req.flash('success', { msg: 'Novo arquivo adicionado a galeria.' })
+            return res.redirect('/galleries');
+          });
+        });
+    }
+
 
   });
 }
