@@ -27,6 +27,9 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
     if (!user) {
       return done(null, false, { msg: `Email ${email} não cadastrado` });
     }
+    if (user.active == false) {
+      return done(null, false, { msg: `Email ${email} foi removido` });
+    }
     user.comparePassword(password, (err, isMatch) => {
       if (err) { return done(err); }
       if (isMatch) {

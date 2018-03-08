@@ -25,8 +25,8 @@ exports.getUsers = (req, res) => {
     page,
     limit
   };
-  
-  User.paginate({}, options).then(function(users) {
+
+  User.paginate({ 'active': { $ne: false }}, options).then(function(users) {
     res.render('viewsdash/pages/users', {
       title: preTitle + 'Usuários Cadastrados',
       config: req.config,
@@ -36,7 +36,6 @@ exports.getUsers = (req, res) => {
       page
     });
   });
-
 };
 
 

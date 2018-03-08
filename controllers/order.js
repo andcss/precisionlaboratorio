@@ -40,6 +40,7 @@ exports.getOrders = (req, res) => {
     let orders = result.docs;
 
     orders = orders.filter((order) => {
+
       if (order.user.email)
         return order;
     });

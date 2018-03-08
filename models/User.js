@@ -9,6 +9,7 @@ const userSchema = new Schema({
   password: String,
   passwordResetToken: String,
   passwordResetExpires: Date,
+  active: Boolean,
   status: { type: String, default: 'Pendente' },
   _role: { type: Schema.Types.ObjectId, ref: 'Role' },
   cro: { type: String, default: '' },

@@ -563,7 +563,8 @@ exports.deleteUser = (req, res) => {
       req.flash('errors', { msg: `Você não pode apagar seu usuário.` });
       return res.redirect('/dashboard/users');
     }
-    findUser.remove((err) => {
+    findUser.active = false;
+    findUser.save((err) => {
       if (err) {
         req.flash('errors', { msg: `Erro ao deletar usuário` });
         return res.redirect('/dashboard/users');
