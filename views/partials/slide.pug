@@ -1,4 +1,4 @@
-#slideHome.carousel.slide(data-ride='carousel', data-interval="20000")
+#slideHome.carousel.slide(data-ride='carousel', data-interval="10000")
   // Indicators
   ol.carousel-indicators
     if (!pageInfo.customFields.imagens && !pageInfo.customFields.slide1 && !pageInfo.customFields.slide2 && !pageInfo.customFields.slide3 && !pageInfo.customFields.slide4 && !pageInfo.customFields.slide5)
@@ -64,23 +64,23 @@
       - var indexItem = 0;
       if (pageInfo.customFields.slide1 && pageInfo.customFields.slide1 != '')
         .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide1+'?autoplay=1&controls=0&showinfo=0&mute=1&Version=3&loop=1&playlist='+pageInfo.customFields.slide1))
+          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide1+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide1))
         - indexItem++
       if (pageInfo.customFields.slide2 && pageInfo.customFields.slide2 != '')
         .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide2+'?autoplay=1&controls=0&showinfo=0&mute=1&Version=3&loop=1&playlist='+pageInfo.customFields.slide2))
+          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide2+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide2))
         - indexItem++
       if (pageInfo.customFields.slide3 && pageInfo.customFields.slide3 != '')
         .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide3+'?autoplay=1&controls=0&showinfo=0&mute=1&Version=3&loop=1&playlist='+pageInfo.customFields.slide3))
+          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide3+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide3))
         - indexItem++
       if (pageInfo.customFields.slide4 && pageInfo.customFields.slide4 != '')
         .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide4+'?autoplay=1&controls=0&showinfo=0&mute=1&Version=3&loop=1&playlist='+pageInfo.customFields.slide4))
+          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide4+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide4))
         - indexItem++
       if (pageInfo.customFields.slide5 && pageInfo.customFields.slide5 != '')
         .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide5+'?autoplay=1&controls=0&showinfo=0&mute=1&Version=3&loop=1&playlist='+pageInfo.customFields.slide5))
+          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide5+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide5))
         - indexItem++
       if (pageInfo.customFields.imagens)
         if (pageInfo.customFields.imagens.slideImagem1)

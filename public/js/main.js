@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  // Dasabilitar Função menu com click direto do mouse
+  //document.addEventListener('contextmenu', event => event.preventDefault());
   /**
    * Open & Close Menu Top
    * ---------------------------------------
