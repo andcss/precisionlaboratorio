@@ -214,6 +214,7 @@ app.get('/midia/delete/:id', [passportConfig.isAdminUser, multipartMiddleware], 
 app.get('/pages', passportConfig.isAdminUser, dashboardController.getPages);
 app.get('/page/home', passportConfig.isAdminUser, pagesController.editHome);
 app.post('/page/home', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postHome);
+app.post('/page/videos/home', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postVideosHome);
 app.get('/page/laboratorio', passportConfig.isAdminUser, pagesController.editLaboratorio);
 app.post('/page/laboratorio', [passportConfig.isAdminUser, multipartMiddleware], pagesController.postLaboratorio);
 app.get('/page/portfolio', passportConfig.isAdminUser, pagesController.editPortfolio);

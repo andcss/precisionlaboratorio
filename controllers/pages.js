@@ -139,15 +139,9 @@ exports.postHome = (req, res) => {
       pageInfo.customFields.titleMesage = req.body.titleMesage;
       pageInfo.customFields.mesage = req.body.mesage;
 
-      pageInfo.customFields.slide1 = req.body.slide1;
-      pageInfo.customFields.slide2 = req.body.slide2;
-      pageInfo.customFields.slide3 = req.body.slide3;
-      pageInfo.customFields.slide4 = req.body.slide4;
-      pageInfo.customFields.slide5 = req.body.slide5;
-
 
       pageInfo.customFields.imagens = Object.assign({}, pageInfo.customFields.imagens, photosFiles);
-
+      console.log(req.body);
       if (req.body.slideImagemRemover1 == 'on') {
         delete pageInfo.customFields.imagens.slideImagem1;
       }
@@ -159,6 +153,10 @@ exports.postHome = (req, res) => {
       }
       if (req.body.slideImagemRemover4 == 'on') {
         delete pageInfo.customFields.imagens.slideImagem4;
+      }
+
+      if(Object.keys(pageInfo.customFields.imagens).length == 0) {
+        delete pageInfo.customFields.imagens;
       }
 
       pageInfo.seo.title = req.body.seoTitle;
@@ -201,6 +199,77 @@ exports.postHome = (req, res) => {
       });
     });
   });
+}
+
+exports.postVideosHome = (req, res) => {
+  Page.findOne({ name: 'Home' }).exec((err, pageInfo) => {
+    if (err) {
+      req.flash('errors', { msg: 'Não foi possível salvar a página.' });
+      return res.redirect('/page/home');
+    }
+    var videosFiles = {};
+    var promisesFiles = [];
+
+    for (var key in req.files) {
+      if (req.files[key].originalFilename) {
+        promisesFiles.push(new Promise((resolve, reject) => {
+          var fileIndex = key;
+          cloudinary.v2.uploader.upload(req.files[fileIndex].path,
+            {
+              resource_type: "auto",
+              public_id: "videosHome/" + "/" + req.files[fileIndex].name
+            },
+            function(err, returnFileUpdate) {
+                if(err)
+                  reject(err);
+                else {
+                  videosFiles[fileIndex] = {
+                    url_video: returnFileUpdate.secure_url,
+                    public_id: returnFileUpdate.public_id,
+                  }
+                  resolve();
+                }
+            });
+        }));
+
+      }
+    }
+
+    Promise.all(promisesFiles).then(() => {
+      pageInfo.customFields.videosSlide = Object.assign({}, pageInfo.customFields.videosSlide, videosFiles);
+
+      if (req.body.slideVideoRemover1 == 'on') {
+        delete pageInfo.customFields.videosSlide.slideVideo1;
+      }
+      if (req.body.slideVideoRemover2 == 'on') {
+        delete pageInfo.customFields.videosSlide.slideVideo2;
+      }
+      if (req.body.slideVideoRemover3 == 'on') {
+        delete pageInfo.customFields.videosSlide.slideVideo3;
+      }
+      if (req.body.slideVideoRemover4 == 'on') {
+        delete pageInfo.customFields.videosSlide.slideVideo4;
+      }
+
+      if(Object.keys(pageInfo.customFields.videosSlide).length == 0) {
+        delete pageInfo.customFields.videosSlide;
+      }
+
+      pageInfo.markModified('customFields');
+
+      pageInfo.save((err, pageSave) => {
+        if (err) {
+          req.flash('errors', { msg: 'Erro ao salvar Home' });
+          return res.redirect('/page/home');
+        } else {
+          req.flash('success', { msg: 'Página alterada com sucesso!' });
+          return res.redirect('/pages');
+        }
+      });
+
+    });
+  });
+
 }
 
 exports.editHome = (req, res) => {

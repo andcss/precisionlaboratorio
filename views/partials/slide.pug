@@ -1,25 +1,24 @@
 #slideHome.carousel.slide(data-ride='carousel', data-interval="10000")
   // Indicators
   ol.carousel-indicators
-    if (!pageInfo.customFields.imagens && !pageInfo.customFields.slide1 && !pageInfo.customFields.slide2 && !pageInfo.customFields.slide3 && !pageInfo.customFields.slide4 && !pageInfo.customFields.slide5)
+    if (!pageInfo.customFields.imagens && !pageInfo.customFields.videosSlide)
       li.active(data-target='#slideHome', data-slide-to='0')
     else
       - var indexSlide = 0;
-      if (pageInfo.customFields.slide1 && pageInfo.customFields.slide1 != '')
-        li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
-        - indexSlide++
-      if (pageInfo.customFields.slide2 && pageInfo.customFields.slide2 != '')
-        li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
-        - indexSlide++
-      if (pageInfo.customFields.slide3 && pageInfo.customFields.slide3 != '')
-        li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
-        - indexSlide++
-      if (pageInfo.customFields.slide4 && pageInfo.customFields.slide4 != '')
-        li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
-        - indexSlide++
-      if (pageInfo.customFields.slide5 && pageInfo.customFields.slide5 != '')
-        li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
-        - indexSlide++
+      if (pageInfo.customFields.videosSlide)
+        if (pageInfo.customFields.videosSlide.slideVideo1)
+          li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
+          - indexSlide++
+        if (pageInfo.customFields.videosSlide.slideVideo2)
+          li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
+          - indexSlide++
+        if (pageInfo.customFields.videosSlide.slideVideo3)
+          li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
+          - indexSlide++
+        if (pageInfo.customFields.videosSlide.slideVideo4)
+          li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
+          - indexSlide++
+        
       if (pageInfo.customFields.imagens)
         if (pageInfo.customFields.imagens.slideImagem1)
           li(data-target='#slideHome', data-slide-to=indexSlide, class=(indexSlide == 0 ? 'active': '' ))
@@ -39,7 +38,7 @@
     h1=pageInfo.customFields.titleMesage
     p=pageInfo.customFields.mesage
     // Controls
-    if (!pageInfo.customFields.imagens && !pageInfo.customFields.slide1 && !pageInfo.customFields.slide2 && !pageInfo.customFields.slide3 && !pageInfo.customFields.slide4 && !pageInfo.customFields.slide5)
+    if (!pageInfo.customFields.imagens && !pageInfo.customFields.videosSlide)
     else
       .control-slide
         a.left(href='#slideHome', role='button', data-slide='prev')
@@ -56,32 +55,34 @@
     if (mobile)
       .item.active
         .background-image(style="background-image: url('./images/bg-slide-1.jpg')")
-    else if (!pageInfo.customFields.imagens && !pageInfo.customFields.slide1 && !pageInfo.customFields.slide2 && !pageInfo.customFields.slide3 && !pageInfo.customFields.slide4 && !pageInfo.customFields.slide5)
+    else if (!pageInfo.customFields.imagens && !pageInfo.customFields.videosSlide)
       .item.active
         video(poster='./images/bg-slide-1.jpg' playsinline autoplay muted loop)
           source(src='./images/videos/BG_Home.mp4' type='video/mp4')
     else
       - var indexItem = 0;
-      if (pageInfo.customFields.slide1 && pageInfo.customFields.slide1 != '')
-        .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide1+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide1))
-        - indexItem++
-      if (pageInfo.customFields.slide2 && pageInfo.customFields.slide2 != '')
-        .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide2+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide2))
-        - indexItem++
-      if (pageInfo.customFields.slide3 && pageInfo.customFields.slide3 != '')
-        .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide3+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide3))
-        - indexItem++
-      if (pageInfo.customFields.slide4 && pageInfo.customFields.slide4 != '')
-        .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide4+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide4))
-        - indexItem++
-      if (pageInfo.customFields.slide5 && pageInfo.customFields.slide5 != '')
-        .item(class=(indexItem == 0 ? 'active' : ''))
-          iframe(style="margin-left: -10%; top: 0;", width="120%", height="110%", src=('https://www.youtube.com/embed/'+pageInfo.customFields.slide5+'?autoplay=1&loop=1&cc_load_policy=1rel=0&amp;controls=0&amp;showinfo=0&playlist='+pageInfo.customFields.slide5))
-        - indexItem++
+      if (pageInfo.customFields.videosSlide)
+        if (pageInfo.customFields.videosSlide.slideVideo1)
+          .item(class=(indexItem == 0 ? 'active' : ''))
+            video(playsinline autoplay muted loop)
+              source(src=pageInfo.customFields.videosSlide.slideVideo1.url_video type='video/mp4')
+          - indexItem++
+        if (pageInfo.customFields.videosSlide.slideVideo2)
+          .item(class=(indexItem == 0 ? 'active' : ''))
+            video(playsinline autoplay muted loop)
+              source(src=pageInfo.customFields.videosSlide.slideVideo2.url_video type='video/mp4')
+          - indexItem++
+        if (pageInfo.customFields.videosSlide.slideVideo3)
+          .item(class=(indexItem == 0 ? 'active' : ''))
+            video(playsinline autoplay muted loop)
+              source(src=pageInfo.customFields.videosSlide.slideVideo3.url_video type='video/mp4')
+          - indexItem++
+        if (pageInfo.customFields.videosSlide.slideVideo4)
+          .item(class=(indexItem == 0 ? 'active' : ''))
+            video(playsinline autoplay muted loop)
+              source(src=pageInfo.customFields.videosSlide.slideVideo4.url_video type='video/mp4')
+          - indexItem++
+      
       if (pageInfo.customFields.imagens)
         if (pageInfo.customFields.imagens.slideImagem1)
           .item(class=(indexItem == 0 ? 'active' : ''))
