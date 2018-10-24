@@ -42,7 +42,7 @@ block content
                   tbody
                     each order, index in orders
                       tr
-                        td #{index+1}
+                        td #{(index+1)+(page*10-10)}
                         td #{order.user.profile.firstName}
                         td #{order.patient.name}
                         td #{order.status}
@@ -57,4 +57,7 @@ block content
                       while n < pages
                         - n++
                         li(class=(n==page ? 'active' : ''))
-                          a(href='?page='+n+linkComplete)=n
+                          if(!!linkComplete)
+                            a(href='?page='+n+linkComplete)=n
+                          else
+                            a(href='?page='+n)=n

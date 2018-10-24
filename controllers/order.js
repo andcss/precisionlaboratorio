@@ -400,11 +400,23 @@ const searchForUser = (res, req, page, pesquisa, type) => {
   };
 
   User.find(queryWhereUser, function(err, users) {
+    if (users.length < 1) {
+        return res.render('viewsdash/pages/orders', {
+        title: preTitle+ 'Eventos',
+        pageName: 'orders',
+        user: req.user,
+        orders: [],
+        pages: 1,
+        page,
+        limit,
+        linkComplete: '&search='+ pesquisa
+      });
+    }
+
     let usersId = users.map(function(user) {
       return { user:user._id };
     });
-
-    let queryWhere = usersId.lenght > 0 ? { _id: ''} : {$or: usersId };
+    let queryWhere = usersId.length < 1 ? { _id: ''} : {$or: usersId };
 
     Order.paginate(queryWhere, options).then(function(result) {
       let orders = result.docs;
