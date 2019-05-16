@@ -6,13 +6,15 @@
     "type": "git",
     "url": "https://github.com/sahat/hackathon-starter.git"
   },
+  "main": "app.js",
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
+  },
   "author": "Sahat Yalkabov",
   "license": "MIT",
   "scripts": {
-    "start": "node app.js",
-    "test": "mocha --reporter spec",
-    "postinstall": "npm rebuild node-sass",
-    "eslint": "eslint **/*.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
