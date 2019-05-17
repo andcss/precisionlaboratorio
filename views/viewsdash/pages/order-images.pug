@@ -45,7 +45,7 @@
             img(src="/images/modelos/perfil-sorrindo-direita.jpg")
           input.form-control(type='file', name='s5', id='s5')&attributes(disabledInputs)
       .col-sm-12
-        .form-group.col-sm-3.
+        .form-group.col-sm-3
           label.control-label(for='s6') Afastador em Oclusão
           if(!newOrder && order.photos.s6.url_image != '')
             img(src=order.photos.s6.url_image)
@@ -79,5 +79,5 @@
           if(!newOrder && order.photos.s10.url_image != '')
             img(src=order.photos.s10.url_image)
           else
-            img(src="/images/modelos/foto-tomada-de-cor-site.jpg")
+            img(src="/images/modelos/tomada-de-cor-site.jpg")
           input.form-control(type='file', name='s10', id='s10')&attributes(disabledInputs)
