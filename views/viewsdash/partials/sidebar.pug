@@ -27,11 +27,6 @@
               i.pe-7s-note2
               | Pedidos
         if(user._role && user._role.value > 9)
-          li(class=(pageName == 'events') ? 'active' : '')
-            a(href="/events")
-              i.pe-7s-date
-              | Eventos
-        if(user._role && user._role.value > 9)
           li(class=(pageName == 'pages') ? 'active' : '')
             a(href="/pages")
               i.pe-7s-browser
