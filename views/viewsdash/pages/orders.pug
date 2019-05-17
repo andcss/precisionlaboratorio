@@ -2,62 +2,62 @@ extends ../layout
 
 block content
   .content
-      .container-fluid
-        .row(style="margin-bottom: 20px;")
+    .container-fluid
+      .row(style="margin-bottom: 20px;")
 
-          .col-md-12.text-right
-            form.form-inline(action="/search/order")
-              .form-group(style="margin-right: 10px", class=(user._role.value > 9 ? '' : 'hide'))
-                label
-                .input-group
-                  select(name="type").form-control
-                    option(value="Pedido") Por Pedido
-                    option(value="Profissional") Por Profissional
+        .col-md-12.text-right
+          form.form-inline(action="/search/order")
+            .form-group(style="margin-right: 10px", class=(user._role.value > 9 ? '' : 'hide'))
+              label
+              .input-group
+                select(name="type").form-control
+                  option(value="Pedido") Por Pedido
+                  option(value="Profissional") Por Profissional
 
-              .form-group
-                label
-                input(name="search").form-control
-              button.btn.btn-primary(style="margin-left: 10px;") Pesquisar
+            .form-group
+              label
+              input(name="search").form-control
+            button.btn.btn-primary(style="margin-left: 10px;") Pesquisar
 
-        .row
-          .col-md-12
-            .card
-              .header
-                h4.title Meus Pedidos
-                p.category Lista de pedidos realizados
-                a(href='/order').btn.btn-default.pull-right Criar Pedido
-              .content
-                .col-sm-12
-                  if !signup
-                    include ../../partials/flash
-                table.table.table-hover.table-striped
-                  thead
-                    th #
-                    th Profissional
-                    th Paciente
-                    th Status
-                    th Criado em
-                    th Data Prevista
-                    th.text-center Editar
-                  tbody
-                    each order, index in orders
-                      tr
-                        td #{(index+1)+(page*10-10)}
-                        td #{order.user.profile.firstName}
-                        td #{order.patient.name}
-                        td #{order.status}
-                        td=formatDate(order.createdAt)
-                        td=(order.orderInfos.previewDate ? formatDate(order.orderInfos.previewDate) : 'Não informado')
-                        td.text-center
-                          a(href=`/order/${order._id}`).btn.btn-info.btn-fill Editar Pedido
-                .row
-                  .col-sm-8.col-sm-offset-2.text-center
-                    ul.pagination
-                      - var n = 0;
-                      while n < pages
-                        - n++
-                        li(class=(n==page ? 'active' : ''))
-                          if(!!linkComplete)
-                            a(href='?page='+n+linkComplete)=n
-                          else
-                            a(href='?page='+n)=n
+      .row
+        .col-md-12
+          .card
+            .header
+              h4.title Meus Pedidos
+              p.category Lista de pedidos realizados
+              a(href='/order').btn.btn-default.pull-right Criar Pedido
+            .content
+              .col-sm-12
+                if !signup
+                  include ../../partials/flash
+              table.table.table-hover.table-striped
+                thead
+                  th #
+                  th Profissional
+                  th Paciente
+                  th Status
+                  th Criado em
+                  th Data Prevista
+                  th.text-center Editar
+                tbody
+                  each order, index in orders
+                    tr
+                      td #{(index+1)+(page*10-10)}
+                      td #{order.user.profile.firstName}
+                      td #{order.patient.name}
+                      td #{order.status}
+                      td=formatDate(order.createdAt)
+                      td=(order.orderInfos.previewDate ? formatDate(order.orderInfos.previewDate) : 'Não informado')
+                      td.text-center
+                        a(href=`/order/${order._id}`).btn.btn-info.btn-fill Editar Pedido
+              .row
+                .col-sm-8.col-sm-offset-2.text-center
+                  ul.pagination
+                    - var n = 0;
+                    while n < pages
+                      - n++
+                      li(class=(n==page ? 'active' : ''))
+                        if(!!linkComplete)
+                          a(href='?page='+n+linkComplete)=n
+                        else
+                          a(href='?page='+n)=n

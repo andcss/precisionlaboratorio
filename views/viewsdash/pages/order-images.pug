@@ -15,20 +15,15 @@
         else
           img(src="/images/modelos/sorrindo.jpg")
         input.form-control(type='file', name='s1', id='s1')&attributes(disabledInputs)
+
       .form-group.col-sm-3
         label.control-label(for='s2') Sorriso entre aberto
         if(!newOrder && order.photos.s2.url_image != '')
           img(src=order.photos.s2.url_image)
-        else
-          img(src="/images/modelos/sorrindo-aberto.jpg")
-        input.form-control(type='file', name='s2', id='s2', value=(order.photos.s2 ? order.photos.s2.url_image : '' ))&attributes(disabledInputs)
-      .form-group.col-sm-3
-        label.control-label(for='s3') Boca Fechada
-        if(!newOrder && order.photos.s3.url_image != '')
-          img(src=order.photos.s3.url_image)
-        else
-          img(src="/images/modelos/boca-fechada.jpg")
-        input.form-control(type='file', name='s3', id='s3')&attributes(disabledInputs)
+  else
+    img(src="/images/modelos/sorrindo-aberto.jpg")
+      input.form-control(type='file', name='s2', id='s2', value=(order.photos.s2 ? order.photos.s2.url_image : '' ))&attributes(disabledInputs)
+
       .form-group.col-sm-3
         label.control-label(for='s4') Lábios em repouso
         if(!newOrder && order.photos.s4.url_image != '')
