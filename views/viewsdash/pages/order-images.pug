@@ -1,90 +1,93 @@
 .row
-.col-sm-8
-h5 Arquivos de fotos
-hr
-.col-sm-4
-a.btn.pull-right#hidePhotos(href="#") Esconder Arquivos
-.clearfix
-#photosSection
-.col-sm-12
-.col-sm-12
-.form-group.col-sm-4
-label.control-label(for='s1') Sorriso
-if(!newOrder && order.photos.s1.url_image != '')
-img(src=order.photos.s1.url_image)
-else
-img(src="/images/modelos/sorrindo.jpg")
-input.form-control(type='file', name='s1', id='s1')&attributes(disabledInputs)
-.form-group.col-sm-4
-label.control-label(for='s2') Sorriso entre aberto
-if(!newOrder && order.photos.s2.url_image != '')
-img(src=order.photos.s2.url_image)
-else
-img(src="/images/modelos/sorrindo-aberto.jpg")
-input.form-control(type='file', name='s2', id='s2', value=(order.photos.s2 ? order.photos.s2.url_image : '' ))&attributes(disabledInputs)
-.form-group.col-sm-4
-label.control-label(for='s3') Lábios em repouso
-if(!newOrder && order.photos.s3.url_image != '')
-img(src=order.photos.s3.url_image)
-else
-img(src="/images/modelos/labios-repouso.jpg")
-input.form-control(type='file', name='s3', id='s3')&attributes(disabledInputs)
-.col-sm-12
-.form-group.col-sm-4
-label.control-label(for='s4') Perfil sorrindo (Esquerda)
-if(!newOrder && order.photos.s4.url_image != '')
-img(src=order.photos.s4.url_image)
-else
-img(src="/images/modelos/perfil-sorrindo-esquerda.jpg")
-input.form-control(type='file', name='s4', id='s4')&attributes(disabledInputs)
-.form-group.col-sm-4
-label.control-label(for='s5') Perfil sorrindo (Direita)
-if(!newOrder && order.photos.s5.url_image != '')
-img(src=order.photos.s5.url_image)
-else
-img(src="/images/modelos/perfil-sorrindo-direita.jpg")
-input.form-control(type='file', name='s5', id='s5')&attributes(disabledInputs)
-.form-group.col-sm-4
-label.control-label(for='s6') Foto overjet
-if(!newOrder && order.photos.s6.url_image != '')
-img(src=order.photos.s6.url_image)
-else
-img(src="/images/modelos/perfil-sorrindo-direita.jpg")
-input.form-control(type='file', name='s6', id='s6')&attributes(disabledInputs)
-.col-sm-12
-.form-group.col-sm-3
-label.control-label(for='s7') Afastador em oclusão
-if(!newOrder && order.photos.s7.url_image != '')
-img(src=order.photos.s7.url_image)
-else
-img(src="/images/modelos/afastador-fechado.jpg")
-input.form-control(type='file', name='s7', id='s7')&attributes(disabledInputs)
-.form-group.col-sm-3
-label.control-label(for='s8') Afastador com boca entreaberta
-if(!newOrder && order.photos.s8.url_image != '')
-img(src=order.photos.s8.url_image)
-else
-img(src="/images/modelos/afastador-com-boca-entreaberta.jpg")
-input.form-control(type='file', name='s8', id='s8')&attributes(disabledInputs)
-.form-group.col-sm-3
-label.control-label(for='s9') Afastador em oclusão meio perfil (Esquerda)
-if(!newOrder && order.photos.s9.url_image != '')
-img(src=order.photos.s9.url_image)
-else
-img(src="/images/modelos/afastador-em-oclusao-meio-perfil-esquerda.jpg")
-input.form-control(type='file', name='s9', id='s9')&attributes(disabledInputs)
-.form-group.col-sm-3
-label.control-label(for='s10') Afastador em oclusão meio perfil (Direita)
-if(!newOrder && order.photos.s10.url_image != '')
-img(src=order.photos.s10.url_image)
-else
-img(src="/images/modelos/afastador-em-oclusao-meio-perfil-direita.jpg")
-input.form-control(type='file', name='s10', id='s10')&attributes(disabledInputs)
-.col-sm-12
-.form-group.col-sm-4
-label.control-label(for='s11') Tomada de cor em caso de preparo (Foco)
-if(!newOrder && order.photos.s11.url_image != '')
-img(src=order.photos.s11.url_image)
-else
-img(src="/images/modelos/Foto-tomada-de-cor-site.jpg")
-input.form-control(type='file', name='s11', id='s11')&attributes(disabledInputs)
+  .col-sm-8
+    h5 Arquivos de fotos
+    hr
+  .col-sm-4
+    a.btn.pull-right#hidePhotos(href="#") Esconder Arquivos
+    .clearfix
+  #photosSection
+  .col-sm-12
+
+    .col-sm-12
+      .form-group.col-sm-4
+      label.control-label(for='s1') Sorriso
+      if(!newOrder && order.photos.s1.url_image != '')
+      img(src=order.photos.s1.url_image)
+      else
+      img(src="/images/modelos/sorrindo.jpg")
+      input.form-control(type='file', name='s1', id='s1')&attributes(disabledInputs)
+
+      .form-group.col-sm-4
+      label.control-label(for='s2') Sorriso entre aberto
+      if(!newOrder && order.photos.s2.url_image != '')
+      img(src=order.photos.s2.url_image)
+      else
+      img(src="/images/modelos/sorrindo-aberto.jpg")
+      input.form-control(type='file', name='s2', id='s2', value=(order.photos.s2 ? order.photos.s2.url_image : '' ))&attributes(disabledInputs)
+
+      .form-group.col-sm-4
+      label.control-label(for='s3') Lábios em repouso
+      if(!newOrder && order.photos.s3.url_image != '')
+      img(src=order.photos.s3.url_image)
+      else
+      img(src="/images/modelos/labios-repouso.jpg")
+      input.form-control(type='file', name='s3', id='s3')&attributes(disabledInputs)
+
+    .col-sm-12
+      .form-group.col-sm-6
+      label.control-label(for='s4') Perfil sorrindo (Esquerda)
+      if(!newOrder && order.photos.s4.url_image != '')
+      img(src=order.photos.s4.url_image)
+      else
+      img(src="/images/modelos/perfil-sorrindo-esquerda.jpg")
+      input.form-control(type='file', name='s4', id='s4')&attributes(disabledInputs)
+
+      .form-group.col-sm-6
+      label.control-label(for='s5') Perfil sorrindo (Direita)
+      if(!newOrder && order.photos.s5.url_image != '')
+      img(src=order.photos.s5.url_image)
+      else
+      img(src="/images/modelos/perfil-sorrindo-direita.jpg")
+      input.form-control(type='file', name='s5', id='s5')&attributes(disabledInputs)
+
+    .col-sm-12
+      .form-group.col-sm-3
+      label.control-label(for='s6') Afastador em oclusão
+      if(!newOrder && order.photos.s6.url_image != '')
+      img(src=order.photos.s6.url_image)
+      else
+      img(src="/images/modelos/afastador-fechado.jpg")
+      input.form-control(type='file', name='s6', id='s6')&attributes(disabledInputs)
+
+      .form-group.col-sm-3
+      label.control-label(for='s7') Afastador com boca entreaberta
+      if(!newOrder && order.photos.s7.url_image != '')
+      img(src=order.photos.s7.url_image)
+      else
+      img(src="/images/modelos/afastador-com-boca-entreaberta.jpg")
+      input.form-control(type='file', name='s7', id='s7')&attributes(disabledInputs)
+
+      .form-group.col-sm-3
+      label.control-label(for='s8') Afastador em oclusão meio perfil (Esquerda)
+      if(!newOrder && order.photos.s8.url_image != '')
+      img(src=order.photos.s8.url_image)
+      else
+      img(src="/images/modelos/afastador-em-oclusao-meio-perfil-esquerda.jpg")
+      input.form-control(type='file', name='s8', id='s8')&attributes(disabledInputs)
+
+      .form-group.col-sm-3
+      label.control-label(for='s9') Afastador em oclusão meio perfil (Direita)
+      if(!newOrder && order.photos.s9.url_image != '')
+      img(src=order.photos.s9.url_image)
+      else
+      img(src="/images/modelos/afastador-em-oclusao-meio-perfil-direita.jpg")
+      input.form-control(type='file', name='s9', id='s9')&attributes(disabledInputs)
+
+    .col-sm-12
+      .form-group.col-sm-4
+      label.control-label(for='s10') Tomada de cor em caso de preparo (Foco)
+      if(!newOrder && order.photos.s10.url_image != '')
+      img(src=order.photos.s10.url_image)
+      else
+      img(src="/images/modelos/Foto-tomada-de-cor-site.jpg")
+      input.form-control(type='file', name='s10', id='s10')&attributes(disabledInputs)
