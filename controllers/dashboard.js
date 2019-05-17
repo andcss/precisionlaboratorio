@@ -47,13 +47,15 @@ exports.getPages = (req, res) => {
   });
 };
 
+/**
 exports.getEvent = (req, res) => {
-  res.render('viewsdash/pages/event', {
-    title: preTitle+ 'Informações do evento',
-    pageName: 'events',
-    user: req.user,
-  });
+res.render('viewsdash/pages/event', {
+title: preTitle+ 'Informações do evento',
+pageName: 'events',
+user: req.user,
+});
 };
+**/
 
 exports.getPedidos = (req, res) => {
   res.render('viewsdash/pages/pedidos', {
