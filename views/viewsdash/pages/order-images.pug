@@ -28,84 +28,66 @@
         input.form-control(type='file', name='s2', id='s2', value=(order.photos.s2 ? order.photos.s2.url_image : '' ))&attributes(disabledInputs)
 
       .form-group.col-sm-4
-        label.control-label(for='s4') Lábios em repouso
-        if(!newOrder && order.photos.s4.url_image != '')
-          img(src=order.photos.s4.url_image)
+        label.control-label(for='s3') Lábios em repouso
+        if(!newOrder && order.photos.s3.url_image != '')
+          img(src=order.photos.s3.url_image)
         else
           img(src="/images/modelos/labios-repouso.jpg")
-        input.form-control(type='file', name='s4', id='s4')&attributes(disabledInputs)
+        input.form-control(type='file', name='s3', id='s3')&attributes(disabledInputs)
 
     .col-sm-12
 
-      .form-group.col-sm-3
-        label.control-label(for='s5') Perfil boca fechada (Direita)
+    .form-group.col-sm-4
+      label.control-label(for='s4') Perfil sorrindo (Esquerda)
+      if(!newOrder && order.photos.s4.url_image != '')
+        img(src=order.photos.s4.url_image)
+      else
+        img(src="/images/modelos/perfil-sorrindo-esquerda.jpg")
+      input.form-control(type='file', name='s4', id='s4')&attributes(disabledInputs)
+
+      .form-group.col-sm-4
+        label.control-label(for='s5') Perfil sorrindo (Direita)
         if(!newOrder && order.photos.s5.url_image != '')
           img(src=order.photos.s5.url_image)
         else
-          img(src="/images/modelos/perfil-direita.jpg")
+          img(src="/images/modelos/perfil-sorrindo-direita.jpg")
         input.form-control(type='file', name='s5', id='s5')&attributes(disabledInputs)
 
-      .form-group.col-sm-3
-        label.control-label(for='s6') Perfil boca fechada (Esquerda)
+      .form-group.col-sm-4
+        label.control-label(for='s6') Foto overjet
         if(!newOrder && order.photos.s6.url_image != '')
           img(src=order.photos.s6.url_image)
         else
-          img(src="/images/modelos/perfil-esquerda.jpg")
+          img(src="/images/modelos/foto-overjet.jpg")
         input.form-control(type='file', name='s6', id='s6')&attributes(disabledInputs)
 
+    .col-sm-12
+
       .form-group.col-sm-3
-        label.control-label(for='s7') Perfil sorrindo (Direita)
+        label.control-label(for='s7') Afastador em oclusão
         if(!newOrder && order.photos.s7.url_image != '')
           img(src=order.photos.s7.url_image)
         else
-          img(src="/images/modelos/perfil-sorrindo-direita.jpg")
+          img(src="/images/modelos/afastador-fechado.jpg")
         input.form-control(type='file', name='s7', id='s7')&attributes(disabledInputs)
 
       .form-group.col-sm-3
-        label.control-label(for='s8') Perfil sorrindo (Esquerda)
+        label.control-label(for='s8') Afastador com boca entreaberta
         if(!newOrder && order.photos.s8.url_image != '')
           img(src=order.photos.s8.url_image)
         else
-          img(src="/images/modelos/perfil-sorrindo-esquerda.jpg")
+          img(src="/images/modelos/afastador-com-boca-entreaberta.jpg")
         input.form-control(type='file', name='s8', id='s8')&attributes(disabledInputs)
 
-    .col-sm-12
-
-      .form-group.col-sm-6
-        label.control-label(for='s9') Foco em boca (Direita)
-        if(!newOrder && order.photos.s9.url_image != '')
-          img(src=order.photos.s9.url_image)
+      .form-group.col-sm-3
+        label.control-label(for='s16') Afastador com fundo preto
+        if(!newOrder && order.photos.s16.url_image != '')
+          img(src=order.photos.s16.url_image)
         else
-          img(src="/images/modelos/sorrindo-direita-foco.jpg")
-        input.form-control(type='file', name='s9', id='s9')&attributes(disabledInputs)
+          img(src="/images/modelos/afastador-fundo.jpg")
+        input.form-control(type='file', name='s16', id='s16')&attributes(disabledInputs)
 
-      .form-group.col-sm-6
-        label.control-label(for='s10') Foco em boca (Esquerda)
-        if(!newOrder && order.photos.s10.url_image != '')
-          img(src=order.photos.s10.url_image)
-        else
-          img(src="/images/modelos/sorrindo-esquerda-foco.jpg")
-        input.form-control(type='file', name='s10', id='s10')&attributes(disabledInputs)
-
-    .col-sm-12
-
-      .form-group.col-sm-4
-        label.control-label(for='s14') Afastador em oclusão
-        if(!newOrder && order.photos.s14.url_image != '')
-          img(src=order.photos.s14.url_image)
-        else
-          img(src="/images/modelos/afastador-fechado.jpg")
-        input.form-control(type='file', name='s14', id='s14')&attributes(disabledInputs)
-
-      .form-group.col-sm-4
-        label.control-label(for='s15') Afastador
-        if(!newOrder && order.photos.s15.url_image != '')
-          img(src=order.photos.s15.url_image)
-        else
-          img(src="/images/modelos/afastador-aberto.jpg")
-        input.form-control(type='file', name='s15', id='s15')&attributes(disabledInputs)
-
-      .form-group.col-sm-4
+      .form-group.col-sm-3
         label.control-label(for='s16') Afastador com fundo preto
         if(!newOrder && order.photos.s16.url_image != '')
           img(src=order.photos.s16.url_image)
