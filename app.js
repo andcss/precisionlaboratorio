@@ -147,7 +147,6 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 app.get('/', pagesController.index);
 app.get('/laboratorio', pagesController.laboratorio);
 app.get('/produtos', pagesController.produtos);
-app.get('/agenda', pagesController.agenda);
 app.get('/portfolio', pagesController.portfolio);
 
 app.get('/importMaterials', configController.populateMaterials);
