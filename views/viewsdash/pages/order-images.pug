@@ -81,3 +81,17 @@
           else
             img(src="/images/modelos/foto-overjet.jpg")
           input.form-control(type='file', name='s10', id='s10')&attributes(disabledInputs)
+        .form-group.col-sm-4
+          label.control-label(for='s11')
+          if(!newOrder && order.photos.s11.url_image != '')
+            img(src=order.photos.s11.url_image)
+          else
+            img(src="/images/modelos/foto-tomada-de-cor-site.jpg")
+          input.form-control(type='file', name='s11', id='s11')&attributes(disabledInputs)
+          .form-group.col-sm-4
+            label.control-label(for='s12')
+            if(!newOrder && order.photos.s12.url_image != '')
+              img(src=order.photos.s12.url_image)
+            else
+              img(src="/images/modelos/foto-tomada-de-cor-site.jpg")
+            input.form-control(type='file', name='s12', id='s12')&attributes(disabledInputs)
