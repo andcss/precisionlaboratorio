@@ -95,3 +95,11 @@
           else
             img(src="/images/modelos/tomada-de-cor.jpg")
           input.form-control(type='file', name='s12', id='s12')&attributes(disabledInputs)
+      .col-sm-12
+        .form-group.col-sm-4
+          label.control-label(for='s13') Tomada de cor
+          if(!newOrder && order.photos.s13.url_image != '')
+            img(src=order.photos.s13.url_image)
+          else
+            img(src="/images/modelos/tomada-de-cor.jpg")
+          input.form-control(type='file', name='s13', id='s13')&attributes(disabledInputs)
